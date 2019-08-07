@@ -73,7 +73,7 @@
                 <div id="search-bg"></div>
                 <div id="search">
                     <div id=log>
-                        <image id="icon" src="imagenes/icon.jpg"><br>
+                        <image id="icon" src="../imagenes/icon.jpg"><br>
                         <input type ="email"><br>
                         <input type ="password"><br>
                         <button type="button" class="btn btn-outline-primary">ENTRAR</button>
