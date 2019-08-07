@@ -2,6 +2,17 @@
 require_once("../plantillas/cabecera.php");
 ?>
 
+<?php
+    require_once("../plantillas/navbar.php");
+?>
+<script type="text/javascript">
+
+    function cambiar (this) {
+         document.getElementById('fotoModif').src = this.src;
+    }
+
+</script>
+
 
 <h1 class="text-center mt-3"> Modificar usuario: </h1>
 
@@ -10,12 +21,12 @@ require_once("../plantillas/cabecera.php");
        
     <div class="row">
             <div class=" rounded mx-auto d-block">
-                    <img src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+                    <img id="fotoModif" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
             </div>
     </div>
     <div class="row">
             <div class="col-md-2 offset-md-5 mt-2">
-                <input type="file" name="imagenPerfil" class=" p-2"  />
+                <input type="file" name="imagenPerfil" class=" p-2" onchange="cambiar(this)" />
             </div>              
     </div>
     
