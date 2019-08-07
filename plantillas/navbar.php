@@ -10,7 +10,7 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-outline-info my-2 my-sm-0" type="submit">Buscar</button>
         </form>
-        <button class="btn btn-outline-success my-2 my-sm-0 mr-sm-2" type="submit">Perfil</button>
+        <a class="button btn btn-outline-success my-2 my-sm-0 mr-sm-2" href="../html/modificarPerfil.php">Perfil</a>
         <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Logout</button>
     </div>
 </nav>
