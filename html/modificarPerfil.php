@@ -8,13 +8,14 @@ require_once("../plantillas/cabecera.php");
 <script type="text/javascript">
 
     function cambiar (this) {
-         document.getElementById('fotoModif').src = this.src;
+        //document.getElementById('fotoModif').src = "../resources/foto-carnet2.jpg";
+        document.getElementById('fotoModif').src = this.DOMString;
     }
 
 </script>
 
 
-<h1 class="text-center mt-3"> Modificar usuario: </h1>
+<br><br>
 
 
 <form action="#" method="POST">
@@ -26,7 +27,7 @@ require_once("../plantillas/cabecera.php");
     </div>
     <div class="row">
             <div class="col-md-2 offset-md-5 mt-2">
-                <input type="file" name="imagenPerfil" class=" p-2" onchange="cambiar(this)" />
+                <input type="file" name="imagenPerfil" class="p-2" onchange="cambiar(this)" />
             </div>              
     </div>
     
