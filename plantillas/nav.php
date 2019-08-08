@@ -95,7 +95,15 @@
       </div>
     </div>
   </div>
-  <div class="col-md-10" style="border-style: dotted;">
-    Pantalla chat
+  <div class="col-md-10 overflow-auto " style="border-style: dotted;  ">
+    
+      
+
+
+  <br>
+
+
+
+
   </div>
 </div>
