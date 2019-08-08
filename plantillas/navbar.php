@@ -13,16 +13,16 @@
         <form class="form-inline my-2 my-lg-0 m-auto">
                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
                 <button class="btn btn-info my-2 my-sm-0" type="submit">
-                        <h6>  <i class="fa fa-search" aria-hidden="true"></i>  Buscar  </h6>
+                        <h6 class="mt-2">  <i class="fa fa-search" aria-hidden="true"></i>  Buscar  </h6>
                 </button>
         </form>
         
         <a class="button btn btn-success my-2 my-sm-0 mr-sm-2" href="../html/modificarPerfil.php">
-                <h6> <i class="fa fa-cog" aria-hidden="true"></i>  Perfil   </h6>
+                <h6 class="mt-2"> <i class="fa fa-cog" aria-hidden="true"></i>  Perfil   </h6>
         </a>
         
         <button class="btn btn-danger my-2 my-sm-0" type="submit">
-                <h6> <i class="fa fa-sign-out " aria-hidden="true"></i>  Logout    </h6>
+                <h6 class="mt-2"> <i class="fa fa-sign-out " aria-hidden="true"></i>  Logout    </h6>
         </button>
     </div>
 </nav>
