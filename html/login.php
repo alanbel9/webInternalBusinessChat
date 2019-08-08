@@ -1,5 +1,5 @@
 <?PHP
-    require_once('cabecera.php');
+    require_once('../plantillas/cabecera.php');
 ?>
         <style type="text/css">
             body, #search-bg {
@@ -73,7 +73,7 @@
                 <div id="search-bg"></div>
                 <div id="search">
                     <div id=log>
-                        <image id="icon" src="../imagenes/icon.jpg"><br>
+                        <image id="icon" src="../resources/icon.jpg"><br>
                         <input type ="email"><br>
                         <input type ="password"><br>
                         <button type="button" class="btn btn-outline-primary">ENTRAR</button>
@@ -84,5 +84,5 @@
         </div>
    
 <?PHP
-    require_once('footer.php');
+    require_once('../plantillas/footer.php');
 ?>   
