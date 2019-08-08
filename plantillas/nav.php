@@ -95,7 +95,7 @@
       </div>
     </div>
   </div>
-  <div class="col-9">
+  <div class="col-9" style="border-style: dotted;">
     Pantalla chat
   </div>
 </div>
