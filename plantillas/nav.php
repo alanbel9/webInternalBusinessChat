@@ -93,7 +93,7 @@
       </a>
       <div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical"
         style="display: none;">
-        <a id="v-pills-home-tab" class="ml-5 mr-5" data-toggle="pill" href="#v-pills-home" role="tab"
+        <a id="accederChat" class="ml-5 mr-5" data-toggle="pill" href="#v-pills-home" role="tab"
           aria-controls="v-pills-home" aria-selected="true">Acceder al chat</a>
         <a id="recarga" class="ml-5 mr-5" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
           aria-controls="v-pills-profile" aria-selected="false">Información</a>
