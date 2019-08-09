@@ -46,12 +46,22 @@ require_once("../plantillas/cabecera.php");
                     <img id="imgSalida" width="250" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
             </div>
     </div>
+
     <div class="row">
-            <div class="col-md-2 offset-md-5 mt-2">
-                <input name="file-input" class="p-2" id="file-input" type="file" />
-            </div>            
+        <div class="col-md-4 offset-md-4 mt-2 ">
+                        <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="file-input" aria-describedby="inputGroupFileAddon03">
+                                <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                        </div>
+        </div>
     </div>
-    
+                <!--
+                                <div class="row">
+                                        <div class="col-md-2 offset-md-5 mt-2">
+                                                <input name="file-input" class="p-2" id="file-input" type="file" />
+                                        </div>            
+                                </div>
+                -->
 
     <div class="row">
             <div class="input-group  col-md-3 offset-md-3 mt-5">
