@@ -47,9 +47,5 @@
 
 <?php
     require_once("../plantillas/footer.php");
-?>
-
-<?php
-    require_once('../plantillas/footer.php');
-?>   
+?>  
 
