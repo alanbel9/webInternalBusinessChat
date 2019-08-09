@@ -7,18 +7,18 @@
 </div>
 
 <div class="container mx-auto w-50 border mt-5">
-    <div class='jumbotron text-center'> 
+    <div class='jumbotron text-center pt-5'> 
   
         <div id="bg">
                 <div id="search-container">
                     <div id="search-bg"></div>
                     <div id="search">
                         <div id=log>
-                        <div class="p-3 mb-2 bg-secondary text-white font-italic text-center">REGISTRO PARA ENTRAR</div>
+                        <div class="p-3 mb-2 bg-secondary text-white font-italic text-center">-- LOGIN --</div>
                                 <br>
                                 <div class="input-group">
                                     <i class="input-group-text fa fa-user fa-lg"></i>
-                                    <input type ="usuario" class='form-control' placeholder='Introduce el usuario'/>
+                                    <input type ="correo" class='form-control' placeholder='Introduce el correo'/>
                                 </div>
                                 
                                 <div class="input-group">
