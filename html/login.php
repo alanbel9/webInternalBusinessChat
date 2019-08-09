@@ -49,14 +49,7 @@
                 padding: 20px;
                 text-align: center;
             }
-            
-            #icon{
-                width: 100%;
-                max-width: 200px;
-                height: auto;
-                border-width: 40px 20px;
-                border-radius: 80px 60px;
-            }
+          
             @media (max-width: 600px ) {
                 #bg { padding: 10px; }
                 #search-bg { background-position: center -10px; }
@@ -73,25 +66,27 @@
                 <div id="search-bg"></div>
                 <div id="search">
                     <div id=log>
-                        <img class="m-3" id="icon" src="../resources/icon.jpg" ><br>
-                        <div class="input-group">
-                            <i class="input-group-text fa fa-user fa-lg"></i>
-                            <input type ="usuario" class='form-control' placeholder='Introduce el correo'/>
-                        </div>
+                        <h2><i class="m-3 fa fa-users fa-5x" aria-hidden="true"> Chat;)</i></h2>
+                        <form>
+                            <div class="input-group">
+                                <i class="input-group-text fa fa-user fa-lg"></i>
+                                <input type ="usuario" class='form-control' placeholder='Introduce el correo'/>
+                            </div>
 
-                        <div class="input-group">
-                            <i class="input-group-text fa fa-lock fa-lg" aria-hidden="true"></i> 
-                            <input type ="password" class='form-control' placeholder='Introduce el password'/>
-                        </div>
-                        <br>
-                        <div class='row'>
-                            <div class='col-md-6'>
-                                <button type="button" class="btn btn-outline-primary btn-block">ENTRAR</button>
+                            <div class="input-group">
+                                <i class="input-group-text fa fa-lock fa-lg" aria-hidden="true"></i> 
+                                <input type ="password" class='form-control' placeholder='Introduce el password'/>
                             </div>
-                            <div class='col-md-6'>
-                                <button type="button" class="btn btn-outline-danger btn-block">RECUPERAR CONTRSAEÑA</button>
+                            <br>
+                            <div class='row'>
+                                <div class='col-md-6'>
+                                    <button type="button" class="btn btn-outline-primary btn-block">ENTRAR</button>
+                                </div>
+                                <div class='col-md-6'>
+                                    <button type="button" class="btn btn-outline-danger btn-block">RECUPERAR CONTRSAEÑA</button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
