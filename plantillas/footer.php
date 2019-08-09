@@ -4,6 +4,7 @@
 <script>
     $(function(){
         $(".barraIzquierda").children("a").on("click", function(evt){
+            $(".barraIzquierda").children("a").next().slideUp();
             $(this).next().slideToggle();
         });
     })

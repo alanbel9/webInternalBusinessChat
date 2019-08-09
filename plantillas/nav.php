@@ -43,7 +43,7 @@
       </div>
       <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab"
         aria-controls="v-pills-settings" aria-selected="false">
-        <h4>Ping-pong</h4>
+        <h4><i class="fa fa-hashtag" aria-hidden="true"></i>Ping-pong</h4>
       </a>
       <div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical"
         style="display: none;">
@@ -95,8 +95,8 @@
       </div>
     </div>
   </div>
-  <div class="col" style="border-style: dotted;">
-    <h1 class="text-center">Pantalla principal</h1>
+  <div class="col border border-secondary shadow-lg p-3 mb-5 bg-white rounded">
+    <h1 class="text-center ">Pantalla principal</h1>
   </div>
   <div class="col"></div>
 </div>
