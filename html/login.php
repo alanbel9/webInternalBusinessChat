@@ -3,9 +3,9 @@
 ?>
         <style type="text/css">
             body, #search-bg {
-                background-image: url(imagenes/paisaje-3d.jpg);
+                background-image: url(../resources/img.jpg);
                 background-repeat: no-repeat;
-                background-size: auto;
+                background-size: 100%;
             }
 
             body {
