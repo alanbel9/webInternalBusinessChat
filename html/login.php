@@ -73,7 +73,7 @@
                 <div id="search-bg"></div>
                 <div id="search">
                     <div id=log>
-                        <image id="icon" src="imagenes/icon.jpg" ><br>
+                        <image id="icon" src="imagenes/img.jpg" ><br>
                         <div class="input-group">
                             <i class="input-group-text fa fa-user fa-lg"></i>
                             <input type ="usuario" class='form-control' placeholder='Introduce el usuario'/>
