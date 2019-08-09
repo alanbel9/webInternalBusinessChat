@@ -14,7 +14,7 @@
                     <div id="search-bg"></div>
                     <div id="search">
                         <div id=log>
-                        <div class="p-3 mb-2 bg-secondary font-italic text-center">-- LOGIN --</div>
+                        <div class="p-3 mb-2 bg-secondary text-center"><h1><i class="fa fa-users" aria-hidden="true"></i> Chat;)</h1></div>
                                 <br>
                                 <div class="input-group">
                                     <i class="input-group-text fa fa-user fa-lg"></i>
