@@ -3,14 +3,14 @@
 ?>
         <style type="text/css">
             body, #search-bg {
-                background-image: url(imagenes/paisaje-3d.jpg);
+                background-image: url(../resources/img.jpg);
                 background-repeat: no-repeat;
-                background-size: auto;
+                background-size: 100%;
             }
 
             body {
                 background-position: center top;
-                padding: 70px 90px 120px 90px;
+                padding: 70px 350px 120px 350px;
             }
 
             #search-container {
@@ -73,16 +73,31 @@
                 <div id="search-bg"></div>
                 <div id="search">
                     <div id=log>
-                        <image id="icon" src="../resources/icon.jpg"><br>
-                        <input type ="email"><br>
-                        <input type ="password"><br>
-                        <button type="button" class="btn btn-outline-primary">ENTRAR</button>
-                        <button type="button" class="btn btn-outline-secondary">RECUPERAR CONTRSAEÑA</button>
+                        <image id="icon" src="../resources/icon.jpg" ><br>
+                        <div class="input-group">
+                            <i class="input-group-text fa fa-user fa-lg"></i>
+                            <input type ="usuario" class='form-control' placeholder='Introduce el usuario'/>
+                        </div>
+
+                        <div class="input-group">
+                            <i class="input-group-text fa fa-lock fa-lg" aria-hidden="true"></i> 
+                            <input type ="password" class='form-control' placeholder='Introduce el password'/>
+                        </div>
+                        <br>
+                        <div class='row'>
+                            <div class='col-md-6'>
+                                <button type="button" class="btn btn-outline-primary btn-block">ENTRAR</button>
+                            </div>
+                            <div class='col-md-6'>
+                                <button type="button" class="btn btn-outline-danger btn-block">RECUPERAR CONTRSAEÑA</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-   
+
+    </body>
 <?PHP
     require_once('../plantillas/footer.php');
 ?>   
