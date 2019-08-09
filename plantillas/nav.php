@@ -100,7 +100,7 @@
       </div>
     </div>
   </div>
-  <div id="modificado" class="col-md-10 border border-secondary shadow-lg p-3 mb-5 bg-white rounded" style="width: 500px !important">
-    <h1 class="text-center ">Pantalla principal</h1>
+  <div id="modificado" class="col-md-10 " style="width: 500px !important">
+    <h1 class="text-center border border-secondary shadow-lg p-3 mb-5 bg-white rounded">Pantalla principal</h1>
   </div>
 </div>
