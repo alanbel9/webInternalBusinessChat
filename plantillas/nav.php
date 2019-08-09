@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-2" style="white-space: nowrap; color:black !important">
+<div class="row align-items-center">
+  <div class="col" style="white-space: nowrap; color:black !important">
     <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
       aria-orientation="vertical" style="width:fit-content">
       <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
@@ -95,15 +95,8 @@
       </div>
     </div>
   </div>
-  <div class="col-md-10 overflow-auto " style="border-style: dotted;  ">
-    
-      
-
-
-  <br>
-
-
-
-
+  <div class="col" style="border-style: dotted;">
+    <h1 class="text-center">Pantalla principal</h1>
   </div>
+  <div class="col"></div>
 </div>
