@@ -1,13 +1,12 @@
 <div class="row align-items-center">
-  <div class="col" style="white-space: nowrap; color:black !important">
+  <div class="col-md-2" style="white-space: nowrap; color:black !important">
     <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
       aria-orientation="vertical" style="width:fit-content">
       <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
         aria-controls="v-pills-home" aria-selected="true">
         <h4><i class="fa fa-hashtag" aria-hidden="true"></i>Grupo amigos</h4>
       </a>
-      <div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical"
-        style="display: none;">
+      <div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a id="v-pills-home-tab" class="ml-5 mr-5" data-toggle="pill" href="#v-pills-home" role="tab"
           aria-controls="v-pills-home" aria-selected="true">Acceder al chat</a>
         <a id="v-pills-profile-tab" class="ml-5 mr-5" data-toggle="pill" href="#v-pills-profile" role="tab"
@@ -101,8 +100,7 @@
       </div>
     </div>
   </div>
-  <div id="modificado" class="col border border-secondary shadow-lg p-3 mb-5 bg-white rounded">
+  <div id="modificado" class="col-md-10 border border-secondary shadow-lg p-3 mb-5 bg-white rounded" style="width: 500px !important">
     <h1 class="text-center ">Pantalla principal</h1>
   </div>
-  <div class="col"></div>
 </div>
