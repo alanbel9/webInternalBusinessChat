@@ -1,3 +1,5 @@
+<script src=../scripts/nav.js></script>
+
 <div class="row align-items-center">
   <div class="col-md-2" style="white-space: nowrap; color:black !important">
     <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
