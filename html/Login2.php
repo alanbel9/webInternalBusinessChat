@@ -14,7 +14,7 @@
                     <div id="search-bg"></div>
                     <div id="search">
                         <div id=log>
-                        <div class="p-3 mb-2 bg-secondary text-white font-italic text-center">REGISTRO PARA ENTRAR</div>
+                        <div class="p-3 mb-2 bg-secondary font-italic text-center">REGISTRO PARA ENTRAR</div>
                                 <br>
                                 <div class="input-group">
                                     <i class="input-group-text fa fa-user fa-lg"></i>
