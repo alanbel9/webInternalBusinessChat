@@ -1,4 +1,4 @@
-<div class="container">
+<div id="pantallaConversaciones" class="container">
     <br/>
     <h1>
         Pantalla de conversaciones
@@ -51,14 +51,14 @@
 
 
 <form class='fixed-bottom bg-dark' style="padding-bottom:10px; padding-top:20px">
-    <div class='row'>
+    <div class='row align-items-center'>
         <div class='col-md-1'></div>
         <div class='col-md-9'>
-            <input type="text" class="form-control w-100" id="mensaje" placeholder="Mensaje">
+            <input id="mensajeEnviar" type="text" class="form-control w-100 mb-1" id="mensaje" placeholder="Mensaje">
         </div>
         <div class='col-md-1'>
-            <button type="submit" class="btn btn-primary btn-block mb-2"><i class="fa fa-envelope-o"
-                    aria-hidden="true"></i> Enviar</button>
+            <button id="botonEnviar" class="btn btn-primary btn-block mb-2"><h6 class="mt-2"><i class="fa fa-envelope-o"
+                    aria-hidden="true"></i> Enviar</h6></button>
         </div>
         <div class='col-md-1'></div>
     </div>
