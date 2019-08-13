@@ -1,6 +1,6 @@
 <script src=../scripts/nav.js></script>
 
-<div class="row align-items-center">
+<div class="row">
   <div class="col-md-2" style="white-space: nowrap; color:black !important">
     <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
       aria-orientation="vertical" style="width:fit-content">
@@ -102,7 +102,10 @@
       </div>
     </div>
   </div>
-  <div id="modificado" class="col-md-10 " style="width: 500px !important">
-    <h1 class="text-center border border-secondary shadow-lg p-3 mb-5 bg-white rounded">Pantalla principal</h1>
+  <div id="modificado" class="col-md-10 ">
+    <!-- <h1 class="text-center border border-secondary shadow-lg p-3 mb-5 bg-white rounded">Pantalla principal</h1> -->
+    <?php
+    require_once("../plantillas/pantallaChat.php");
+    ?>
   </div>
 </div>
