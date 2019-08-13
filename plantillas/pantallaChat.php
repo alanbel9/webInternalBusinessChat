@@ -54,7 +54,7 @@
     <div class='row align-items-center'>
         <div class='col-md-1'></div>
         <div class='col-md-9'>
-            <input id="mensajeEnviar" type="text" class="form-control w-100 mb-1" id="mensaje" placeholder="Mensaje">
+            <textarea id="mensajeEnviar" type="text" class="form-control w-100 mb-1" id="mensaje" placeholder="Mensaje" rows="2"></textarea>
         </div>
         <div class='col-md-1'>
             <button id="botonEnviar" class="btn btn-primary btn-block mb-2"><h6 class="mt-2"><i class="fa fa-envelope-o"
