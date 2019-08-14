@@ -1,7 +1,7 @@
 <script src=../scripts/nav.js></script>
 
 <div class="row">
-  <div class="col-md-2" style="white-space: nowrap; color:black !important">
+  <div class="col-auto" style="white-space: nowrap; color:black !important">
     <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
       aria-orientation="vertical" style="width:fit-content">
       <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
