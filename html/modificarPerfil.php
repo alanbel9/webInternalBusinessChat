@@ -43,7 +43,7 @@ require_once("../plantillas/cabecera.php");
        
     <div class="row">
             <div class=" rounded mx-auto d-block">
-                    <img id="imgSalida" width="250" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+                    <img id="imgSalida" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
             </div>
     </div>
 
