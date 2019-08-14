@@ -177,7 +177,7 @@
         </div>
         <div class='col-md-1 text-center'>
             <button id="botonEnviar" class="btn btn-primary">
-                <h6 class="m-2"><i class="fa fa-envelope-o" aria-hidden="true"></i> Enviar</h6>
+                <h6 class="m-2"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar</h6>
             </button>
         </div>
         <div class='col-md-1'></div>
