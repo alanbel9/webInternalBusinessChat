@@ -7,7 +7,7 @@
     <blockquote class="blockquote pt-3">
         <div class="row">
             <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="font-italic text-info">
-                    Nombre largoooooooooooo</span></div>
+                    Nombre</span></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-warning text-nowrap"> 00:00:00 (1-01-2019) </span></div>
         </div>
@@ -74,7 +74,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-6"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="font-italic text-info">
+            <div class="col-6"><i class="fa fa-comment" aria-hidden="true"></i><span class="font-italic text-info">
                     Nombre</span></div>
             <div class="col-6 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-warning"> 00:00:00 (1-01-2019) </span></div>
