@@ -42,8 +42,8 @@ require_once("../plantillas/cabecera.php");
 <form action="#" method="POST">     <!-- Cambiar el action  -->
        
     <div class="row">
-            <div class=" rounded mx-auto d-block">
-                    <img id="imgSalida" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+            <div class="mx-auto">
+                    <img id="imgSalida" height="300" src="../resources/foto-carnet.jpg" class="border border-dark" alt="foto perfil">
             </div>
     </div>
 
