@@ -1,9 +1,9 @@
 <script src=../scripts/nav.js></script>
 
-<div class="row">
-  <div class="col-auto" style="white-space: nowrap; color:black !important">
-    <div class="nav flex-column nav-pills mt-5 barraIzquierda" id="v-pills-tab" role="tablist"
-      aria-orientation="vertical" style="width:fit-content">
+<div class="row w-100">
+  <div class="col-auto">
+    <div class="nav flex-column nav-pills mt-2 barraIzquierda" id="v-pills-tab" role="tablist"
+      aria-orientation="vertical">
       <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
         aria-controls="v-pills-home" aria-selected="true">
         <h4><i class="fa fa-hashtag" aria-hidden="true"></i>Grupo amigos</h4>
@@ -102,7 +102,7 @@
       </div>
     </div>
   </div>
-  <div id="modificado" class="col-md-10 ">
+  <div id="modificado" class="col ml-3">
     <!-- <h1 class="text-center border border-secondary shadow-lg p-3 mb-5 bg-white rounded">Pantalla principal</h1> -->
     <?php
     require_once("../plantillas/pantallaChat.php");
