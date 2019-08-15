@@ -42,12 +42,12 @@
 
              -->
                 <tbody>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#modalInfoUsuario" href="">
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
                     </tr>
-                    <tr>
+                    <tr data-toggle="modal" data-target="#modalInfoUsuario" href="">
                         <th scope="row">2</th>
                         <td>Jacob</td>
                         <td>Thornton</td>
