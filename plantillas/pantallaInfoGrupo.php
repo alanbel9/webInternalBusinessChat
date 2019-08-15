@@ -1,4 +1,4 @@
-<div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif;">
+<div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif;min-height:90vh;">
 
     <div class="text-center pt-5">
         <h1> INFORMACIÓN DEL GRUPO: </h1>

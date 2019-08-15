@@ -1,4 +1,4 @@
-<div class="container bg-light text-dark shadow" style="font-family: 'Righteous', sans-serif;">
+<div class="container bg-light text-dark shadow" style="font-family: 'Righteous', sans-serif;min-height:90vh;">
     <blockquote class="blockquote pt-3">
         <div class="row">
             <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-info"

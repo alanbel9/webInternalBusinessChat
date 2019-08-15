@@ -1,5 +1,5 @@
 <div class="container bg-light text-dark shadow p-2"
-    style="font-family: 'Righteous', sans-serif;">
+    style="font-family: 'Righteous', sans-serif;min-height:90vh;">
     <div class="row pt-5">
         <div class="mx-auto">
             <img id="imgSalida" height="300" src="../resources/foto-carnet.jpg" class="border border-dark"

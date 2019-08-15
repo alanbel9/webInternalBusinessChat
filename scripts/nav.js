@@ -3,7 +3,7 @@ $(function () {
 
     $(".botonBuscar").click(function (event) {
         $(".contenedorPantallas").fadeOut(300, function () {
-            $(this).load('../plantillas/pantallaBuscar.php').fadeIn(300);   // grupo java
+            $(this).load('../plantillas/pantallaBuscar.php').fadeIn(300);  
         });
     });
     $(".menuGrupos").children().click(function (event) {
@@ -20,13 +20,13 @@ function eventosBarraLateral(){
         $(this).next().slideDown();
 
         $(".contenedorPantallas").fadeOut(300, function () {
-            $(this).load("../plantillas/pantallaChat.php").fadeIn(300); //slideDown(3000,'linear');
+            $(this).load("../plantillas/pantallaChat.php").fadeIn(300); 
         })
     })
 
     $(".infoGrupo").off().on("click",function (event) {
         $(".contenedorPantallas").fadeOut(300, function () {
-            $(this).load('../plantillas/pantallaInfoGrupo.php').fadeIn(300);   // grupo java
+            $(this).load('../plantillas/pantallaInfoGrupo.php').fadeIn(300); 
         });
     });
 }
