@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="form-inline my-2 my-sm-0 m-auto">
+        <div class="form-inline my-2 my-sm-0 mr-auto">
             <input class="form-control mr-md-2" type="" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-info my-2 my-md-0 botonBuscar" type="">
                 <h6 class="mt-2"> <i class="fa fa-search" aria-hidden="true"></i> Buscar </h6>
