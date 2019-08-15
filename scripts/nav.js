@@ -3,12 +3,12 @@ $(function () {
         $(".barraIzquierda").children("a").next().slideUp();
         $(this).next().slideDown();
 
-        $(".contenedorPantallas").load("../plantillas/pantallaChat.php");
+        $(".contenedorPantallas").hide().load("../plantillas/pantallaChat.php").fadeIn('500');
     })
     // recarga mediante AJAX del index.html al hacer clic en los grupos
     // 1 función para cada enlace ????
     $(".infoGrupo").click(function (event) {
-        $(".contenedorPantallas").load('../plantillas/pantallaInfoGrupo.php');   // grupo java
+        $(".contenedorPantallas").hide().load('../plantillas/pantallaInfoGrupo.php').fadeIn('500');   // grupo java
     });
 
 
