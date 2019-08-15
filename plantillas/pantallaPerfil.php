@@ -1,4 +1,4 @@
-<div id="pantallaConversaciones" class="container bg-light text-dark shadow p-2"
+<div class="container bg-light text-dark shadow p-2"
     style="font-family: 'Righteous', sans-serif;">
     <div class="row pt-5">
         <div class="mx-auto">

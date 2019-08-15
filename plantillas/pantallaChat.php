@@ -1,4 +1,4 @@
-<div id="pantallaConversaciones" class="container bg-light text-dark shadow"
+<div class="container bg-light text-dark shadow"
     style="font-family: 'Righteous', sans-serif;">
     <blockquote class="blockquote pt-3">
         <div class="row">
