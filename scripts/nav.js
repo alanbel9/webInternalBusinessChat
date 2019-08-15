@@ -2,8 +2,8 @@ $(function () {
     eventosBarraLateral();
 
     $(".botonBuscar").click(function (event) {
-        $(".contenedorPantallas").fadeOut(500, function () {
-            $(this).load('../plantillas/pantallaBuscar.php').fadeIn(500);   // grupo java
+        $(".contenedorPantallas").fadeOut(300, function () {
+            $(this).load('../plantillas/pantallaBuscar.php').fadeIn(300);   // grupo java
         });
     });
     $(".menuGrupos").children().click(function (event) {
@@ -19,14 +19,14 @@ function eventosBarraLateral(){
         $(".barraIzquierda").children("a").next().slideUp();
         $(this).next().slideDown();
 
-        $(".contenedorPantallas").fadeOut(500, function () {
-            $(this).load("../plantillas/pantallaChat.php").fadeIn(500); //slideDown(3000,'linear');
+        $(".contenedorPantallas").fadeOut(300, function () {
+            $(this).load("../plantillas/pantallaChat.php").fadeIn(300); //slideDown(3000,'linear');
         })
     })
 
     $(".infoGrupo").off().on("click",function (event) {
-        $(".contenedorPantallas").fadeOut(500, function () {
-            $(this).load('../plantillas/pantallaInfoGrupo.php').fadeIn(500);   // grupo java
+        $(".contenedorPantallas").fadeOut(300, function () {
+            $(this).load('../plantillas/pantallaInfoGrupo.php').fadeIn(300);   // grupo java
         });
     });
 }
