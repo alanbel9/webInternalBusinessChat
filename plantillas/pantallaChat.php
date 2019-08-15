@@ -1,9 +1,5 @@
 <div id="pantallaConversaciones" class="container bg-light text-dark shadow"
     style="font-family: 'Righteous', sans-serif;">
-    <!-- <br />
-    <h1>
-        Pantalla de conversaciones
-    </h1> -->
     <blockquote class="blockquote pt-3">
         <div class="row">
             <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <span class="font-italic text-info">
