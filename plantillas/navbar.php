@@ -8,8 +8,9 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="dropright">
-            <button class="btn btn-outline-secondary dropdown-toggle ml-5" type="button" id="dropdownMenuButton"
+    <div class="collapse navbar-collapse ml-md-5 mb-2" id="navbarSupportedContent">
+    <div class="dropdown">
+            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
             </button>
@@ -27,9 +28,8 @@
                 <a class="dropdown-item" href="#">Grupo 11 nuevo</a>
             </div>
         </div>
-
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
         <div class="form-inline my-2 my-lg-0 m-auto">
             <input class="form-control mr-sm-2" type="" placeholder="Buscar" aria-label="Search">
             <button class="btn btn-info my-2 my-sm-0 botonBuscar" type="">
