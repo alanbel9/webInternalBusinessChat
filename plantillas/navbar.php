@@ -30,12 +30,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-        <form class="form-inline my-2 my-lg-0 m-auto">
-            <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-info my-2 my-sm-0" type="submit">
+        <div class="form-inline my-2 my-lg-0 m-auto">
+            <input class="form-control mr-sm-2" type="" placeholder="Buscar" aria-label="Search">
+            <button class="btn btn-info my-2 my-sm-0 botonBuscar" type="">
                 <h6 class="mt-2"> <i class="fa fa-search" aria-hidden="true"></i> Buscar </h6>
             </button>
-        </form>
+        </div>
         
         <a class="button btn btn-success my-2 my-sm-0 mr-sm-2" href="../html/modificarPerfil.php">
             <h6 class="mt-2"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil </h6>

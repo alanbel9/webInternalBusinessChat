@@ -11,6 +11,8 @@ $(function () {
         $(".contenedorPantallas").hide().load('../plantillas/pantallaInfoGrupo.php').fadeIn('500');   // grupo java
     });
 
-
+    $(".botonBuscar").click(function (event) {
+        $(".contenedorPantallas").hide().load('../plantillas/pantallaBuscar.php').fadeIn('500');   // grupo java
+    });
 })
 
