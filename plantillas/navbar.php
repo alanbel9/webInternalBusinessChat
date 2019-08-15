@@ -14,18 +14,18 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
             </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="#">Grupo 1 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 2 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 3 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 4 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 5 nuevo</a>
-                <a class="dropdown-item disabled " href="#">Grupo 6</a>
-                <a class="dropdown-item" href="#">Grupo 7 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 8 nuevo</a>
-                <a class="dropdown-item disabled " href="#">Grupo 9</a>
-                <a class="dropdown-item" href="#">Grupo 10 nuevo</a>
-                <a class="dropdown-item" href="#">Grupo 11 nuevo</a>
+            <div class="dropdown-menu menuGrupos" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Grupo 1</a>
+                <a class="dropdown-item" href="#">Grupo 2</a>
+                <a class="dropdown-item" href="#">Grupo 3</a>
+                <a class="dropdown-item" href="#">Grupo 4</a>
+                <a class="dropdown-item" href="#">Grupo 5</a>
+                <a class="dropdown-item" href="#">Grupo 6</a>
+                <a class="dropdown-item" href="#">Grupo 7</a>
+                <a class="dropdown-item" href="#">Grupo 8</a>
+                <a class="dropdown-item" href="#">Grupo 9</a>
+                <a class="dropdown-item" href="#">Grupo 10</a>
+                <a class="dropdown-item" href="#">Grupo 11</a>
             </div>
         </div>
     </div>
