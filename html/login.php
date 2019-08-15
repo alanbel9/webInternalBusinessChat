@@ -1,4 +1,6 @@
 <?PHP
+     session_start();
+    // unset($_SESSION["correo"]);
     require_once('../plantillas/cabecera.php');
 ?>
         <style type="text/css">
@@ -67,20 +69,20 @@
                 <div id="search">
                     <div id=log>
                         <h2><i class="m-3 fa fa-users fa-5x" aria-hidden="true"> Chat;)</i></h2>
-                        <form>
+                        <form action="controlLogin.php" method="post">
                             <div class="input-group">
                                 <i class="input-group-text fa fa-user fa-lg"></i>
-                                <input type ="usuario" class='form-control' placeholder='Introduce el correo'/>
+                                <input name="correo" type ="email" class='form-control' placeholder='Introduce el correo' required/>
                             </div>
 
                             <div class="input-group">
                                 <i class="input-group-text fa fa-lock fa-lg" aria-hidden="true"></i> 
-                                <input type ="password" class='form-control' placeholder='Introduce el password'/>
+                                <input name="password" type ="password" class='form-control' placeholder='Introduce el password' required/>
                             </div>
                             <br>
                             <div class='row'>
                                 <div class='col-md-6'>
-                                    <button type="button" class="btn btn-outline-primary btn-block">ENTRAR</button>
+                                    <button type="button submit" class="btn btn-outline-primary btn-block">ENTRAR</button>
                                 </div>
                                 <div class='col-md-6'>
                                     <button type="button" class="btn btn-outline-danger btn-block">RECUPERAR CONTRSAEÑA</button>
