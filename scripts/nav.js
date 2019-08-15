@@ -4,7 +4,7 @@ $(function () {
         $(this).next().slideDown();
 
         $(".contenedorPantallas").fadeOut(500,function(){
-            $(this).load("../plantillas/pantallaChat.php").slideDown(3000,'linear');
+            $(this).load("../plantillas/pantallaChat.php").fadeIn(500); //slideDown(3000,'linear');
         })
     })
     // recarga mediante AJAX del index.html al hacer clic en los grupos
