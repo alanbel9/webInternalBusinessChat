@@ -1,4 +1,4 @@
-<div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif;">
+<div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif; text-align: center">
 
     <h1 class="pt-5">Perfiles encontrados:</h1>
 
