@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <a class="navbar-brand" href="../html/index.php">
         <h1>
             <i class="fa fa-users" aria-hidden="true"></i> Chat;)
@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse ml-md-5 my-2" id="navbarSupportedContent">
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
             </button>
@@ -32,7 +32,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="form-inline my-2 my-sm-0 mr-auto">
             <input class="form-control mr-md-2" type="" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-secondary my-2 my-md-0 botonBuscar" type="">
+            <button class="btn btn-dark my-2 my-md-0 botonBuscar" type="">
                 <h6 class="mt-2"> <i class="fa fa-search" aria-hidden="true"></i> Buscar </h6>
             </button>
         </div>
