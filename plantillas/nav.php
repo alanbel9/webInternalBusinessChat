@@ -10,7 +10,7 @@
 
     </div>
   </div>
-  <div class="col ml-3 contenedorPantallas">
+  <div class="col contenedorPantallas">
     <?php
         require_once("../plantillas/pantallaPerfil.php");
     ?>
