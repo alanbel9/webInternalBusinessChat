@@ -8,8 +8,8 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse ml-md-5 mb-2" id="navbarSupportedContent">
-    <div class="dropdown">
+    <div class="collapse navbar-collapse ml-md-5 my-2" id="navbarSupportedContent">
+        <div class="dropdown">
             <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
@@ -36,7 +36,7 @@
                 <h6 class="mt-2"> <i class="fa fa-search" aria-hidden="true"></i> Buscar </h6>
             </button>
         </div>
-        
+
         <a class="button btn btn-success my-2 my-md-0 mr-md-2" href="../html/modificarPerfil.php">
             <h6 class="mt-2"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil </h6>
         </a>

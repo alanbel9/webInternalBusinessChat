@@ -1,7 +1,11 @@
 <div class="row w-100">
+    
   <div class="col-auto">
-    <div class="nav flex-column nav-pills mt-2 barraIzquierda" id="v-pills-tab" role="tablist"
-      aria-orientation="vertical">
+      <a class="btn btn-outline-primary my-2 ml-2 btn-block d-block d-sm-none" data-toggle="collapse" href="#v-pills-tab" role="button" aria-expanded="false" aria-controls="v-pills-tab">
+          Mis grupos de Chat
+        </a>
+    <div class="collapse show nav flex-column nav-pills barraIzquierda" id="v-pills-tab" role="tablist"
+      aria-orientation="vertical" style="min-width: 12em">
 
     </div>
   </div>
