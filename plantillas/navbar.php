@@ -10,7 +10,7 @@
     </button>
     <div class="collapse navbar-collapse ml-md-5 my-2" id="navbarSupportedContent">
         <div class="dropdown">
-            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
             </button>
