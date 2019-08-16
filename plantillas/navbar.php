@@ -37,11 +37,11 @@
             </button>
         </div>
 
-        <a class="button btn btn-success my-2 my-md-0 mr-md-2" href="../html/modificarPerfil.php">
+        <a class="button btn btn-outline-success my-2 my-md-0 mr-md-2" href="../html/modificarPerfil.php">
             <h6 class="mt-2"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil </h6>
         </a>
 
-        <a class="btn btn-danger my-2 my-md-0" href="../html/login.php">
+        <a class="btn btn-outline-danger my-2 my-md-0" href="../html/login.php">
             <h6 class="mt-2"> <i class="fa fa-sign-out " aria-hidden="true"></i> Logout </h6>
         </a>
     </div>
