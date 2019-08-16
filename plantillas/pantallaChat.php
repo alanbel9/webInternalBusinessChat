@@ -2,7 +2,7 @@
     style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -18,7 +18,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-envelope-open" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-open" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -32,7 +32,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-envelope" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -46,7 +46,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -61,7 +61,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -75,7 +75,7 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-4"><i class="fa fa-comment" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-comment" aria-hidden="true"></i> <a class="font-italic text-primary"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
             <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
@@ -119,7 +119,7 @@
     $(".botonEnviar").on("click", function () {
         var d = new Date();
         var ahoraMismo = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
-        $(".pantallaMensajes").prepend('<blockquote class="blockquote pt-3"><div class="row"><div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-info" data-toggle="modal" data-target="#modalInfoUsuario" href=""> Nombre</a></div><div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="font-italic text-danger text-nowrap"> ' + ahoraMismo + '</span></div></div><p class="mb-0">' + $(".mensajeEnviar").val() + '</p></blockquote>');
+        $(".pantallaMensajes").prepend('<blockquote class="blockquote pt-3"><div class="row"><div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-primary" data-toggle="modal" data-target="#modalInfoUsuario" href=""> Nombre</a></div><div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="font-italic text-danger text-nowrap"> ' + ahoraMismo + '</span></div></div><p class="mb-0">' + $(".mensajeEnviar").val() + '</p></blockquote>');
         $(".mensajeEnviar").val("");
     });
 </script>
