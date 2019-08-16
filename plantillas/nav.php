@@ -6,7 +6,7 @@
 
   <div class="col-auto">
     <div class="collapse show nav flex-column nav-pills barraIzquierda" id="v-pills-tab" role="tablist"
-      aria-orientation="vertical" style="min-width: 12em">
+      aria-orientation="vertical" style="min-width: 12em; padding-bottom: 100px;">
 
     </div>
   </div>
