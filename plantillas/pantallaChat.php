@@ -89,7 +89,7 @@
 </div>
 
 
-<div class='fixed-bottom bg-dark p-3'>
+<div class='fixed-bottom bg-primary p-3'>
     <div class='row align-items-center'>
         <div class='col-md-1'></div>
         <div class='col-md-9'>
