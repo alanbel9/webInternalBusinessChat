@@ -31,10 +31,10 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-6"><i class="fa fa-envelope" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope" aria-hidden="true"></i> <a class="font-italic"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
-            <div class="col-6 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
+            <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-nowrap text-danger"> 00:00:00 (1-01-2019) </span></div>
         </div>
         <p class="mb-0">
@@ -45,10 +45,10 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-6"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-open-o" aria-hidden="true"></i> <a class="font-italic"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
-            <div class="col-6 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
+            <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-nowrap text-danger"> 00:00:00 (1-01-2019) </span></div>
         </div>
         <p class="mb-0">
@@ -60,10 +60,10 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-6"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
-            <div class="col-6 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
+            <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-nowrap text-danger"> 00:00:00 (1-01-2019) </span></div>
         </div>
         <p class="mb-0">
@@ -74,10 +74,10 @@
     </blockquote>
     <blockquote class="blockquote pt-3">
         <div class="row">
-            <div class="col-6"><i class="fa fa-comment" aria-hidden="true"></i> <a class="font-italic"
+            <div class="col-4"><i class="fa fa-comment" aria-hidden="true"></i> <a class="font-italic"
                     data-toggle="modal" data-target="#modalInfoUsuario" href="">
                     Nombre</a></div>
-            <div class="col-6 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
+            <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span
                     class="font-italic text-nowrap text-danger"> 00:00:00 (1-01-2019) </span></div>
         </div>
         <p class="mb-0">
