@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <a class="navbar-brand" href="../html/index.php">
+    <a class="navbar-brand mr-5" href="../html/index.php">
         <h1>
             <i class="fa fa-users" aria-hidden="true"></i> Chat;)
         </h1>
@@ -8,7 +8,7 @@
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse ml-md-5 my-2" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse ml-md-3 my-2" id="navbarSupportedContent">
         <div class="dropdown">
             <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
