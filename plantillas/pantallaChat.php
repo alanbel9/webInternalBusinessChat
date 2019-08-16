@@ -107,7 +107,9 @@
 
 <script>
    $(".botonEnviar").on("click",function(){
-        $(".pantallaMensajes").prepend('<blockquote class="blockquote pt-3"><div class="row"><div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-info" data-toggle="modal" data-target="#modalInfoUsuario" href=""> Nombre</a></div><div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="font-italic text-warning text-nowrap"> 00:00:00 (1-01-2019) </span></div></div><p class="mb-0">' + $(".mensajeEnviar").val() + '</p></blockquote>');
+        var d = new Date();
+        var ahoraMismo =d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() +" (" + d.getDate() + "-" + (d.getMonth()+1) + "-" + d.getFullYear() + ")";
+        $(".pantallaMensajes").prepend('<blockquote class="blockquote pt-3"><div class="row"><div class="col-4"><i class="fa fa-envelope-o" aria-hidden="true"></i> <a class="font-italic text-info" data-toggle="modal" data-target="#modalInfoUsuario" href=""> Nombre</a></div><div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="font-italic text-warning text-nowrap"> ' + ahoraMismo + '</span></div></div><p class="mb-0">' + $(".mensajeEnviar").val() + '</p></blockquote>');
         $(".mensajeEnviar").val("");
     });
 </script>
