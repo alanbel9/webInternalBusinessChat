@@ -14,7 +14,7 @@
                 aria-haspopup="true" aria-expanded="false">
                 Grupos de Chat;)
             </button>
-            <div class="dropdown-menu menuGrupos" aria-labelledby="dropdownMenuButton">
+            <div id="menuGrupos" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <!-- ----------------BBDD y PHP------------------------- -->
                 <a class="dropdown-item" href="#">Grupo 1</a>
                 <a class="dropdown-item" href="#">Grupo 2</a>
@@ -34,12 +34,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <div class="form-inline my-2 my-sm-0 mr-auto">
             <input class="form-control mr-md-2" type="" placeholder="Buscar" aria-label="Search">
-            <button class="btn btn-dark my-2 my-md-0 botonBuscar" type="">
+            <button id="botonBuscar" class="btn btn-dark my-2 my-md-0" type="">
                 <h6 class="mt-2"> <i class="fa fa-search" aria-hidden="true"></i> Buscar </h6>
             </button>
         </div>
 
-        <a class="button btn btn-outline-success my-2 my-md-0 mr-md-2 modificarPerfil" href="#">
+        <a id="modificarPerfil" class="button btn btn-outline-success my-2 my-md-0 mr-md-2" href="#">
             <h6 class="mt-2"> <i class="fa fa-cog" aria-hidden="true"></i> Perfil </h6>
         </a>
 
@@ -51,19 +51,19 @@
 
 <script>
     $(function () {
-        $(".menuGrupos").children().click(function (event) {
+        $("#menuGrupos").children().click(function (event) {
             $(this).addClass("disabled");
-            $(".barraIzquierda").append('<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' + $(this).text() + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Información</a><a id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Opciones</a></div>');
+            $("#barraIzquierda").append('<a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' + $(this).text() + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Información</a><a id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Opciones</a></div>');
             eventosBarraLateral();
         });
 
-        $(".modificarPerfil").off().on("click", function () {
-            $(".contenedorPantallas").fadeOut(300, function () {
+        $("#modificarPerfil").off().on("click", function () {
+            $("#contenedorPantallas").fadeOut(200, function () {
                 //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
                 $.ajax({
                     url: '../plantillas/pantallas/pantallaModificarPerfil.php',
                     success: function (data) {
-                        $(".contenedorPantallas").html(data).fadeIn(300);
+                        $("#contenedorPantallas").html(data).fadeIn(200);
                     }
                 });
             })
