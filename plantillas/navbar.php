@@ -59,7 +59,13 @@
 
         $(".modificarPerfil").off().on("click", function () {
             $(".contenedorPantallas").fadeOut(300, function () {
-                $(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
+                //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
+                $.ajax({
+                    url: '../plantillas/pantallas/pantallaModificarPerfil.php',
+                    success: function (data) {
+                        $(".contenedorPantallas").html(data).fadeIn(300);
+                    }
+                });
             })
         });
     });
