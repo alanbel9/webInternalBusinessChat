@@ -61,7 +61,7 @@
 
         $(".modificarPerfil").off().on("click", function () {
             $(".contenedorPantallas").fadeOut(300, function () {
-                $(this).load("../plantillas/modificarPerfil.php").fadeIn(300);
+                $(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
             })
         });
     });

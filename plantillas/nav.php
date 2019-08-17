@@ -12,7 +12,7 @@
   </div>
   <div class="col contenedorPantallas">
     <?php
-        require_once("../plantillas/pantallaPerfil.php");
+        require_once("../plantillas/pantallas/pantallaPerfil.php");
     ?>
   </div>
 </div>
@@ -22,7 +22,7 @@
     <div class="modal-content">
       <div class="modal-body">
         <?php
-          require("../plantillas/pantallaPerfil.php");
+          require("../plantillas/pantallas/pantallaPerfil.php");
         ?>
       </div>
       <div class="modal-footer">
@@ -47,7 +47,7 @@
     $(".botonBuscar").click(function (event) {
       $(".contenedorPantallas").fadeOut(300, function () {
         ////////////////////Petición a BBDD y AJAX
-        $(this).load('../plantillas/pantallaBuscar.php').fadeIn(300);
+        $(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
       });
     });
   })
@@ -58,13 +58,13 @@
       $(this).next().slideDown();
 
       $(".contenedorPantallas").fadeOut(300, function () {
-        $(this).load("../plantillas/pantallaChat.php").fadeIn(300);
+        $(this).load("../plantillas/pantallas/pantallaChat.php").fadeIn(300);
       })
     })
 
     $(".infoGrupo").off().on("click", function (event) {
       $(".contenedorPantallas").fadeOut(300, function () {
-        $(this).load('../plantillas/pantallaInfoGrupo.php').fadeIn(300);
+        $(this).load('../plantillas/pantallas/pantallaInfoGrupo.php').fadeIn(300);
       });
     });
   }
