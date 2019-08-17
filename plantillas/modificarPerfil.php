@@ -35,7 +35,7 @@
        
     <div class="row">
             <div class=" rounded mx-auto d-block">
-                    <img id="imgSalida" width="250" height="300" src="" class="rounded" alt="foto perfil">
+                    <img id="imgSalida" width="250" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
                     <!--  URL de las fotos asi:   ../resources/foto-carnet.jpg   -->
             </div>
     </div>
