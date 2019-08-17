@@ -1,12 +1,6 @@
 <?php
     require_once("../plantillas/cabecera.php");
-?>
-<?php
     require_once("../plantillas/navbar.php");
-?>
-<?php
     require_once("../plantillas/nav.php");
-?>
-<?php
     require_once("../plantillas/footer.php");
 ?>

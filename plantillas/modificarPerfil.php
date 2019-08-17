@@ -1,10 +1,3 @@
-<?php
-require_once("../plantillas/cabecera.php");
-?>
-
-<?php
-    require_once("../plantillas/navbar.php");
-?>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
@@ -157,10 +150,3 @@ require_once("../plantillas/cabecera.php");
         
         
 </form>
-
-<br><br><br><br>
-
-
-<?php
-require_once("../plantillas/footer.php");
-?>
