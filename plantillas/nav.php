@@ -1,5 +1,3 @@
-<!-- Hector -->
-
 <a class="btn btn-outline-primary m-2 w-auto d-block d-md-none" data-toggle="collapse" href="#v-pills-tab" role="button"
   aria-expanded="false" aria-controls="v-pills-tab">
   Mis grupos de Chat
