@@ -31,9 +31,8 @@
 </div>
 
 <script>
-  /////////////De PRUEBA, esto se hará con PHP
-  var grupos = ['Clase PHP', 'Café', 'Futbolín', 'Ping-pong', 'Fumar', 'PHP', 'Java'];
-  ////////////////////////////////////////////
+  var grupos = ['Clase PHP', 'Café', 'Futbolín', 'Ping-pong', 'Fumar', 'PHP', 'Java'];//De PRUEBA, esto se hará con PHP
+  
   $(function () {
     ////////////////////Prueba
     grupos.forEach(function (item, index) {
@@ -44,7 +43,7 @@
 
     $(".botonBuscar").click(function (event) {
       $(".contenedorPantallas").fadeOut(300, function () {
-        ////////////////////Petición a BBDD y AJAX
+        //Petición a BBDD y AJAX
         $(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
       });
     });
