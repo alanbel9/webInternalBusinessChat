@@ -1,4 +1,4 @@
-<form action="#" method="POST">     <!-- Cambiar el action  -->
+<form action="#" method="POST" class="mt-2">     <!-- Cambiar el action  -->
        
     <div class="row">
             <div class=" rounded mx-auto d-block">
