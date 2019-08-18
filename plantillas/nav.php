@@ -1,10 +1,9 @@
-<a class="btn btn-outline-primary m-2 w-auto d-block d-md-none" data-toggle="collapse" href="#v-pills-tab" role="button"
-  aria-expanded="false" aria-controls="v-pills-tab">
+<button id="botonEsconderBarraIzq" class="btn btn-outline-primary  my-2 d-block w-100 d-md-none">
   Mis grupos de Chat
-</a>
+</button>
 <div class="row w-100">
   <div class="col-auto">
-    <div id="barraIzquierda" class="collapse show nav flex-column nav-pills" id="v-pills-tab" role="tablist"
+    <div id="barraIzquierda" class="nav flex-column nav-pills" role="tablist"
       aria-orientation="vertical" style="min-width: 12em; padding-bottom: 100px;">
     </div>
   </div>
@@ -51,7 +50,10 @@
         });
       });
     });
-  })
+    $("#botonEsconderBarraIzq").off().on("click",function(){
+      $("#barraIzquierda").slideToggle();
+    });
+  });
 
   function eventosBarraLateral() {
     $("#barraIzquierda").children("a").off().on("click", function (evt) {

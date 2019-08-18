@@ -1,36 +1,3 @@
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-<script type="text/javascript">
-    
-    $(window).load(function(){
-        $(function() {
-            $('#file-input').change(function(e) {
-                addImage(e); 
-            });
-
-            function addImage(e){
-                var file = e.target.files[0],
-                imageType = /image.*/;
-                if (!file.type.match(imageType))
-                return;
-
-                var reader = new FileReader();
-                reader.onload = fileOnload;
-                reader.readAsDataURL(file);
-            }
-
-            function fileOnload(e) {
-                var result=e.target.result;
-                $('#imgSalida').attr("src",result);
-            }
-        });
- });
-
-</script>
-
-<br><br>
-
 <form action="#" method="POST">     <!-- Cambiar el action  -->
        
     <div class="row">
@@ -150,3 +117,30 @@
         
         
 </form>
+<script type="text/javascript">
+    
+    $(window).load(function(){
+        $(function() {
+            $('#file-input').change(function(e) {
+                addImage(e); 
+            });
+
+            function addImage(e){
+                var file = e.target.files[0],
+                imageType = /image.*/;
+                if (!file.type.match(imageType))
+                return;
+
+                var reader = new FileReader();
+                reader.onload = fileOnload;
+                reader.readAsDataURL(file);
+            }
+
+            function fileOnload(e) {
+                var result=e.target.result;
+                $('#imgSalida').attr("src",result);
+            }
+        });
+ });
+
+</script>
