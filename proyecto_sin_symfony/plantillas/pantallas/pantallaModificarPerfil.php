@@ -1,5 +1,5 @@
 
-<form action="#" method="POST">     <!-- Cambiar el action  -->
+<div class="form-inline">  
        
        <div class="row">
                <div class=" rounded mx-auto d-block">
@@ -18,13 +18,14 @@
        </div>
        <div class="row">
                    <div class="col-md-2 offset-md-5 mt-2">
-                       <button class="btn btn-primary btn-block p-2" type="submit"> Subir imagen </button>
+                       <button class="btn btn-primary btn-block p-2" type=""> Subir imagen </button>
                    </div>              
            </div>
    
-   </form>
+</div> 
    
-   <form action="modificarPerfilBBDD.php" method="POST">     <!-- Cambiar el action  -->
+
+<div class="form-inline">  
        <div class="row">
                <div class="input-group  col-md-3 offset-md-3 mt-5">
                        <div class="input-group-prepend">
@@ -111,11 +112,11 @@
     
            <div class="row">
                    <div class="col-md-6 offset-md-3 mt-2">
-                       <button class="btn btn-primary btn-block p-2" type="submit"> Confirmar </button>
+                       <button class="btn btn-primary btn-block p-2" type=""> Confirmar </button>
                    </div>              
            </div>
            
-   </form>
+   </div>
    
 
 <script type="text/javascript">
