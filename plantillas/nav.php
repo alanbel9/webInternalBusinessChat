@@ -65,7 +65,7 @@
         $.ajax({
           url: '../plantillas/pantallas/pantallaChat.php',
           success: function (data) {
-            $("#contenedorPantallas").html(data).fadeIn(200);
+            $("#contenedorPantallas").html(data).fadeIn(500);
           }
         });
       })
