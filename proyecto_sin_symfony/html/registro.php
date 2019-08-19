@@ -1,9 +1,13 @@
-<?PHP
-     session_start();
-    // unset($_SESSION["correo"]);
-    require_once('../plantillas/cabecera.php');
-?>
-        <style type="text/css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-1OYccka9EByiS23wvPFiYHBPRAgU91xYVFb8g8sen6vRiBI5Uko6+B87q8zPGUnA" crossorigin="anonymous">   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <style type="text/css">
             body, #search-bg {
                 background-image: url(../resources/img.jpg);
                 background-repeat: no-repeat;
@@ -69,7 +73,7 @@
                 <div id="search">
                     <div id=log>
                         <h2><i class="m-3 fa fa-users fa-5x" aria-hidden="true"> Chat;)</i></h2>
-                        <form action="controlLogin.php" method="post">
+                        <form action="controlResgistro.php" method="post">
                             <div class="input-group">
                                 <i class="input-group-text fa fa-user fa-lg"></i>
                                 <input name="correo" type ="email" class='form-control' placeholder='Introduce el correo' required/>
@@ -81,12 +85,10 @@
                             </div>
                             <br>
                             <div class='row'>
-                                <div class='col-md-6'>
-                                    <button type="button submit" class="btn btn-outline-primary btn-block">ENTRAR</button>
+                                <div class='col-md-12'>
+                                    <button type="button submit" class="btn btn-outline-primary btn-block">REGISTRARME</button>
                                 </div>
-                                <div class='col-md-6'>
-                                    <button type="button" class="btn btn-outline-danger btn-block">RECUPERAR CONTRSAEÑA</button>
-                                </div>
+                                
                             </div>
                         </form>
                     </div>
@@ -95,6 +97,17 @@
         </div>
 
     </body>
-<?PHP
-    require_once('../plantillas/footer.php');
-?>   
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+
+</body>
+
+</html>
