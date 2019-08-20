@@ -1,71 +1,42 @@
-<?php
-require_once("../plantillas/cabecera.php");
-?>
-
-<?php
-    require_once("../plantillas/navbar.php");
-?>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
-<script type="text/javascript">
-    
-    $(window).load(function(){
-        $(function() {
-            $('#file-input').change(function(e) {
-                addImage(e); 
-            });
-
-            function addImage(e){
-                var file = e.target.files[0],
-                imageType = /image.*/;
-                if (!file.type.match(imageType))
-                return;
-
-                var reader = new FileReader();
-                reader.onload = fileOnload;
-                reader.readAsDataURL(file);
-            }
-
-            function fileOnload(e) {
-                var result=e.target.result;
-                $('#imgSalida').attr("src",result);
-            }
-        });
- });
-
-</script>
-
-<br><br>
-
-
-<form action="#" method="POST">     <!-- Cambiar el action  -->
+<form action="#" method="POST" class="mt-2">     <!-- Cambiar el action  -->
        
     <div class="row">
             <div class=" rounded mx-auto d-block">
                     <img id="imgSalida" width="250" height="300" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+                    <!--  URL de las fotos asi:   ../resources/foto-carnet.jpg   -->
             </div>
     </div>
-    <div class="row">
-            <div class="col-md-2 offset-md-5 mt-2">
-                <input name="file-input" class="p-2" id="file-input" type="file" />
-            </div>            
-    </div>
-    
 
+    <div class="row">
+        <div class="col-md-4 offset-md-4 mt-2 ">
+                        <div class="custom-file">
+                                <input id="fotoUsuario" name="foto" type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon03" required>
+                                <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                        </div>
+        </div>
+    </div>
+    <div class="row">
+                <div class="col-md-2 offset-md-5 mt-2">
+                    <button class="btn btn-primary btn-block p-2" type="submit"> Subir imagen </button>
+                </div>              
+        </div>
+
+</form>
+
+<form action="modificarPerfilBBDD.php" method="POST">     <!-- Cambiar el action  -->
     <div class="row">
             <div class="input-group  col-md-3 offset-md-3 mt-5">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="basic-addon3">Nombre</span>
                     </div>
-                    <input type="text" name="nombre" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="">
+                    <input id="nombreUsuario" type="text" name="nombre" class="form-control" aria-describedby="basic-addon3" required>
             </div>
 
             <div class="input-group col-md-3 mt-5 mr-5 ">
                     <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon3">Apellidos</span>
+                            <span class="input-group-text" >Apellidos</span>
                         </div>
-                    <input type="text" name="apellidos" class="form-control" placeholder="">
+                    <input id="apellidosUsuario" type="text" name="apellidos" class="form-control" required>
             </div>
 
     </div>
@@ -76,8 +47,7 @@ require_once("../plantillas/cabecera.php");
                         <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">Fecha nacimiento</span>
                         </div>
-                        <input type="date" name="nacimiento" class="form-control" id="basic-url" aria-describedby="basic-addon3" placeholder="">
-                      
+                        <input id="nacimientoUsuario" type="date" name="nacimiento" class="form-control" aria-describedby="basic-addon3"  required>
                 </div>
         </div>
 
@@ -86,17 +56,17 @@ require_once("../plantillas/cabecera.php");
                     <div class="input-group-prepend">
                             <span class="input-group-text" id="basic-addon3">Correo</span>
                     </div>
-                    <input type="text" name="correo" class="form-control" placeholder="correoDePrueba@gmail.com" disabled>
+                    <input id="inputCorreo" type="text" name="correo" class="form-control" readonly >
             </div>
     </div>
 
         <div class="row">
                 <div class="col-md-3 offset-md-3 mt-2">
-                    <input type="password" name="password1" class="form-control" placeholder="Password">
+                    <input type="password" name="password1" class="form-control" placeholder="Password" required>
                 </div>
                 
                 <div class="col-md-3 mt-2 mr-5 ">
-                    <input type="password" name="password2" class="form-control" placeholder="Confirm password">
+                    <input type="password" name="password2" class="form-control" placeholder="Confirm password" required>
                 </div>    
         </div>
 
@@ -105,14 +75,14 @@ require_once("../plantillas/cabecera.php");
                         <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon3">Puesto de trabajo</span>
                         </div>
-                        <select class="custom-select" name="puesto" >
+                        <select id="puestoUsuario" name="puesto" class="custom-select"  required >
                                 <option selected> </option>
-                                <option value="1">Desarrollador</option>
-                                <option value="2">Analista</option>
-                                <option value="3">Sistemas</option>
-                                <option value="4">Seguridad</option>
-                                <option value="5">Recursos Humanos</option>
-                                <option value="6">Administración</option>
+                                <option value="desarrollador">Desarrollador</option>
+                                <option value="analista">Analista</option>
+                                <option value="sistemas">Sistemas</option>
+                                <option value="seguridad">Seguridad</option>
+                                <option value="recursos humanos">Recursos Humanos</option>
+                                <option value="administracion">Administración</option>
                         </select>
                 </div>
         </div>
@@ -122,7 +92,7 @@ require_once("../plantillas/cabecera.php");
                         <div class="input-group-prepend">
                             <span class="input-group-text">Conocimientos</span>
                         </div>
-                        <textarea name="conocimientos" class="form-control" aria-label="With textarea"></textarea>
+                        <textarea id="conocimientosUsuario" name="conocimientos" class="form-control" aria-label="With textarea" required></textarea>
                 </div>
                 <div class="col-md-2"></div>
         </div>
@@ -133,7 +103,7 @@ require_once("../plantillas/cabecera.php");
                         <div class="input-group-prepend">
                             <span class="input-group-text">Aficiones</span>
                         </div>
-                        <textarea name="aficiones" class="form-control" aria-label="With textarea"></textarea>
+                        <textarea id="aficionesUsuario" name="aficiones" class="form-control" aria-label="With textarea" required></textarea>
                 </div>
                 <div class="col-md-2"></div>
         </div>
@@ -142,16 +112,8 @@ require_once("../plantillas/cabecera.php");
                 <div class="col-md-6 offset-md-3 mt-2">
                     <button class="btn btn-primary btn-block p-2" type="submit"> Confirmar </button>
                 </div>              
-       
         </div>
        
         
         
 </form>
-
-<br><br><br><br>
-
-
-<?php
-require_once("../plantillas/footer.php");
-?>
