@@ -1,5 +1,7 @@
 
-<div class="form-inline">  
+
+
+<div class="">  
        
        <div class="row">
                <div class=" rounded mx-auto d-block">
@@ -23,9 +25,11 @@
            </div>
    
 </div> 
-   
 
-<div class="form-inline">  
+
+
+
+<div class="">  
        <div class="row">
                <div class="input-group  col-md-3 offset-md-3 mt-5">
                        <div class="input-group-prepend">
