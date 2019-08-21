@@ -103,7 +103,7 @@ class __TwigTemplate_d27ad7bc0d448b7638cc69a202dd6d7dadc5034d126d6ddc1496864af42
             \$(\"#contenedorPantallas\").fadeOut(200, function () {
                 //\$(this).load(\"../plantillas/pantallas/pantallaModificarPerfil.php\").fadeIn(300);
                 \$.ajax({
-                    url: '../plantillas/pantallas/pantallaModificarPerfil.php',
+                    url: '/principal/pantallaModificarPerfil',
                     success: function (data) {
                         \$(\"#contenedorPantallas\").html(data).fadeIn(200);
                     }
@@ -195,7 +195,7 @@ class __TwigTemplate_d27ad7bc0d448b7638cc69a202dd6d7dadc5034d126d6ddc1496864af42
             \$(\"#contenedorPantallas\").fadeOut(200, function () {
                 //\$(this).load(\"../plantillas/pantallas/pantallaModificarPerfil.php\").fadeIn(300);
                 \$.ajax({
-                    url: '../plantillas/pantallas/pantallaModificarPerfil.php',
+                    url: '/principal/pantallaModificarPerfil',
                     success: function (data) {
                         \$(\"#contenedorPantallas\").html(data).fadeIn(200);
                     }
@@ -203,6 +203,6 @@ class __TwigTemplate_d27ad7bc0d448b7638cc69a202dd6d7dadc5034d126d6ddc1496864af42
             })
         });
     });
-</script>", "_navbar.html.twig", "C:\\xampp\\htdocs\\ejs-alan\\proyecto-chat\\webInternalBusinessChat\\esqueletoChat\\templates\\_navbar.html.twig");
+</script>", "_navbar.html.twig", "C:\\xampp\\htdocs\\webInternalBusinessChat\\esqueletoChat\\templates\\_navbar.html.twig");
     }
 }

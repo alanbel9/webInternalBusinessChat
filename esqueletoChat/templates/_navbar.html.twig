@@ -61,7 +61,7 @@
             $("#contenedorPantallas").fadeOut(200, function () {
                 //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
                 $.ajax({
-                    url: '../plantillas/pantallas/pantallaModificarPerfil.php',
+                    url: '/principal/pantallaModificarPerfil',
                     success: function (data) {
                         $("#contenedorPantallas").html(data).fadeIn(200);
                     }

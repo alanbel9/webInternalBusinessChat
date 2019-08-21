@@ -130,3 +130,13 @@ b44134,::1,GET,http://localhost:8000/principal/pantallaBuscar,1566388348,,200
 e77585,::1,GET,http://localhost:8000/principal/pantallaBuscar,1566388354,,200
 638d3f,::1,GET,http://localhost:8000/plantillas/pantallas/pantallaChat.php,1566388369,165ced,200
 165ced,::1,GET,http://localhost:8000/plantillas/pantallas/pantallaChat.php,1566388369,,404
+d107d7,::1,GET,http://localhost:8000/favicon.ico,1566398873,fd1878,200
+fd1878,::1,GET,http://localhost:8000/favicon.ico,1566398873,,404
+61f239,::1,GET,http://localhost:8000/principal,1566398984,,200
+28a5ac,::1,GET,http://localhost:8000/principal/pantallaBuscar,1566399002,,200
+918419,::1,GET,http://localhost:8000/plantillas/pantallas/pantallaModificarPerfil.php,1566399024,3baeb9,200
+3baeb9,::1,GET,http://localhost:8000/plantillas/pantallas/pantallaModificarPerfil.php,1566399024,,404
+696924,::1,GET,http://localhost:8000/principal,1566399260,,200
+321642,::1,GET,http://localhost:8000/principal/pantallaPerfil,1566399268,,200
+13e3af,::1,GET,http://localhost:8000/principal,1566399358,,200
+d2261a,::1,GET,http://localhost:8000/principal/pantallaModificarPerfil,1566399362,,200

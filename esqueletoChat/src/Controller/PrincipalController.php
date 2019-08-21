@@ -22,8 +22,21 @@ class PrincipalController extends AbstractController
      */
     public function pantallaBuscar()
     {
-        return $this->render('principal/pantallaBuscar.html.twig', [
+        return $this->render('principal/_pantallaBuscar.html.twig', [
             'controller_name' => 'PrincipalController',
         ]);
     }    
+
+
+
+    /**
+     * @Route("/principal/pantallaModificarPerfil", name="pantallaModificarPerfil")
+     */
+    public function pantallaModificarPerfil()
+    {
+        return $this->render('principal/_pantallaModificarPerfil.html.twig', [
+            'controller_name' => 'PrincipalController',
+        ]);
+    }   
+
 }

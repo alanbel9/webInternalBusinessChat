@@ -15,6 +15,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/principal' => [[['_route' => 'principal', '_controller' => 'App\\Controller\\PrincipalController::index'], null, null, null, false, false, null]],
         '/principal/pantallaBuscar' => [[['_route' => 'pantallaBuscar', '_controller' => 'App\\Controller\\PrincipalController::pantallaBuscar'], null, null, null, false, false, null]],
+        '/principal/pantallaModificarPerfil' => [[['_route' => 'pantallaModificarPerfil', '_controller' => 'App\\Controller\\PrincipalController::pantallaModificarPerfil'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

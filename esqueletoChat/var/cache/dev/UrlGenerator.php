@@ -17,4 +17,5 @@ return [
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception::cssAction'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], []],
     'principal' => [[], ['_controller' => 'App\\Controller\\PrincipalController::index'], [], [['text', '/principal']], [], []],
     'pantallaBuscar' => [[], ['_controller' => 'App\\Controller\\PrincipalController::pantallaBuscar'], [], [['text', '/principal/pantallaBuscar']], [], []],
+    'pantallaModificarPerfil' => [[], ['_controller' => 'App\\Controller\\PrincipalController::pantallaModificarPerfil'], [], [['text', '/principal/pantallaModificarPerfil']], [], []],
 ];
