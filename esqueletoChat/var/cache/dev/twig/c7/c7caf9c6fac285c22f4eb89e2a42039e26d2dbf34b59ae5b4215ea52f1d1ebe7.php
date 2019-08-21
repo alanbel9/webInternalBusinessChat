@@ -52,20 +52,60 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
         // line 5
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
+
+        <link href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\"
+        integrity=\"sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN\" crossorigin=\"anonymous\">
+        <script src=\"https://code.jquery.com/jquery-3.4.1.js\"
+        integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\" crossorigin=\"anonymous\"></script>
+
+        <!-- <link href=\"https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/simplex/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-1OYccka9EByiS23wvPFiYHBPRAgU91xYVFb8g8sen6vRiBI5Uko6+B87q8zPGUnA\" crossorigin=\"anonymous\">    -->
+        <link href=\"https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css\" rel=\"stylesheet\"
+        integrity=\"sha384-G3Fme2BM4boCE9tHx9zHvcxaQoAkksPQa/8oyn1Dzqv7gdcXChereUsXGx6LtbqA\" crossorigin=\"anonymous\">
+        <link href=\"https://fonts.googleapis.com/css?family=Righteous&display=swap\" rel=\"stylesheet\">
+        
         ";
-        // line 6
+        // line 17
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 7
-        echo "    </head>
+        // line 18
+        echo "
+    </head>
     <body>
-        ";
-        // line 9
+        
+                      
+            ";
+        // line 23
+        $this->loadTemplate("_navbar.html.twig", "base.html.twig", 23)->display($context);
+        // line 24
+        echo "
+            ";
+        // line 25
+        $this->loadTemplate("_nav.html.twig", "base.html.twig", 25)->display($context);
+        // line 26
+        echo "
+            ";
+        // line 27
+        $this->loadTemplate("_modal.html.twig", "base.html.twig", 27)->display($context);
+        // line 28
+        echo "
+            ";
+        // line 29
         $this->displayBlock('body', $context, $blocks);
-        // line 10
-        echo "        ";
+        // line 30
+        echo "
+
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"
+        integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\"
+        crossorigin=\"anonymous\"></script>
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"
+        integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\"
+        crossorigin=\"anonymous\"></script>
+
+        ";
+        // line 39
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 11
-        echo "    </body>
+        // line 40
+        echo "
+    </body>
 </html>
 ";
         
@@ -95,7 +135,7 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
 
     }
 
-    // line 6
+    // line 17
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -113,7 +153,7 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
 
     }
 
-    // line 9
+    // line 29
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -131,7 +171,7 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
 
     }
 
-    // line 10
+    // line 39
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -154,9 +194,14 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  135 => 10,  117 => 9,  99 => 6,  80 => 5,  68 => 11,  65 => 10,  63 => 9,  59 => 7,  57 => 6,  53 => 5,  47 => 1,);
+        return array (  175 => 39,  157 => 29,  139 => 17,  120 => 5,  107 => 40,  105 => 39,  94 => 30,  92 => 29,  89 => 28,  87 => 27,  84 => 26,  82 => 25,  79 => 24,  77 => 23,  70 => 18,  68 => 17,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -166,13 +211,43 @@ class __TwigTemplate_10b434e73ca82793871a28dc0717603fb8f004872297e1ac14c13ea38af
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" rel=\"stylesheet\"
+        integrity=\"sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN\" crossorigin=\"anonymous\">
+        <script src=\"https://code.jquery.com/jquery-3.4.1.js\"
+        integrity=\"sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=\" crossorigin=\"anonymous\"></script>
+
+        <!-- <link href=\"https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/simplex/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-1OYccka9EByiS23wvPFiYHBPRAgU91xYVFb8g8sen6vRiBI5Uko6+B87q8zPGUnA\" crossorigin=\"anonymous\">    -->
+        <link href=\"https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css\" rel=\"stylesheet\"
+        integrity=\"sha384-G3Fme2BM4boCE9tHx9zHvcxaQoAkksPQa/8oyn1Dzqv7gdcXChereUsXGx6LtbqA\" crossorigin=\"anonymous\">
+        <link href=\"https://fonts.googleapis.com/css?family=Righteous&display=swap\" rel=\"stylesheet\">
+        
         {% block stylesheets %}{% endblock %}
+
     </head>
     <body>
-        {% block body %}{% endblock %}
+        
+                      
+            {% include '_navbar.html.twig' %}
+
+            {% include '_nav.html.twig' %}
+
+            {% include '_modal.html.twig' %}
+
+            {% block body %}{% endblock %}
+
+
+    <script src=\"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js\"
+        integrity=\"sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q\"
+        crossorigin=\"anonymous\"></script>
+    <script src=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js\"
+        integrity=\"sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM\"
+        crossorigin=\"anonymous\"></script>
+
         {% block javascripts %}{% endblock %}
+
     </body>
 </html>
-", "base.html.twig", "C:\\Users\\Tardes\\Desktop\\esqueleto\\esqueletoChat\\templates\\base.html.twig");
+", "base.html.twig", "C:\\xampp\\htdocs\\ejs-alan\\proyecto-chat\\webInternalBusinessChat\\esqueletoChat\\templates\\base.html.twig");
     }
 }

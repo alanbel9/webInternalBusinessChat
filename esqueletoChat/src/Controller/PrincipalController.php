@@ -16,4 +16,14 @@ class PrincipalController extends AbstractController
             'controller_name' => 'PrincipalController',
         ]);
     }
+
+    /**
+     * @Route("/principal/pantallaBuscar", name="pantallaBuscar")
+     */
+    public function pantallaBuscar()
+    {
+        return $this->render('principal/pantallaBuscar.html.twig', [
+            'controller_name' => 'PrincipalController',
+        ]);
+    }    
 }

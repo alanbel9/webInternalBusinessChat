@@ -635,6 +635,6 @@ class __TwigTemplate_206f8d4a0f286b1dd8195db1b1a92ee4e7c84e28cb17570eac789258653
     });
 
 /*]]>*/</script>
-", "@Twig/base_js.html.twig", "C:\\Users\\Tardes\\Desktop\\esqueleto\\esqueletoChat\\vendor\\symfony\\twig-bundle\\Resources\\views\\base_js.html.twig");
+", "@Twig/base_js.html.twig", "C:\\xampp\\htdocs\\ejs-alan\\proyecto-chat\\webInternalBusinessChat\\esqueletoChat\\vendor\\symfony\\twig-bundle\\Resources\\views\\base_js.html.twig");
     }
 }
