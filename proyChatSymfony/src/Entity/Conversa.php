@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Conversa
  *
  * @ORM\Table(name="conversa", indexes={@ORM\Index(name="Id_Us", columns={"Id_Us"}), @ORM\Index(name="Id_Canal", columns={"Id_Canal"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\ConversaRepository")
  */
 class Conversa
 {
