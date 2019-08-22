@@ -50,4 +50,29 @@ class PrincipalController extends AbstractController
         ]);
     } 
 
+
+    /**
+     * @Route("/principal/pantallaInfoGrupo", name="pantallaInfoGrupo")
+     */
+    public function pantallaInfoGrupo()
+    {
+        return $this->render('principal/_pantallaInfoGrupo.html.twig', [
+            'controller_name' => 'PrincipalController',
+        ]);
+    } 
+
+
+
+    /**
+     * @Route("/principal/pantallaChat", name="pantallaChat")
+     */
+    public function pantallaChat()
+    {
+        return $this->render('principal/_pantallaChat.html.twig', [
+            'controller_name' => 'PrincipalController',
+        ]);
+    } 
+    
+
+
 }

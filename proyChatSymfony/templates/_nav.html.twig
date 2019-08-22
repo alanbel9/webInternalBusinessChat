@@ -1,6 +1,8 @@
+
 <button id="botonEsconderBarraIzq" class="btn btn-outline-primary  my-2 d-block w-100 d-md-none">
   Mis grupos de Chat
 </button>
+
 <div class="row w-100">
   <div class="col-auto">
     <div id="barraIzquierda" class="nav flex-column nav-pills" role="tablist"
@@ -54,7 +56,7 @@
       $("#contenedorPantallas").fadeOut(200, function () {
         //$(this).load("../plantillas/pantallas/pantallaChat.php").fadeIn(300);
         $.ajax({
-          url: '../plantillas/pantallas/pantallaChat.php',
+          url: '/principal/pantallaChat',
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(500);
           }
@@ -66,7 +68,7 @@
       $("#contenedorPantallas").fadeOut(200, function () {
         //$(this).load('../plantillas/pantallas/pantallaInfoGrupo.php').fadeIn(300);
         $.ajax({
-          url: '../plantillas/pantallas/pantallaInfoGrupo.php',
+          url: '/principal/pantallaInfoGrupo',
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(200);
           }
