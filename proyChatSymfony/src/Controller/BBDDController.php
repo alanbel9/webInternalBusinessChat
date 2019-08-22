@@ -2,24 +2,26 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Canales;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class BBDDController extends AbstractController
 {
     /**
-     * @Route("/bbdd", name="bbdd")
+     * @Route("/consultarGrupos", name="consultarGrupos")
      */
     public function consultarGrupos()
     {
 
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
-        $grupos = $gruposRepository->findAll();
-        // falta ...
+        $canalesItem = $gruposRepository->leerCanalesOrdenado();
 
-        return $this->render('bbdd/index.html.twig', [
+        var_dump($canalesItem);
+        
+        return $this->render('bbdd/consultarGrupos.html.twig', [
             'controller_name' => 'BBDDController',
-
+            'canalesItem' => $canalesItem
         ]);
     }
 }

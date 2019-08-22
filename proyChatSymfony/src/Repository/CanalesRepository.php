@@ -18,6 +18,20 @@ class CanalesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Canales::class);
     }
+    
+    public function leerCanalesOrdenado(){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.nombre FROM App\Entity\Canales n
+                        ORDER BY n.idCanal DESC
+                    ');
+        //$queryMenu = $entityManager->createQuery('
+        //               SELECT n FROM App\Entity\Canales n
+        //                ORDER BY n.idCanal DESC
+        //            ');
+        return $queryMenu->execute();
+    }
+
 
     // /**
     //  * @return Canales[] Returns an array of Canales objects
