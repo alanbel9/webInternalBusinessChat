@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\Canales;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class PrincipalController extends AbstractController
 {
@@ -12,8 +13,14 @@ class PrincipalController extends AbstractController
      */
     public function index()
     {
+
+        $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
+        $canalesItem = $gruposRepository->leerCanalesOrdenado();
+
+
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
+            'canalesItem' => $canalesItem
         ]);
     }
 

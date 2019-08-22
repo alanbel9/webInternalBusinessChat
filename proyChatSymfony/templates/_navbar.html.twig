@@ -18,19 +18,9 @@
                 Grupos de Chat;)
             </button>
             <div id="menuGrupos" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <!-- ----------------BBDD y PHP------------------------- -->
-                <a class="dropdown-item" href="#">Grupo 1</a>
-                <a class="dropdown-item" href="#">Grupo 2</a>
-                <a class="dropdown-item" href="#">Grupo 3</a>
-                <a class="dropdown-item" href="#">Grupo 4</a>
-                <a class="dropdown-item" href="#">Grupo 5</a>
-                <a class="dropdown-item" href="#">Grupo 6</a>
-                <a class="dropdown-item" href="#">Grupo 7</a>
-                <a class="dropdown-item" href="#">Grupo 8</a>
-                <a class="dropdown-item" href="#">Grupo 9</a>
-                <a class="dropdown-item" href="#">Grupo 10</a>
-                <a class="dropdown-item" href="#">Grupo 11</a>
-                <!-- --------------------------------------------------- -->
+
+                {% include('bbdd/_consultarGrupos.html.twig') %}
+
             </div>
         </div>
     </div>

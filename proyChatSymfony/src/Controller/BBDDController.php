@@ -17,10 +17,9 @@ class BBDDController extends AbstractController
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
 
-        var_dump($canalesItem);
-        
         return $this->render('bbdd/consultarGrupos.html.twig', [
             'controller_name' => 'BBDDController',
+            'a' => 4,
             'canalesItem' => $canalesItem
         ]);
     }
