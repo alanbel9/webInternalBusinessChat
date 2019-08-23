@@ -1,6 +1,6 @@
 CREATE TABLE `usuarios`
 (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `nombre` varchar(255) NOT NULL,
   `apellidos` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `usuarios`
 
 CREATE TABLE `grupos`
 (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT ,
   `nombre` varchar(255) NOT NULL,
   `descripcion` text,
   `foto` varchar(255),
@@ -24,7 +24,7 @@ CREATE TABLE `grupos`
 
 CREATE TABLE `mensajes`
 (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
   `id_grupo` int NOT NULL,
   `fecha` datetime NOT NULL,
@@ -33,17 +33,8 @@ CREATE TABLE `mensajes`
 
 CREATE TABLE `suscripciones`
 (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `id_usuario` int NOT NULL,
   `id_grupo` int NOT NULL,
   `fecha` datetime NOT NULL
 );
-
-ALTER TABLE `mensajes` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
-
-ALTER TABLE `mensajes` ADD FOREIGN KEY (`id_grupo`) REFERENCES `grupos` (`id`);
-
-ALTER TABLE `usuarios` ADD FOREIGN KEY (`id`) REFERENCES `suscripciones` (`id_usuario`);
-
-ALTER TABLE `grupos` ADD FOREIGN KEY (`id`) REFERENCES `suscripciones` (`id_grupo`);
-
