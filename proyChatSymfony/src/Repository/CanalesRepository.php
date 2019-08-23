@@ -25,14 +25,24 @@ class CanalesRepository extends ServiceEntityRepository
                         SELECT n.nombre FROM App\Entity\Canales n
                         ORDER BY n.idCanal DESC
                     ');
-        //$queryMenu = $entityManager->createQuery('
-        //               SELECT n FROM App\Entity\Canales n
-        //                ORDER BY n.idCanal DESC
-        //            ');
+        return $queryMenu->execute();
+    }
+
+    public function leerInfoCanales(){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n FROM App\Entity\Canales n
+                        ORDER BY n.idCanal DESC
+                    ');
         return $queryMenu->execute();
     }
 
 
+
+
+
+
+    
     // /**
     //  * @return Canales[] Returns an array of Canales objects
     //  */
