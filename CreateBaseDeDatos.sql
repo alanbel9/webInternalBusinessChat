@@ -36,7 +36,7 @@ CREATE TABLE `suscripciones`
   `id` int PRIMARY KEY,
   `id_usuario` int NOT NULL,
   `id_grupo` int NOT NULL,
-  `fecha` timestamp NOT NULL
+  `fecha` datetime NOT NULL
 );
 
 ALTER TABLE `mensajes` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
