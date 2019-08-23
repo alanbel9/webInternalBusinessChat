@@ -32,5 +32,4 @@ class BBDDController extends AbstractController
 
 
 
-
 }

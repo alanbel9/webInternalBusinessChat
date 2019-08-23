@@ -19,6 +19,19 @@ class UCRepository extends ServiceEntityRepository
         parent::__construct($registry, UC::class);
     }
 
+    public function insertarUsuarioEnGrupo(){
+        
+
+
+    }
+
+
+
+
+
+
+
+    
     // /**
     //  * @return UC[] Returns an array of UC objects
     //  */
