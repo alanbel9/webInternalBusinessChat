@@ -22,7 +22,7 @@ class CanalesRepository extends ServiceEntityRepository
     public function leerCanalesOrdenado(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.nombre FROM App\Entity\Canales n
+                        SELECT n.nombre, n.idCanal FROM App\Entity\Canales n
                         ORDER BY n.idCanal DESC
                     ');
         return $queryMenu->execute();

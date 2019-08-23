@@ -36,7 +36,7 @@
         //Petición a BBDD y AJAX
         //$(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
         $.ajax({
-          url: '/principal/pantallaBuscar',
+          url: '/principal/pantallaBuscar/',
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(200);
           }
@@ -52,11 +52,12 @@
     $("#barraIzquierda").children("a").off().on("click", function (evt) {
       $("#barraIzquierda").children("a").next().slideUp();
       $(this).next().slideDown();
+      var obj=$(this);
 
       $("#contenedorPantallas").fadeOut(200, function () {
         //$(this).load("../plantillas/pantallas/pantallaChat.php").fadeIn(300);
         $.ajax({
-          url: '/principal/pantallaChat',
+          url: '/grupos/ajaxObtenerConversacion/' + obj.attr('idGrupo'),
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(500);
           }
