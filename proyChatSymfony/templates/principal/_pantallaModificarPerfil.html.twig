@@ -1,9 +1,4 @@
-
-
-<br>
-
-<div class="container">  
-       
+<div class="container mt-2">  
        <div class="row">
                <div class=" rounded mx-auto d-block">
                        <img id="imgSalida" height="200" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
@@ -12,34 +7,31 @@
        </div>
    
        <div class="row">
-                <div class="col-md-4 offset-md-3 mt-2 ">
+                <div class="col-md-4 offset-md-4 mt-2 ">
                            <div class="custom-file">
-                                   <input id="fotoUsuario" name="foto" type="file" class="custom-file-input" aria-describedby="inputGroupFileAddon03" required>
-                                   <label class="custom-file-label" for="inputGroupFile03">Choose file</label>
+                                   <input id="fotoUsuario" name="foto" type="file" class="custom-file-input w-auto" aria-describedby="inputGroupFileAddon03" required>
+                                   <label class="custom-file-label font-weight-bold" for="inputGroupFile03">Buscar archivo</label>
                            </div>
                 </div>
 
-                <div class="col-md-2  mt-2">
+                {# <div class="col-md-2  mt-2">
                        <button class="btn btn-primary btn-block " type=""> Subir imagen </button>
-                </div>              
+                </div>               #}
         </div>
-   <hr>
-</div> 
-
-
-
-<div class="container">  
+        <div class="row">
+                <hr>
+        </div>
        <div class="row">
                <div class="input-group  col-md-3 offset-md-3 mt-2">
                        <div class="input-group-prepend">
-                           <span class="input-group-text" id="basic-addon3">Nombre</span>
+                           <span class="input-group-text font-weight-bold" id="basic-addon3">Nombre</span>
                        </div>
                        <input id="nombreUsuario" type="text" name="nombre" class="form-control" aria-describedby="basic-addon3" required>
                </div>
    
                <div class="input-group col-md-3 mt-2">
                        <div class="input-group-prepend">
-                               <span class="input-group-text" >Apellidos</span>
+                               <span class="input-group-text font-weight-bold" >Apellidos</span>
                            </div>
                        <input id="apellidosUsuario" type="text" name="apellidos" class="form-control" required>
                </div>
@@ -47,16 +39,16 @@
        </div>
 
        <div class="row">
-               <div class="input-group  col-md-3 offset-md-3 mt-2">
+               <div class="input-group col-md-3 offset-md-3 mt-2">
                         <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon3">Fecha nac.</span>
+                                <span class="input-group-text font-weight-bold" id="basic-addon3">Fecha n.</span>
                         </div>
                         <input id="nacimientoUsuario" type="date" name="nacimiento" class="form-control" aria-describedby="basic-addon3"  required>
              </div>
    
                <div class="input-group col-md-3 mt-2  ">
                <div class="input-group-prepend">
-                                   <span class="input-group-text" id="basic-addon3">Puesto</span>
+                                   <span class="input-group-text font-weight-bold" id="basic-addon3">Puesto</span>
                            </div>
                            <select id="puestoUsuario" name="puesto" class="custom-select"  required >
                                    <option selected> </option>
@@ -75,7 +67,7 @@
        <div class="row">
                <div class=" input-group col-md-6 mt-2 offset-md-3 ">
                        <div class="input-group-prepend">
-                               <span class="input-group-text" id="basic-addon3">Correo</span>
+                               <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
                        </div>
                        <input id="inputCorreo" type="text" name="correo" class="form-control" readonly >
                </div>
@@ -83,11 +75,11 @@
    
            <div class="row">
                    <div class="col-md-3 offset-md-3 mt-2">
-                       <input type="password" name="password1" class="form-control" placeholder="Password" required>
+                       <input type="password" name="password1" class="form-control font-weight-bold" placeholder="Password" required>
                    </div>
                    
                    <div class="col-md-3 mt-2  ">
-                       <input type="password" name="password2" class="form-control" placeholder="Confirm password" required>
+                       <input type="password" name="password2" class="form-control font-weight-bold" placeholder="Confirm password" required>
                    </div>    
            </div>
    
@@ -95,7 +87,7 @@
            <div class="row">            
                    <div class="input-group col-md-6 mt-2 offset-md-3">
                            <div class="input-group-prepend">
-                               <span class="input-group-text">Conocimientos</span>
+                               <span class="input-group-text font-weight-bold">Conocimientos</span>
                            </div>
                            <textarea id="conocimientosUsuario" name="conocimientos" class="form-control" aria-label="With textarea" required></textarea>
                    </div>
@@ -106,7 +98,7 @@
    
                    <div class="input-group col-md-6 mt-2 offset-md-3">
                            <div class="input-group-prepend">
-                               <span class="input-group-text">Aficiones</span>
+                               <span class="input-group-text font-weight-bold">Aficiones</span>
                            </div>
                            <textarea id="aficionesUsuario" name="aficiones" class="form-control" aria-label="With textarea" required></textarea>
                    </div>
@@ -114,7 +106,7 @@
            </div>
     
            <div class="row">
-                   <div class="col-md-6 offset-md-3 mt-2">
+                   <div class="col-md-6 offset-md-3 my-2">
                        <button class="btn btn-primary btn-block p-2" type=""> Confirmar </button>
                    </div>              
            </div>
