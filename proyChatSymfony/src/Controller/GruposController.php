@@ -10,6 +10,19 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class GruposController extends AbstractController
 {
+
+/**
+     * @Route("/insertarUsuario/{idUsuario}", name="insertarUsuario")
+     */
+    public function insertarUsuario(int $idUsuario)
+    {
+        $UCRepository= $this->getDoctrine()->getRepository(UC::class);
+        $UCItem = $UCRepository->insertarUsuarioEnGrupo();
+
+    }
+
+
+
     /**
      * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
      */

@@ -63,4 +63,15 @@
             })
         });
     });
+
+
+    function insertarUser(){
+        var idUsuario = 1;  // Esto se sacará de variable sesión.
+        $.ajax({
+                    url: '/grupos/insertarUsuario/' + idUsuario,
+                    success: function (data) {
+                        console.log("Grupo agregado al usuario.");
+                    }
+        });
+    }
 </script>

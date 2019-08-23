@@ -13,7 +13,6 @@ class PrincipalController extends AbstractController
      */
     public function index()
     {
-
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
 
