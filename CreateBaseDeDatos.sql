@@ -1,0 +1,49 @@
+CREATE TABLE `usuarios`
+(
+  `id` int PRIMARY KEY,
+  `nombre` varchar(255) NOT NULL,
+  `apellidos` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `correo` varchar(255) NOT NULL,
+  `foto` varchar(255),
+  `fecha_nacimiento` datetime,
+  `puesto` varchar(255),
+  `aficiones` text,
+  `conocimientos` text,
+  `fecha_ultima_conexion` datetime
+);
+
+CREATE TABLE `grupos`
+(
+  `id` int PRIMARY KEY,
+  `nombre` varchar(255) NOT NULL,
+  `descripcion` text,
+  `foto` varchar(255),
+  `fecha_creacion` datetime
+);
+
+CREATE TABLE `mensajes`
+(
+  `id` int PRIMARY KEY,
+  `id_usuario` int NOT NULL,
+  `id_grupo` int NOT NULL,
+  `fecha` datetime NOT NULL,
+  `mensaje` text
+);
+
+CREATE TABLE `suscripciones`
+(
+  `id` int PRIMARY KEY,
+  `id_usuario` int NOT NULL,
+  `id_grupo` int NOT NULL,
+  `fecha` timestamp NOT NULL
+);
+
+ALTER TABLE `mensajes` ADD FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`);
+
+ALTER TABLE `mensajes` ADD FOREIGN KEY (`id_grupo`) REFERENCES `grupos` (`id`);
+
+ALTER TABLE `usuarios` ADD FOREIGN KEY (`id`) REFERENCES `suscripciones` (`id_usuario`);
+
+ALTER TABLE `grupos` ADD FOREIGN KEY (`id`) REFERENCES `suscripciones` (`id_grupo`);
+
