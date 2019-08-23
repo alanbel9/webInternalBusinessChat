@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Entity\UC;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/grupos")
@@ -11,13 +12,21 @@ use Symfony\Component\Routing\Annotation\Route;
 class GruposController extends AbstractController
 {
 
-/**
-     * @Route("/insertarUsuario/{idUsuario}", name="insertarUsuario")
+    /**
+     * @Route("/insertarUsuario/{idUsuario}/{idGrupo}", name="insertarUsuario")
      */
-    public function insertarUsuario(int $idUsuario)
+    public function insertarUsuario(int $idUsuario,int $idGrupo)
     {
-        $UCRepository= $this->getDoctrine()->getRepository(UC::class);
-        $UCItem = $UCRepository->insertarUsuarioEnGrupo();
+        //$UCRepository= $this->getDoctrine()->getRepository(UC::class);
+        //$UCItem = $UCRepository->insertarUsuarioEnGrupo();
+
+        $UCregistro= new UC();
+        $UCregistro->setIdCanal($idGrupo);
+        $UCregistro->setIdUs($idUsuario);
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($UCregistro);
+        $em->flush();
 
     }
 

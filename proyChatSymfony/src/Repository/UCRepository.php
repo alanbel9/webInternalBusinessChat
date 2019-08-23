@@ -20,13 +20,9 @@ class UCRepository extends ServiceEntityRepository
     }
 
 
-    public function insertarUsuarioEnGrupo(){
-        // aqui ?????????????
-        $UCregistro= new UC();
-        // set.... 
-        // addUsuario() ??
+    //public function insertarUsuarioEnGrupo(){
 
-    }
+//    }
 
 
 
