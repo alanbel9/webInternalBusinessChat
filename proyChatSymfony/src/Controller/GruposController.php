@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\UC;
+use App\Entity\Canales;
+use App\Entity\Usuarios;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -13,7 +16,7 @@ class GruposController extends AbstractController
 {
 
     /**
-     * @Route("/insertarUsuario/{idUsuario}/{idGrupo}", name="insertarUsuario")
+     * @Route("/insertarUsuario/{idGrupo}-{idUsuario}", name="insertarUsuario")
      */
     public function insertarUsuario(int $idUsuario,int $idGrupo)
     {
@@ -21,13 +24,18 @@ class GruposController extends AbstractController
         //$UCItem = $UCRepository->insertarUsuarioEnGrupo();
 
         $UCregistro= new UC();
-        $UCregistro->setIdCanal($idGrupo);
-        $UCregistro->setIdUs($idUsuario);
-        
+        $usuarioItem= $this->getDoctrine()->getRepository(Usuarios::class)->find($idUsuario);
+        $grupoItem= $this->getDoctrine()->getRepository(Canales::class)->find($idGrupo);
+
+        $UCregistro->setIdUs( $usuarioItem);
+        $UCregistro->setIdCanal( $grupoItem );
+       
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($UCregistro);
         $em->flush();
 
+        return new Response("Insertado");
+        // se le llama asi:  /grupos/insertarUsuario/1-2
     }
 
 

@@ -21,6 +21,7 @@ class UC
      */
     private $idUc;
 
+
     /**
      * @var \Canales
      *
@@ -30,6 +31,7 @@ class UC
      * })
      */
     private $idCanal;
+    
 
     /**
      * @var \Usuarios
@@ -40,6 +42,8 @@ class UC
      * })
      */
     private $idUs;
+
+
 
     public function getIdUc(): ?int
     {
