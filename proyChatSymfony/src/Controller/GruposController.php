@@ -35,7 +35,8 @@ class GruposController extends AbstractController
         $em->flush();
 
         return new Response("Insertado usuario a grupo.");
-        // se le llama asi:  /grupos/insertarUsuario/1-2
+        // se le llama asi:  /grupos/insertarUsuario/2-1
+        // Esto va unido a una función insertarUser() en _navbar  y a _consultarGrupos donde se usa dicha función.
     }
 
 

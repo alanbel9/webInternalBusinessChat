@@ -65,10 +65,12 @@
     });
 
 
-    function insertarUser(){
+    function insertarUser(objeto){
         var idUsuario = 1;  // Esto se sacará de variable sesión.
+        var idGrupo = objeto.getAttribute('idGrupo');
         $.ajax({
-                    url: '/grupos/insertarUsuario/' + idUsuario,
+                    // LLAMADA A CONTROLADOR GRUPOS.
+                    url: '/grupos/insertarUsuario/' + idGrupo + "-" + idUsuario,
                     success: function (data) {
                         console.log("Grupo agregado al usuario.");
                     }
