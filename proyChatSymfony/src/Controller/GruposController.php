@@ -34,7 +34,7 @@ class GruposController extends AbstractController
         $em->persist($UCregistro);
         $em->flush();
 
-        return new Response("Insertado");
+        return new Response("Insertado usuario a grupo.");
         // se le llama asi:  /grupos/insertarUsuario/1-2
     }
 
