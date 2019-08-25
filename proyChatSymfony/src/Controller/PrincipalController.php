@@ -6,10 +6,13 @@ use App\Entity\Canales;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+    /**
+     * @Route("/principal")
+     */
 class PrincipalController extends AbstractController
 {
     /**
-     * @Route("/principal", name="principal")
+     * @Route("/", name="principal")
      */
     public function index()
     {
@@ -23,7 +26,7 @@ class PrincipalController extends AbstractController
     }
 
     /**
-     * @Route("/principal/pantallaBuscar", name="pantallaBuscar")
+     * @Route("/pantallaBuscar", name="pantallaBuscar")
      */
     public function pantallaBuscar()
     {
@@ -35,14 +38,15 @@ class PrincipalController extends AbstractController
 
 
     /**
-     * @Route("/principal/pantallaModificarPerfil", name="pantallaModificarPerfil")
+     * @Route("/pantallaModificarPerfil", name="pantallaModificarPerfil")
      */
     public function pantallaModificarPerfil()
     {
         return $this->render('principal/_pantallaModificarPerfil.html.twig', [
             'controller_name' => 'PrincipalController',
-        ]);
+        ]);    //  NO SE USA.     SE USA DENTRO DE USUARIOSCONTROLLER !!!!
     }   
+
 
 
      /**

@@ -2,14 +2,27 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/user")
  */
 class UserController extends AbstractController
 {
+
+    /**
+     * @Route("/modificarInfoUsuario/{idUsuario}", name="modificarInfoUsuario")
+     */
+    public function modificarInfoUsuario(int $idUsuario){
+
+        // php bin/console make:form   ????  estudiar
+
+        return new Response("Usuario modificado.");
+    }
+
+
     /**
      * @Route("/ajaxLeerInformacion/{idUsuario}", name="ajaxLeerInformacion")
      */

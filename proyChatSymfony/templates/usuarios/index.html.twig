@@ -1,0 +1,48 @@
+
+    <h1>Usuarios index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdUs</th>
+                <th>Correo</th>
+                <th>Password</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+                <th>Puesto</th>
+                <th>Conocimientos</th>
+                <th>Aficiones</th>
+                <th>Foto</th>
+                <th>FechaNac</th>
+                <th>FechaUltCon</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.idUs }}</td>
+                <td>{{ usuario.correo }}</td>
+                <td>{{ usuario.password }}</td>
+                <td>{{ usuario.nombre }}</td>
+                <td>{{ usuario.apellidos }}</td>
+                <td>{{ usuario.puesto }}</td>
+                <td>{{ usuario.conocimientos }}</td>
+                <td>{{ usuario.aficiones }}</td>
+                <td>{{ usuario.foto }}</td>
+                <td>{{ usuario.fechaNac ? usuario.fechaNac|date('Y-m-d') : '' }}</td>
+                <td>{{ usuario.fechaUltCon ? usuario.fechaUltCon|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('usuarios_show', {'idUs': usuario.idUs}) }}">show</a>
+                    <a href="{{ path('usuarios_edit', {'idUs': usuario.idUs}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuarios_new') }}">Create new</a>

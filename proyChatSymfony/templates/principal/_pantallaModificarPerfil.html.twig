@@ -21,95 +21,16 @@
         <div class="row">
                 <hr>
         </div>
-       <div class="row">
-               <div class="input-group  col-md-3 offset-md-3 mt-2">
-                       <div class="input-group-prepend">
-                           <span class="input-group-text font-weight-bold" id="basic-addon3">Nombre</span>
-                       </div>
-                       <input id="nombreUsuario" type="text" name="nombre" class="form-control" aria-describedby="basic-addon3" required>
-               </div>
-   
-               <div class="input-group col-md-3 mt-2">
-                       <div class="input-group-prepend">
-                               <span class="input-group-text font-weight-bold" >Apellidos</span>
-                           </div>
-                       <input id="apellidosUsuario" type="text" name="apellidos" class="form-control" required>
-               </div>
-   
-       </div>
-
-       <div class="row">
-               <div class="input-group col-md-3 offset-md-3 mt-2">
-                        <div class="input-group-prepend">
-                                <span class="input-group-text font-weight-bold" id="basic-addon3">Fecha n.</span>
-                        </div>
-                        <input id="nacimientoUsuario" type="date" name="nacimiento" class="form-control" aria-describedby="basic-addon3"  required>
-             </div>
-   
-               <div class="input-group col-md-3 mt-2  ">
-               <div class="input-group-prepend">
-                                   <span class="input-group-text font-weight-bold" id="basic-addon3">Puesto</span>
-                           </div>
-                           <select id="puestoUsuario" name="puesto" class="custom-select"  required >
-                                   <option selected> </option>
-                                   <option value="desarrollador">Desarrollador</option>
-                                   <option value="analista">Analista</option>
-                                   <option value="sistemas">Sistemas</option>
-                                   <option value="seguridad">Seguridad</option>
-                                   <option value="recursos humanos">Recursos Humanos</option>
-                                   <option value="administracion">Administración</option>
-                           </select>
-               </div>
-   
-       </div>
-   
-   
-       <div class="row">
-               <div class=" input-group col-md-6 mt-2 offset-md-3 ">
-                       <div class="input-group-prepend">
-                               <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
-                       </div>
-                       <input id="inputCorreo" type="text" name="correo" class="form-control" readonly >
-               </div>
-       </div>
-   
-           <div class="row">
-                   <div class="col-md-3 offset-md-3 mt-2">
-                       <input type="password" name="password1" class="form-control font-weight-bold" placeholder="Password" required>
-                   </div>
-                   
-                   <div class="col-md-3 mt-2  ">
-                       <input type="password" name="password2" class="form-control font-weight-bold" placeholder="Confirm password" required>
-                   </div>    
-           </div>
-   
-   
-           <div class="row">            
-                   <div class="input-group col-md-6 mt-2 offset-md-3">
-                           <div class="input-group-prepend">
-                               <span class="input-group-text font-weight-bold">Conocimientos</span>
-                           </div>
-                           <textarea id="conocimientosUsuario" name="conocimientos" class="form-control" aria-label="With textarea" required></textarea>
-                   </div>
-                   <div class="col-md-2"></div>
-           </div>
-   
-           <div class="row">            
-   
-                   <div class="input-group col-md-6 mt-2 offset-md-3">
-                           <div class="input-group-prepend">
-                               <span class="input-group-text font-weight-bold">Aficiones</span>
-                           </div>
-                           <textarea id="aficionesUsuario" name="aficiones" class="form-control" aria-label="With textarea" required></textarea>
-                   </div>
-                   <div class="col-md-2"></div>
-           </div>
     
-           <div class="row">
-                   <div class="col-md-6 offset-md-3 my-2">
-                       <button class="btn btn-primary btn-block p-2" type=""> Confirmar </button>
-                   </div>              
-           </div>
+
+         {% include 'usuarios/edit.html.twig' %}   
+
+
+
+
+
+       
+
            
    </div>
    

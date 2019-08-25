@@ -51,11 +51,13 @@
             eventosBarraLateral();
         });
 
+        var idUsuario = 1 ;    //    CAMBIAR !!!!!!!!!!!
+
         $("#modificarPerfil").off().on("click", function () {
             $("#contenedorPantallas").fadeOut(200, function () {
                 //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
                 $.ajax({
-                    url: '/principal/pantallaModificarPerfil',
+                    url: '/usuarios/' + idUsuario +'/edit',
                     success: function (data) {
                         $("#contenedorPantallas").html(data).fadeIn(200);
                     }
