@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Usuarios;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -45,7 +46,7 @@ class UserController extends AbstractController
     $usuarioItem = $usuarioRepository->leerUsuarios($param);
 
     return $this->render('user/ajaxBusqueda.html.twig', [
-    'param' => $param,
+    'param' => $usuarioItem,
     ]);
     }
 

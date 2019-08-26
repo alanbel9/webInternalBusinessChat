@@ -11,22 +11,12 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nº</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellidos</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr data-toggle="modal" data-target="#modalInfoUsuario" onclick="cargarInformacion(4)" href="" >
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                    </tr>
-                    <tr data-toggle="modal" data-target="#modalInfoUsuario" href="">
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                    </tr>
+                    {% include 'user/consultaBusquedaU.html.twig' %}
 
                 </tbody>
             </table>

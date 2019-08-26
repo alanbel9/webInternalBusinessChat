@@ -25,8 +25,9 @@ class UsuariosRepository extends ServiceEntityRepository
         $queryUsuarios = $entityManager->createQuery('
         SELECT n FROM App\Entity\Usuarios n
         WHERE n.nombre LIKE :param
-        ')->setParameter("param", $param); 
-        return $queryUsuarios->execute();
+        ')->setParameter("param", '%' . $param. '%'); 
+        $obj= $queryUsuarios->execute();
+        return $obj;
         }
 
 
