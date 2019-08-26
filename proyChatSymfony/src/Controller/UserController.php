@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,16 +35,18 @@ class UserController extends AbstractController
         ]);
     }
 
-
     /**
-     * @Route("/ajaxBuscarUsuario/{busqueda}", name="ajaxBuscarUsuario")
-     */
-    public function ajaxBuscarUsuario()
+    * @Route("/ajaxBuscarUsuario/{busqueda}", name="ajaxBuscarUsuario" )
+    */
+    public function ajaxBuscarUsuario(string $busqueda)
     {
-        return $this->render('user/ajaxBusqueda.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
+    $param=$busqueda;
+    $usuarioRepository= $this->getDoctrine()->getRepository(Usuarios::class);
+    $usuarioItem = $usuarioRepository->leerUsuarios($param);
 
+    return $this->render('user/ajaxBusqueda.html.twig', [
+    'param' => $param,
+    ]);
+    }
 
 }

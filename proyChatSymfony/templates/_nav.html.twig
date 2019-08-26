@@ -36,7 +36,7 @@
         //Petición a BBDD y AJAX
         //$(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
         $.ajax({
-          url: '/principal/pantallaBuscar/',
+          url: '/user/ajaxBuscarUsuario/?busqueda='+$("#idBusqueda").val(),
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(200);
           }

@@ -19,6 +19,18 @@ class UsuariosRepository extends ServiceEntityRepository
         parent::__construct($registry, Usuarios::class);
     }
 
+
+    public function leerUsuarios(string $param){
+        $entityManager = $this->getEntityManager();
+        $queryUsuarios = $entityManager->createQuery('
+        SELECT n FROM App\Entity\Usuarios n
+        WHERE n.nombre LIKE :param
+        ')->setParameter("param", $param); 
+        return $queryUsuarios->execute();
+        }
+
+
+
     // /**
     //  * @return Usuarios[] Returns an array of Usuarios objects
     //  */
