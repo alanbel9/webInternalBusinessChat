@@ -22,8 +22,14 @@ class CanalesRepository extends ServiceEntityRepository
     public function leerCanalesSuscrito(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.nombre , n.idCanal FROM App\Entity\Canales n 
-                        WHERE n.idCanal IN ( SELECT c2.idCanal FROM App\Entity\UC uc join uc.canal c2 WHERE uc.idUs = 1 ) 
+                        SELECT n.nombre , n.idCanal 
+                        FROM App\Entity\Canales n 
+                        WHERE n.idCanal IN 
+                            ( SELECT c2.idCanal 
+                            FROM App\Entity\UC uc 
+                            join uc.canal c2 
+                            WHERE uc.idUs = 1 ) 
+                        ORDER BY n.idCanal DESC
                     '); //  id usuario !!!!!!!!!!!!
 
         
@@ -35,8 +41,13 @@ class CanalesRepository extends ServiceEntityRepository
     public function leerCanalesOrdenado(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.nombre, n.idCanal FROM App\Entity\Canales n
-                        WHERE n.idCanal NOT IN ( SELECT c2.idCanal FROM App\Entity\UC uc join uc.canal c2 WHERE uc.idUs = 1 ) 
+                        SELECT n.nombre, n.idCanal 
+                        FROM App\Entity\Canales n
+                        WHERE n.idCanal NOT IN 
+                            ( SELECT c2.idCanal 
+                            FROM App\Entity\UC uc 
+                            join uc.canal c2 
+                            WHERE uc.idUs = 1 ) 
                         ORDER BY n.idCanal DESC
                     ');   // NOT IN  para leer solo los grupos NO suscritos.
         return $queryMenu->execute();
