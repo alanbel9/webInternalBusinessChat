@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\UC;
 use App\Entity\Canales;
+use App\Entity\Conversa;
 use App\Entity\Usuarios;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -46,8 +47,12 @@ class GruposController extends AbstractController
      */
     public function ajaxObtenerConversacion(int $idGrupo)
     {
+        $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
+        $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
+
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
+            'mensajesItem' => $mensajesItem
         ]);
     }
 

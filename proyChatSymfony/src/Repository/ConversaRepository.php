@@ -19,6 +19,19 @@ class ConversaRepository extends ServiceEntityRepository
         parent::__construct($registry, Conversa::class);
     }
 
+
+    public function leerMensajesGrupo( int $idgrupo){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.mensaje , u.nombre , n.fecha 
+                        FROM App\Entity\Conversa n JOIN n.usuario u  
+                        WHERE n.idCanal = :idgrupo and n.usuario = u.idUs 
+                    ') ->setParameter('idgrupo' , $idgrupo);   
+        
+        return $queryMenu->execute();
+    }
+
+
     // /**
     //  * @return Conversa[] Returns an array of Conversa objects
     //  */

@@ -25,7 +25,7 @@ class PrincipalController extends AbstractController
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
             'canalesItem' => $canalesItem ,
-            'canalesSuscrito' => $canalesSuscrito
+            'canalesSuscrito' => $canalesSuscrito 
         ]);
     }
 

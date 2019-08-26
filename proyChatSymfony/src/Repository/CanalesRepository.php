@@ -22,7 +22,7 @@ class CanalesRepository extends ServiceEntityRepository
     public function leerCanalesSuscrito(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.nombre FROM App\Entity\Canales n 
+                        SELECT n.nombre , n.idCanal FROM App\Entity\Canales n 
                         WHERE n.idCanal IN ( SELECT c2.idCanal FROM App\Entity\UC uc join uc.canal c2 WHERE uc.idUs = 1 ) 
                     '); //  id usuario !!!!!!!!!!!!
 
