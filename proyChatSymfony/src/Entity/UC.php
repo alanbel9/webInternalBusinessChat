@@ -30,7 +30,7 @@ class UC
      *   @ORM\JoinColumn(name="Id_Canal", referencedColumnName="Id_Canal")
      * })
      */
-    private $idCanal;
+    private $canal;
 
 
     /**
@@ -50,14 +50,14 @@ class UC
         return $this->idUc;
     }
 
-    public function getIdCanal(): ?Canales
+    public function getCanal(): ?Canales
     {
-        return $this->idCanal;
+        return $this->canal;
     }
 
-    public function setIdCanal(?Canales $idCanal): self
+    public function setCanal(?Canales $canal): self
     {
-        $this->idCanal = $idCanal;
+        $this->canal = $canal;
 
         return $this;
     }

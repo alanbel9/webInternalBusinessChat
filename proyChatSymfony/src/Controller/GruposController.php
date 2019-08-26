@@ -28,7 +28,7 @@ class GruposController extends AbstractController
         $grupoItem= $this->getDoctrine()->getRepository(Canales::class)->find($idGrupo);
 
         $UCregistro->setIdUs( $usuarioItem );
-        $UCregistro->setIdCanal( $grupoItem );
+        $UCregistro->setCanal( $grupoItem );
        
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($UCregistro);

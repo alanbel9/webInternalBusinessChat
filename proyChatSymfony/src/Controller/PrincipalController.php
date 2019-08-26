@@ -19,9 +19,13 @@ class PrincipalController extends AbstractController
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
 
+        $canalesSuscrito= $gruposRepository->leerCanalesSuscrito();
+
+
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
-            'canalesItem' => $canalesItem
+            'canalesItem' => $canalesItem ,
+            'canalesSuscrito' => $canalesSuscrito
         ]);
     }
 
