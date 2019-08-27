@@ -31,12 +31,8 @@ class CanalesRepository extends ServiceEntityRepository
                             WHERE uc.idUs = 1 ) 
                         ORDER BY n.idCanal DESC
                     '); //  id usuario !!!!!!!!!!!!
-
-        
-        
         return $queryMenu->execute();
     }
-
 
     public function leerCanalesOrdenado(){
         $entityManager = $this->getEntityManager();
@@ -63,9 +59,6 @@ class CanalesRepository extends ServiceEntityRepository
         return $queryMenu->execute();
     }
 */
-
-
-
     public function leerInfoCanales(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
@@ -74,15 +67,6 @@ class CanalesRepository extends ServiceEntityRepository
                     ');
         return $queryMenu->execute();
     }
-
-
-    
-
-
-
-
-
-
     
     // /**
     //  * @return Canales[] Returns an array of Canales objects
