@@ -25,6 +25,8 @@
     var idUsuario = 1;
     var idGrupo = {{ idGrupo }};
 
+    var contador=0;
+
     var alturaPantalla = window.screen.width;
     if (alturaPantalla < 768) {
         $("#barraChat").animate({
@@ -61,7 +63,7 @@
 
     timer = setTimeout("temporizador()", 10000); ///Se refresca cada 10s
     function temporizador() {
-        console.log("Hola");
+        console.log("Refrescado " + (contador++));
         $.ajax({
             url: '/grupos/ajaxRefrescarPantallaConversacion/' + idGrupo,
             success: function (data) {
