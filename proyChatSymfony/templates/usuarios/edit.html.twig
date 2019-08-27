@@ -1,0 +1,147 @@
+
+   <div class="container mt-2">  
+        <div class="row">
+                <div class=" rounded mx-auto d-block">
+                        <img id="imgSalida" height="200" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+                        <!--  URL de las fotos asi:   ../resources/foto-carnet.jpg   -->
+                </div>
+        </div>
+    
+        <div class="row">
+                 <div class="col-md-4 offset-md-4 mt-2 ">
+                            <div class="custom-file">
+                                    <input id="fotoUsuario" name="foto" type="file" class="custom-file-input w-auto" aria-describedby="inputGroupFileAddon03" required>
+                                    <label class="custom-file-label font-weight-bold" for="inputGroupFile03">Buscar archivo</label>
+                            </div>
+                 </div>
+ 
+                 {# <div class="col-md-2  mt-2">
+                        <button class="btn btn-primary btn-block " type=""> Subir imagen </button>
+                 </div>               #}
+         </div>
+         <div class="row">
+                 <hr>
+         </div>
+     
+   
+   
+   
+   {{ form_start(form) }}
+
+
+    <div class="row">
+            <div class="input-group  col-md-3 offset-md-3 mt-2">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text font-weight-bold" id="basic-addon3">Nombre</span>
+                    </div>
+                    {{ form_widget(form.nombre) }}
+            </div>
+
+            <div class="input-group col-md-3 mt-2">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold" >Apellidos</span>
+                        </div>
+                    {{ form_widget(form.apellidos) }}
+            </div>
+
+    </div>
+
+    <div class="row">
+            <div class="input-group col-md-3 offset-md-3 mt-2">
+                     <div class="input-group-prepend">
+                             <span class="input-group-text font-weight-bold" id="basic-addon3">Fecha n.</span>
+                     </div>
+                     {{ form_widget(form.fechaNac) }}
+           </div>
+
+            <div class="input-group col-md-3 mt-2  ">
+                        <div class="input-group-prepend">
+                                <span class="input-group-text font-weight-bold" id="basic-addon3">Puesto</span>
+                        </div>
+
+                        {{ form_widget(form.puesto) }}
+            </div>
+
+    </div>
+
+
+    <div class="row">
+            <div class=" input-group col-md-6 mt-2 offset-md-3 ">
+                    <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
+                    </div>
+                    {{ form_widget(form.correo) }}
+            </div>
+    </div>
+
+    <!--  PASSWORD   COMO ??????  -->
+        <div class="row">
+                <div class="col-md-3 offset-md-3 mt-2">
+                         {{ form_widget(form.password.first) }}
+                </div>
+                <div class="col-md-3 mt-2">
+                    {{ form_widget(form.password.second) }}
+           </div>
+        </div>
+
+
+        <div class="row">            
+                <div class="input-group col-md-6 mt-2 offset-md-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Conocimientos</span>
+                        </div>
+                        {{ form_widget(form.conocimientos) }}
+                </div>
+                <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">            
+
+                <div class="input-group col-md-6 mt-2 offset-md-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text font-weight-bold">Aficiones</span>
+                        </div>
+                        {{ form_widget(form.aficiones) }}
+                </div>
+                <div class="col-md-2"></div>
+        </div>
+ 
+        <div class="row">
+                <div class="col-md-6 offset-md-3 my-2">
+                    {{ form_widget(form.submit) }}
+                </div>              
+        </div>
+        
+        {{ form_end(form) }}
+
+
+
+
+
+        <script type="text/javascript">
+                $(window).on('load',function(){
+                //$(window).load(function(){
+                $(function() {
+                    $('#fotoUsuario').change(function(e) {
+                        addImage(e); 
+                    });
+        
+                    function addImage(e){
+                        var file = e.target.files[0],
+                        imageType = /image.*/;
+                        if (!file.type.match(imageType))
+                        return;
+        
+                        var reader = new FileReader();
+                        reader.onload = fileOnload;
+                        reader.readAsDataURL(file);
+                    }
+        
+                    function fileOnload(e) {
+                        var result=e.target.result;
+                        $('#imgSalida').attr("src",result);
+                    }
+                });
+         });
+        
+        </script>

@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Usuarios{% endblock %}
+
+{% block body %}
+    <h1>Usuarios</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>IdUs</th>
+                <td>{{ usuario.idUs }}</td>
+            </tr>
+            <tr>
+                <th>Correo</th>
+                <td>{{ usuario.correo }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ usuario.password }}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ usuario.nombre }}</td>
+            </tr>
+            <tr>
+                <th>Apellidos</th>
+                <td>{{ usuario.apellidos }}</td>
+            </tr>
+            <tr>
+                <th>Puesto</th>
+                <td>{{ usuario.puesto }}</td>
+            </tr>
+            <tr>
+                <th>Conocimientos</th>
+                <td>{{ usuario.conocimientos }}</td>
+            </tr>
+            <tr>
+                <th>Aficiones</th>
+                <td>{{ usuario.aficiones }}</td>
+            </tr>
+            <tr>
+                <th>Foto</th>
+                <td>{{ usuario.foto }}</td>
+            </tr>
+            <tr>
+                <th>FechaNac</th>
+                <td>{{ usuario.fechaNac ? usuario.fechaNac|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>FechaUltCon</th>
+                <td>{{ usuario.fechaUltCon ? usuario.fechaUltCon|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('usuarios_index') }}">back to list</a>
+
+    <a href="{{ path('usuarios_edit', {'idUs': usuario.idUs}) }}">edit</a>
+
+    {{ include('usuarios/_delete_form.html.twig') }}
+{% endblock %}

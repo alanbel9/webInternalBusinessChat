@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * UC
  *
- * @ORM\Table(name="u-c", uniqueConstraints={@ORM\UniqueConstraint(name="unique", columns={"Id_Us", "Id_Canal"})}, indexes={@ORM\Index(name="ca", columns={"Id_Canal"}), @ORM\Index(name="us", columns={"Id_Us"})})
+ * @ORM\Table(name="u_c", uniqueConstraints={@ORM\UniqueConstraint(name="unique", columns={"Id_Us", "Id_Canal"})}, indexes={@ORM\Index(name="ca", columns={"Id_Canal"}), @ORM\Index(name="us", columns={"Id_Us"})})
  * @ORM\Entity(repositoryClass="App\Repository\UCRepository")
  */
 class UC
@@ -21,6 +21,7 @@ class UC
      */
     private $idUc;
 
+
     /**
      * @var \Canales
      *
@@ -29,7 +30,8 @@ class UC
      *   @ORM\JoinColumn(name="Id_Canal", referencedColumnName="Id_Canal")
      * })
      */
-    private $idCanal;
+    private $canal;
+
 
     /**
      * @var \Usuarios
@@ -41,19 +43,21 @@ class UC
      */
     private $idUs;
 
+
+
     public function getIdUc(): ?int
     {
         return $this->idUc;
     }
 
-    public function getIdCanal(): ?Canales
+    public function getCanal(): ?Canales
     {
-        return $this->idCanal;
+        return $this->canal;
     }
 
-    public function setIdCanal(?Canales $idCanal): self
+    public function setCanal(?Canales $canal): self
     {
-        $this->idCanal = $idCanal;
+        $this->canal = $canal;
 
         return $this;
     }

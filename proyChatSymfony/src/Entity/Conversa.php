@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * Conversa
@@ -43,7 +44,7 @@ class Conversa
      *   @ORM\JoinColumn(name="Id_Us", referencedColumnName="Id_Us")
      * })
      */
-    private $idUs;
+    private $usuario;
 
     /**
      * @var \Canales

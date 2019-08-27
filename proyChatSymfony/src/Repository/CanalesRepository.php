@@ -19,14 +19,52 @@ class CanalesRepository extends ServiceEntityRepository
         parent::__construct($registry, Canales::class);
     }
     
+    public function leerCanalesSuscrito(){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.nombre , n.idCanal 
+                        FROM App\Entity\Canales n 
+                        WHERE n.idCanal IN 
+                            ( SELECT c2.idCanal 
+                            FROM App\Entity\UC uc 
+                            join uc.canal c2 
+                            WHERE uc.idUs = 1 ) 
+                        ORDER BY n.idCanal DESC
+                    '); //  id usuario !!!!!!!!!!!!
+
+        
+        
+        return $queryMenu->execute();
+    }
+
+
     public function leerCanalesOrdenado(){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.nombre FROM App\Entity\Canales n
+                        SELECT n.nombre, n.idCanal 
+                        FROM App\Entity\Canales n
+                        WHERE n.idCanal NOT IN 
+                            ( SELECT c2.idCanal 
+                            FROM App\Entity\UC uc 
+                            join uc.canal c2 
+                            WHERE uc.idUs = 1 ) 
+                        ORDER BY n.idCanal DESC
+                    ');   // NOT IN  para leer solo los grupos NO suscritos.
+        return $queryMenu->execute();
+    }
+
+/*
+    public function leerCanalesOrdenado(){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.nombre, n.idCanal FROM App\Entity\Canales n
                         ORDER BY n.idCanal DESC
                     ');
         return $queryMenu->execute();
     }
+*/
+
+
 
     public function leerInfoCanales(){
         $entityManager = $this->getEntityManager();
@@ -36,6 +74,9 @@ class CanalesRepository extends ServiceEntityRepository
                     ');
         return $queryMenu->execute();
     }
+
+
+    
 
 
 

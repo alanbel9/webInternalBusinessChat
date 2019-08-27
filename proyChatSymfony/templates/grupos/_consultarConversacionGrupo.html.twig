@@ -1,0 +1,22 @@
+{% for mensaje in mensajesItem %}
+
+      <blockquote class="blockquote pt-3">
+        <div class="row">
+                <div class="col-4"><i class="fa fa-envelope-open" aria-hidden="true"></i> 
+                        <a class="font-italic text-primary" data-toggle="modal" data-target="#modalInfoUsuario" href="">
+                             {{mensaje.nombre}} 
+                        </a>
+                </div>
+                <div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i>
+                        <span class="font-italic text-nowrap text-danger"> 
+                                {{ mensaje.fecha|date('h:m:s (d-m-Y)') }}  
+                        </span>
+                </div>
+        </div>
+
+        <p class="mb-0">
+            {{mensaje.mensaje}} 
+        </p>
+    </blockquote>
+
+{% endfor %}
