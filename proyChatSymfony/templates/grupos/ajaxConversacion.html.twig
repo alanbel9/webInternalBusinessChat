@@ -47,7 +47,7 @@
             }
         });
     });
-
+    
     function cargarPantallaChat() {
         $("#contenedorPantallas").fadeOut(200, function () {
             $.ajax({
@@ -59,7 +59,7 @@
         })
     }
 
-    timer = setTimeout("temporizador()", 5000); ///Se refresca cada 5s
+    timer = setTimeout("temporizador()", 10000); ///Se refresca cada 10s
     function temporizador() {
         console.log("Hola");
         $.ajax({
@@ -68,7 +68,7 @@
                 $("#pantallaMensajes").html(data);
             }
         });
-        timer = setTimeout("temporizador()", 5000);
+        timer = setTimeout("temporizador()", 10000);
     }
     
 </script>
