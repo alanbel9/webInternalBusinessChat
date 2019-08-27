@@ -85,14 +85,14 @@ class Conversa
         return $this;
     }
 
-    public function getIdUs(): ?Usuarios
+    public function getUsuario(): ?Usuarios
     {
-        return $this->idUs;
+        return $this->usuario;
     }
 
-    public function setIdUs(?Usuarios $idUs): self
+    public function setUsuario(?Usuarios $usuario): self
     {
-        $this->idUs = $idUs;
+        $this->usuario = $usuario;
 
         return $this;
     }
