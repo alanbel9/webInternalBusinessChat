@@ -38,7 +38,7 @@ class UsuariosRepository extends ServiceEntityRepository
             SELECT n FROM App\Entity\Usuarios n
             WHERE n.idUs = :id
             ')->setParameter("id",$id); 
-            $obj= $queryUsuarios->execute();
+            $obj= $queryUsuarios->getSingleResult();
              return $obj;
     }
 
