@@ -8,7 +8,9 @@
     </div>
 
     
-    <h1 class="pt-4" style="text-align: center">{{ param.nombre }}</h1>
+    <h1 class="pt-4" style="text-align: center">
+            {{ usuario.nombre }}
+    </h1>
 
     <h3 class="pt-4">Mis datos personales:</h3>
 
@@ -18,10 +20,29 @@
     <blockquote><strong>Conocimientos:</strong>
         <p>{{ param.conocimientos }}</p>
     </blockquote>
-    <blockquote><strong>Aficiones:</strong>
-        <p>{{ param.aficiones }}</p>
+
+    <blockquote>
+        <strong>Correo:</strong> 
+        {{ usuario.correo }}
     </blockquote>
-    <blockquote><strong>Grupos de chat:</strong>
+
+    <blockquote>
+        <strong>Puesto de trabajo:</strong> 
+        {{ usuario.puesto }}
+    </blockquote>
+
+    <blockquote>
+        <strong>Conocimientos:</strong>
+        <p>{{ usuario.conocimientos }}</p>
+    </blockquote>
+
+    <blockquote>
+        <strong>Aficiones:</strong>
+        <p>{{ usuario.aficiones }}</p>
+    </blockquote>
+
+    <blockquote>
+        <strong>Grupos de chat:</strong>
         <p>Grupo</p>
     </blockquote>
 </div>
