@@ -1,8 +1,22 @@
     
 {% for persona in param %}
-    <tr data-toggle="modal" onclick="cambiarPantallaUsuario()" data-target="#modalInfoUsuario" href="">
-        <td>{{persona.nombre}}</td>
+    <tr data-toggle="modal" onclick="modalbusqueda(this)" data-target="#modalInfoUsuario" href="">
+        <td id="{{persona.idUs}}">{{persona.nombre}}</td>
         <td>{{persona.apellidos}}</td>
      </tr>
     
 {% endfor %}
+
+
+<script>
+    function modalbusqueda(obj){
+        var id = obj.getElementsByTagName("td")[0].getAttribute("id");
+        $.ajax{
+            //VA LA RUTA DE LA FUNCION DEL CONTROLADOR USER QUE MUESTRE POR PANTALLA LOS PERFILES DE USUARIO!!!!!!!!!!!!!!!!!!!
+            url:"url controlador/"+id,
+            success:function(data){
+
+            }}
+    }
+
+</script>
