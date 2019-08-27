@@ -2,7 +2,13 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Canales;
+use App\Entity\Conversa;
+use App\Repository\CanalesRepository;
+use App\Repository\UsuariosRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -63,29 +69,25 @@ class PrincipalController extends AbstractController
         ]);
     } 
 
-
     /**
-     * @Route("/principal/pantallaInfoGrupo", name="pantallaInfoGrupo")
+     * @Route("/escribirMensaje/{idUsuario}/{idCanal}/{mensaje}", name="escribirMensaje")
      */
-    public function pantallaInfoGrupo()
+    public function escribirMensaje(EntityManagerInterface $em, UsuariosRepository $repUso, 
+                        CanalesRepository $repCan , int $idUsuario, int $idCanal, String $mensaje)
     {
-        return $this->render('principal/_pantallaInfoGrupo.html.twig', [
-            'controller_name' => 'PrincipalController',
-        ]);
-    } 
+        //$usuarioItem= $this->getDoctrine()->getRepository(Usuarios::class)->find($idUsuario);
+        $usu = $repUso->find($idUsuario);
+        $can = $repCan->find($idCanal);
 
+        $obj = new Conversa();
+        $obj->setMensaje($mensaje);
+        $obj->setIdCanal($can);
+        $obj->setUsuario($usu);
+        $obj->setFecha(new DateTime());
 
-
-    /**
-     * @Route("/principal/pantallaChat", name="pantallaChat")
-     */
-    public function pantallaChat()
-    {
-        return $this->render('principal/_pantallaChat.html.twig', [
-            'controller_name' => 'PrincipalController',
-        ]);
-    } 
-    
-
+        $em->persist($obj);
+        $em->flush();
+        return new Response();
+    }
 
 }

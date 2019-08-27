@@ -29,7 +29,7 @@ class UsuariosType extends AbstractType
             'type' => PasswordType::class,
             'invalid_message' => 'Las password deben coincidir.',
             'options' => ['attr' => ['class' => 'form-control']],
-            'required' => true,
+            'required' => false,
             'first_options'  => ['attr' => ['placeholder' => 'Password' , 'class'=>'form-control'] ],
             'second_options' => ['attr' => ['placeholder' => 'Repite password' , 'class'=>'form-control'] ],
         ])
@@ -72,6 +72,7 @@ class UsuariosType extends AbstractType
             ]
         ))*/
         ->add('fechaNac', DateType::class , array(
+            'widget' => 'single_text',
             'attr' => [
                 'class' => 'form-control'
             ]

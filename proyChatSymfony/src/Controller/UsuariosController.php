@@ -21,15 +21,19 @@ class UsuariosController extends AbstractController
       /**
      * @Route("/{idUs}/edit", name="usuarios_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Usuarios $usuario): Response
+    public function edit(Request $request, Usuarios $usuario, UsuariosRepository $repo): Response
     {
+
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
-
+        //die('Con');
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($usuario->getPassword()==null){
+                $password=$repo->find($usuario->getIdUs())->getPassword();
+                $usuario->setPassword($password);
+            }
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('usuarios_index');   //    /principal  ?? 
+            return $this->redirectToRoute('principal');   
         }
 
         return $this->render('usuarios/edit.html.twig', [
