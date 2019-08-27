@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="usuarios")
  * @ORM\Entity(repositoryClass="App\Repository\UsuariosRepository")
- * @UniqueEntity(fields={"email"}
+ * @UniqueEntity(fields={"correo"}
  * 
  */
 class Usuarios
