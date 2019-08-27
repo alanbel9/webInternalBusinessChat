@@ -60,6 +60,7 @@
           url: '/grupos/ajaxObtenerConversacion/' + obj.attr('idGrupo'),
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(500);
+            $('#ns-idGrupo').val(obj.attr('idGrupo'));
           }
         });
       })
