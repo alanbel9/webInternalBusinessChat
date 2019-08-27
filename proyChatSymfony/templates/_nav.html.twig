@@ -13,9 +13,7 @@
   <!-- CONTENIDO  -->
 
   <div id="contenedorPantallas" class="col">
- 
-    {% include 'principal/_pantallaPerfil.html.twig' %}
-
+           
   </div>
 </div>
 
@@ -60,6 +58,7 @@
           url: '/grupos/ajaxObtenerConversacion/' + obj.attr('idGrupo'),
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(500);
+            $('#ns-idGrupo').val(obj.attr('idGrupo'));
           }
         });
       })
