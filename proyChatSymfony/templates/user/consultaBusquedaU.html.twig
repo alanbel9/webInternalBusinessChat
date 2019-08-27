@@ -1,6 +1,6 @@
     
 {% for persona in param %}
-    <tr data-toggle="modal" data-target="#modalInfoUsuario" href="">
+    <tr data-toggle="modal" onclick="cambiarPantallaUsuario()" data-target="#modalInfoUsuario" href="">
         <td>{{persona.nombre}}</td>
         <td>{{persona.apellidos}}</td>
      </tr>
