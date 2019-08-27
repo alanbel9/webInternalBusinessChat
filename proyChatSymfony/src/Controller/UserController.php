@@ -49,7 +49,7 @@ class UserController extends AbstractController
     $usuarioItem = $usuarioRepository->leerPerfilUsuario($id);
 
     return $this->render('user/ajaxInformacion.html.twig', [
-    'usuario' => $usuarioItem,
+    'param' => $usuarioItem,
     ]);
     }
 }
