@@ -25,7 +25,8 @@ class ConversaRepository extends ServiceEntityRepository
         $queryMenu = $entityManager->createQuery('
                         SELECT n.mensaje , u.nombre , n.fecha 
                         FROM App\Entity\Conversa n JOIN n.usuario u  
-                        WHERE n.idCanal = :idgrupo and n.usuario = u.idUs 
+                        WHERE n.idCanal = :idgrupo
+                        ORDER BY n.fecha 
                     ') ->setParameter('idgrupo' , $idgrupo);   
         
         return $queryMenu->execute();
