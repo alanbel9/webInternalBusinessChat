@@ -1,1 +1,27 @@
-<h1> Muestra la información del usuario </h1>
+<div class="container bg-light text-dark shadow p-2"
+    style="font-family: 'Righteous', sans-serif;min-height:90vh;">
+    <div class="row pt-4">
+        <div class="mx-auto">
+            <img id="imgSalida" height="200" src="../resources/foto-carnet.jpg" class="border border-dark"
+                alt="foto perfil">
+        </div>
+    </div>
+
+    
+    <h1 class="pt-4" style="text-align: center">{{ param.nombre }}</h1>
+
+    <h3 class="pt-4">Mis datos personales:</h3>
+
+    <blockquote><strong>Fecha de nacimiento:</strong> {{ param.fechaNac }}</blockquote>
+    <blockquote><strong>Correo:</strong> {{ param.correo }}</blockquote>
+    <blockquote><strong>Puesto de trabajo:</strong> {{ param.puesto }}</blockquote>
+    <blockquote><strong>Conocimientos:</strong>
+        <p>{{ param.conocimientos }}</p>
+    </blockquote>
+    <blockquote><strong>Aficiones:</strong>
+        <p>{{ param.aficiones }}</p>
+    </blockquote>
+    <blockquote><strong>Grupos de chat:</strong>
+        <p>Grupo</p>
+    </blockquote>
+</div>

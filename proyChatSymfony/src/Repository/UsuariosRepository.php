@@ -31,6 +31,16 @@ class UsuariosRepository extends ServiceEntityRepository
         }
 
 
+    public function leerPerfilUsuario(int $id){
+            $id=1;
+            $entityManager = $this->getEntityManager();
+            $queryUsuarios = $entityManager->createQuery('
+            SELECT n FROM App\Entity\Usuarios n
+            WHERE n.idUs = :id
+            ')->setParameter("id",$id); 
+            $obj= $queryUsuarios->execute();
+             return $obj;
+    }
 
     // /**
     //  * @return Usuarios[] Returns an array of Usuarios objects

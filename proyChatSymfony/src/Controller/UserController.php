@@ -39,4 +39,18 @@ class UserController extends AbstractController
     ]);
     }
 
+
+    /**
+    * @Route("/leerPerfilUsuario/{busqueda}", name="leerPerfilUsuario" )
+    */
+    public function leerPerfilUsuario(int $busqueda)
+    {
+    $param=$busqueda;
+    $usuarioRepository= $this->getDoctrine()->getRepository(Usuarios::class);
+    $usuarioItem = $usuarioRepository->leerPerfilUsuario($param);
+
+    return $this->render('user/ajaxInformacion.html.twig', [
+    'param' => $usuarioItem,
+    ]);
+    }
 }
