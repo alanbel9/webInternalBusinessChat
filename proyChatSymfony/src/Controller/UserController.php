@@ -16,17 +16,6 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/modificarInfoUsuario/{idUsuario}", name="modificarInfoUsuario")
-     */
-    public function modificarInfoUsuario(int $idUsuario){
-
-        // php bin/console make:form   ????  estudiar
-
-        return new Response("Usuario modificado.");
-    }
-
-
-    /**
      * @Route("/ajaxLeerInformacion/{idUsuario}", name="ajaxLeerInformacion")
      */
     public function ajaxLeerInformacion()

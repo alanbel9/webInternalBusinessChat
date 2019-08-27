@@ -20,12 +20,6 @@ class UCRepository extends ServiceEntityRepository
     }
 
 
-    //public function insertarUsuarioEnGrupo(){
-
-//    }
-
-
-
     
     // /**
     //  * @return UC[] Returns an array of UC objects
