@@ -1,11 +1,8 @@
 <div id="pantallaMensajes" class="container bg-light text-dark shadow"
     style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
 
-    <!-- ------------------------------AJAX-------------------------------------------------------------------------------- -->
-
     {% include 'grupos/_consultarConversacionGrupo.html.twig' %}
 
-    <!-- ---------------------------------------------------------------------------------------------------------------------------- -->
 </div>
 
 <div id="barraChat" class='fixed-bottom bg-primary p-3' style="height:0px">
@@ -25,6 +22,9 @@
     </div>
 </div>
 <script>
+    var idUsuario = 1;
+    var idGrupo = {{ idGrupo }};
+
     var alturaPantalla = window.screen.width;
     if (alturaPantalla < 768) {
         $("#barraChat").animate({
@@ -36,13 +36,9 @@
         });
     }
     $("#botonEnviar").on("click", function () {
-        //var d = new Date();
-        //var ahoraMismo = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
-        //$("#pantallaMensajes").prepend('<blockquote class="blockquote pt-3"><div class="row"><div class="col-4"><i class="fa fa-envelope" aria-hidden="true"></i> <a class="font-italic text-primary" data-toggle="modal" data-target="#modalInfoUsuario" href=""> Nombre</a></div><div class="col-8 text-right"><i class="fa fa-clock-o" aria-hidden="true"></i><span class="font-italic text-danger text-nowrap"> ' + ahoraMismo + '</span></div></div><p class="mb-0">' + $("#mensajeEnviar").val() + '</p></blockquote>');
         $("#botonEnviar").off();
-        alert($('#ns-idCanal').val());
         $.ajax({
-            url: '/principal/escribirMensaje/' + $('#ns-idUsuario').val()  + "/" + $('#ns-idCanal').val() + "/" + $("#mensajeEnviar").val(),
+            url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
                 //$("#pantallaMensajes").html(data).fadeIn(200);
                 $("#mensajeEnviar").val("");
@@ -54,9 +50,8 @@
 
     function cargarPantallaChat() {
         $("#contenedorPantallas").fadeOut(200, function () {
-            //$(this).load("../plantillas/pantallas/pantallaChat.php").fadeIn(300);
             $.ajax({
-                url: '/grupos/ajaxObtenerConversacion/' + 1,
+                url: '/grupos/ajaxObtenerConversacion/' + idGrupo,
                 success: function (data) {
                     $("#contenedorPantallas").html(data).fadeIn(500);
                 }

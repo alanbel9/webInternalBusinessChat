@@ -52,7 +52,8 @@ class GruposController extends AbstractController
 
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
-            'mensajesItem' => $mensajesItem
+            'mensajesItem' => $mensajesItem,
+            'idGrupo' => $idGrupo
         ]);
     }
 
