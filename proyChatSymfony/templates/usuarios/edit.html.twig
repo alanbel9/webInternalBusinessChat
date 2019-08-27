@@ -26,9 +26,7 @@
    
    
    
-   {{ form_start(form) }}
-
-
+   {{ form_start(form, {'action': '/usuarios/' ~ usuario.idUs ~ '/edit'}) }}
     <div class="row">
             <div class="input-group  col-md-3 offset-md-3 mt-2">
                     <div class="input-group-prepend">
@@ -117,7 +115,6 @@
 
 
 
-
         <script type="text/javascript">
                 $(window).on('load',function(){
                 //$(window).load(function(){
@@ -145,3 +142,5 @@
          });
         
         </script>
+
+       

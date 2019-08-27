@@ -31,7 +31,7 @@ class Usuarios
     /**
      * @var string
      *
-     * @ORM\Column(name="Password", type="string", length=100, nullable=false)
+     * @ORM\Column(name="Password", type="string", length=100, nullable=true)
      */
     private $password;
 
@@ -40,56 +40,56 @@ class Usuarios
      *
      * @ORM\Column(name="Nombre", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $nombre = 'NULL';
+    private $nombre;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Apellidos", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $apellidos = 'NULL';
+    private $apellidos;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Puesto", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $puesto = 'NULL';
+    private $puesto;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Conocimientos", type="text", length=0, nullable=true, options={"default"="NULL"})
      */
-    private $conocimientos = 'NULL';
+    private $conocimientos;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Aficiones", type="text", length=0, nullable=true, options={"default"="NULL"})
      */
-    private $aficiones = 'NULL';
+    private $aficiones;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Foto", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $foto = 'NULL';
+    private $foto;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="Fecha_Nac", type="date", nullable=true, options={"default"="NULL"})
      */
-    private $fechaNac = 'NULL';
+    private $fechaNac;
 
     /**
      * @var \DateTime|null
      *
      * @ORM\Column(name="Fecha_Ult_Con", type="datetime", nullable=true, options={"default"="NULL"})
      */
-    private $fechaUltCon = 'NULL';
+    private $fechaUltCon;
 
     public function getIdUs(): ?int
     {
