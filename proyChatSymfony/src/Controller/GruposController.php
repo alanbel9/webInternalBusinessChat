@@ -58,6 +58,20 @@ class GruposController extends AbstractController
     }
 
     /**
+     * @Route("/ajaxRefrescarPantallaConversacion/{idGrupo}", name="ajaxRefrescarPantallaConversacion")
+     */
+    public function ajaxRefrescarPantallaConversacion(int $idGrupo)
+    {
+        $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
+        $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
+
+        return $this->render('grupos/_consultarConversacionGrupo.html.twig', [
+            'controller_name' => 'GruposController',
+            'mensajesItem' => $mensajesItem
+        ]);
+    }
+
+    /**
      * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
      */
     public function ajaxObtenerInformacion(int $idGrupo)
