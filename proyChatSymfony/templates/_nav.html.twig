@@ -68,8 +68,9 @@
     $("#barraIzquierda .infoGrupo").off().on("click", function (event) {
       $("#contenedorPantallas").fadeOut(200, function () {
         //$(this).load('../plantillas/pantallas/pantallaInfoGrupo.php').fadeIn(300);
+         var idgrupo=1;//TRABAJANDO EN ELLO
         $.ajax({
-          url: '/principal/pantallaInfoGrupo',
+          url: '/grupos/ajaxObtenerConversacion/'+idgrupo,
           success: function (data) {
             $("#contenedorPantallas").html(data).fadeIn(200);
           }
