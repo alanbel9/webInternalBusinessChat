@@ -20,6 +20,15 @@ class UCRepository extends ServiceEntityRepository
     }
 
 
+    public function gruposUsuario(int $id){
+        $entityManager = $this->getEntityManager();
+        $queryUsuarios = $entityManager->createQuery('
+        SELECT n FROM App\Entity\UC n
+        WHERE n.IdUs = :id
+        ')->setParameter("id",$id); 
+        $obj= $queryUsuarios->execute();
+         return $obj;
+}
     
     // /**
     //  * @return UC[] Returns an array of UC objects
