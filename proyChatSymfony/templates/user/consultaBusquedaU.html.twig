@@ -1,7 +1,7 @@
     
 {% for persona in param %}
-    <tr data-toggle="modal" onclick="modalbusqueda(this)" data-target="#modalInfoUsuario" href="">
-        <td id="{{persona.idUs}}">{{persona.nombre}}</td>
+    <tr id="{{persona.idUs}}" class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" href="">
+        <td >{{persona.nombre}}</td>
         <td>{{persona.apellidos}}</td>
      </tr>
     
@@ -9,14 +9,25 @@
 
 
 <script>
-    function modalbusqueda(obj){
-        var id = obj.getElementsByTagName("td")[0].getAttribute("id");
+  /*  function modalbusqueda(obj){
+        var id = obj.getElementsByTagName("tr").getAttribute("id");
         $.ajax{
             //VA LA RUTA DE LA FUNCION DEL CONTROLADOR USER QUE MUESTRE POR PANTALLA LOS PERFILES DE USUARIO!!!!!!!!!!!!!!!!!!!
-            url:"url controlador/"+id,
+            url:"/user/leerPerfilUsuario/"+id,
             success:function(data){
 
-            }}
-    }
+            }};
+    }*/
+
+    $(".conModal").off().on("click", function(){
+        var idUser =$(this).attr("id");
+        alert(idUser);
+        $.ajax{
+            //VA LA RUTA DE LA FUNCION DEL CONTROLADOR USER QUE MUESTRE POR PANTALLA LOS PERFILES DE USUARIO!!!!!!!!!!!!!!!!!!!
+            url:"/user/leerPerfilUsuario/"+idUser,
+            success:function(data){
+                $("#idModal").html(data);
+            }};
+    })
 
 </script>
