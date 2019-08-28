@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div id="divModal" class="modal-body">
         
-            {% include 'user/ajaxInformacion.html.twig' %}
+            
 
       </div>
       <div class="modal-footer">
@@ -12,3 +12,21 @@
     </div>
   </div>
 </div>
+
+
+
+<script>
+
+    function modalbusqueda(obj){
+        $("#divModal").html("Cargando");
+        var id = obj.getAttribute("id");
+        $.ajax({
+            //VA LA RUTA DE LA FUNCION DEL CONTROLADOR USER QUE MUESTRE POR PANTALLA LOS PERFILES DE USUARIO!!!!!!!!!!!!!!!!!!!
+            url:"/user/leerPerfilUsuario/"+id,
+            success:function(data){
+                $("#divModal").html(data);
+            }
+        });
+    }
+
+</script>
