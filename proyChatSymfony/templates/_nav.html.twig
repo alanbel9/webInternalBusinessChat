@@ -72,7 +72,7 @@
       var idgrupo=$(this).attr('idGrupo');
       $("#contenedorPantallas").fadeOut(200, function () {
         $.ajax({
-          url: '/grupos/ajaxObtenerConversacion/' + idgrupo,
+          url: '/grupos/ajaxOpciones/' + idgrupo,
           success: function (data) {
             refrescando=false;
             $("#contenedorPantallas").html(data).fadeIn(200);
