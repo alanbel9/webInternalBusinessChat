@@ -38,14 +38,7 @@
         });
     }
     $("#botonEnviar").on("click", function () {
-        
         $("#botonEnviar").off();
-        $("#barraChat").animate({
-            height: '0px'
-        });
-
-        $("#pantallaMensajes").html("<h1>Mensaje enviado...</h1>");
-
         $.ajax({
             url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
