@@ -25,11 +25,12 @@ class UsuariosType extends AbstractType
                 'readonly' => 'yes'
             ]
         ))
-        ->add('password', RepeatedType::class, [
+        ->add('plainPassword', RepeatedType::class, [
             'type' => PasswordType::class,
             'invalid_message' => 'Las password deben coincidir.',
             'options' => ['attr' => ['class' => 'form-control']],
             'required' => false,
+            'mapped' => false,
             'first_options'  => ['attr' => ['placeholder' => 'Password' , 'class'=>'form-control'] ],
             'second_options' => ['attr' => ['placeholder' => 'Repite password' , 'class'=>'form-control'] ],
         ])

@@ -7,10 +7,11 @@ namespace App\Controller;
 use App\Entity\Usuarios;
 use App\Form\UsuariosType;
 use App\Repository\UsuariosRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/usuarios")
@@ -21,13 +22,27 @@ class UsuariosController extends AbstractController
       /**
      * @Route("/{idUs}/edit", name="usuarios_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Usuarios $usuario, UsuariosRepository $repo): Response
+    public function edit(Request $request, Usuarios $usuario, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
-        //die('Con');
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $password=$form->get('plainPassword')->getData();
+            if ($password==null){
+                $password=$repo->find($usuario->getIdUs())->getPassword();
+                $usuario->setPassword($password);
+            }else{
+                $usuario->setPassword(
+                    $passwordEncoder->encodePassword(    //  UserInterface  !!!!!!!!!!!!!!!!
+                        $usuario,
+                        $password
+                    )
+                );
+
+            }
+
             if ($usuario->getPassword()==null){
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
