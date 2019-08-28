@@ -66,17 +66,20 @@
             });
         })
     }
-
-    timer = setTimeout("temporizador()", 30000); ///Se refresca cada 30s
+    hilos++;
+    timer = setTimeout("temporizador()", 5000); ///Se refresca cada 5s
     function temporizador() {
-        console.log("Refrescado " + (contador++));
+        console.log("Refrescado " + (contador++) + " grupo " + idGrupo + " hilos " + hilos);       
         $.ajax({
             url: '/grupos/ajaxRefrescarPantallaConversacion/' + idGrupo,
             success: function (data) {
-                $("#pantallaMensajes").html(data);
+                if(hilos==1){
+                    $("#pantallaMensajes").html(data);
+                    timer = setTimeout("temporizador()", 5000);
+                }else{
+                    hilos--;
+                }
             }
         });
-        timer = setTimeout("temporizador()", 30000);
     }
-    
 </script>
