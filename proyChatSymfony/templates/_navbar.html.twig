@@ -46,18 +46,16 @@
     $(function () {
         $("#menuGrupos").children().click(function (event) {
             $(this).addClass("disabled");
-            $("#barraIzquierda").append('<a class="nav-link" idGrupo="' + $(this).attr('idGrupo') + '" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' 
+            $("#barraIzquierda").append('<a class="nav-link" idGrupo="' + $(this).attr('idGrupo') + '" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> '
                 + $(this).text() + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Información</a><a id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Opciones</a></div>');
             eventosBarraLateral();
         });
-
-        var idUsuario = 1 ;    //    CAMBIAR !!!!!!!!!!!
-
         $("#modificarPerfil").off().on("click", function () {
             $("#contenedorPantallas").fadeOut(200, function () {
                 //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
+                alert(idUsuario);
                 $.ajax({
-                    url: '/usuarios/' + idUsuario +'/edit',
+                    url: '/usuarios/' + idUsuario + '/edit',
                     success: function (data) {
                         $("#contenedorPantallas").html(data).fadeIn(200);
                     }
@@ -66,16 +64,30 @@
         });
     });
 
+    $("#botonBuscar").click(function (event) {
+        var palabraBuscar = $.trim($("#idBusqueda").val());
+        if (palabraBuscar != "") {
+            $("#contenedorPantallas").fadeOut(200, function () {
+                //Petición a BBDD y AJAX
+                //$(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
+                $.ajax({
+                    url: '/user/ajaxBuscarUsuario/' + $("#idBusqueda").val(),
+                    success: function (data) {
+                        $("#contenedorPantallas").html(data).fadeIn(200);
+                    }
+                });
+            });
+        }
+    });
 
-    function insertarUser(objeto){
-        var idUsuario = 1;  // Esto se sacará de variable sesión.   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    function insertarUser(objeto) {
         var idGrupo = objeto.getAttribute('idGrupo');
         $.ajax({
-                    // LLAMADA A CONTROLADOR GRUPOS.
-                    url: '/grupos/insertarUsuario/' + idGrupo + "-" + idUsuario,
-                    success: function (data) {
-                        console.log("Grupo agregado al usuario.");
-                    }
+            // LLAMADA A CONTROLADOR GRUPOS.
+            url: '/grupos/insertarUsuario/' + idGrupo + "-" + idUsuario,
+            success: function (data) {
+                console.log("Grupo agregado al usuario.");
+            }
         });
     }
 </script>

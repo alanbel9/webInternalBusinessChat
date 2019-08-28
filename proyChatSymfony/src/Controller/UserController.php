@@ -4,9 +4,6 @@ namespace App\Controller;
 
 
 use App\Entity\Usuarios;
-use App\Entity\UC;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -48,10 +45,9 @@ class UserController extends AbstractController
     {
     $usuarioRepository= $this->getDoctrine()->getRepository(Usuarios::class);
     $usuarioItem = $usuarioRepository->leerPerfilUsuario($id);
-    $grupoItem= $ucRepository->gruposUsuario($id);
 
     return $this->render('user/ajaxInformacion.html.twig', [
-    'param' => $usuarioItem,'grupo'=>$grupoItem
+    'param' => $usuarioItem
     ]);
     }
 }

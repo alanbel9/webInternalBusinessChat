@@ -13,7 +13,7 @@
 
     <h3 class="pt-4">Mis datos personales:</h3>
 
-    <blockquote><strong>Fecha de nacimiento:</strong> {{ param.fechaNac ? "" : post.published_at|date("d/m/Y")}}</blockquote>
+    <blockquote><strong>Fecha de nacimiento:</strong> {{ param.fechaNac|date("d/m/Y")}}</blockquote>
     <blockquote><strong>Correo:</strong> {{ param.correo }}</blockquote>
     <blockquote><strong>Puesto de trabajo:</strong> {{ param.puesto }}</blockquote>
     <blockquote><strong>Conocimientos:</strong>
