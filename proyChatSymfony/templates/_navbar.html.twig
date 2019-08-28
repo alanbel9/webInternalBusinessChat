@@ -52,11 +52,10 @@
         });
         $("#modificarPerfil").off().on("click", function () {
             $("#contenedorPantallas").fadeOut(200, function () {
-                //$(this).load("../plantillas/pantallas/pantallaModificarPerfil.php").fadeIn(300);
-                alert(idUsuario);
                 $.ajax({
                     url: '/usuarios/' + idUsuario + '/edit',
                     success: function (data) {
+                        refrescando=false;
                         $("#contenedorPantallas").html(data).fadeIn(200);
                     }
                 });
@@ -68,11 +67,10 @@
         var palabraBuscar = $.trim($("#idBusqueda").val());
         if (palabraBuscar != "") {
             $("#contenedorPantallas").fadeOut(200, function () {
-                //Petición a BBDD y AJAX
-                //$(this).load('../plantillas/pantallas/pantallaBuscar.php').fadeIn(300);
                 $.ajax({
                     url: '/user/ajaxBuscarUsuario/' + $("#idBusqueda").val(),
                     success: function (data) {
+                        refrescando=false;
                         $("#contenedorPantallas").html(data).fadeIn(200);
                     }
                 });
