@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -13,7 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields={"correo"})
  * 
  */
-class Usuarios
+class Usuarios implements UserInterface
 {
     /**
      * @var int
@@ -135,6 +136,10 @@ class Usuarios
         return $this;
     }
 
+    public function getUsername(){
+        return $this->nombre;
+    }
+
     public function getApellidos(): ?string
     {
         return $this->apellidos;
@@ -219,5 +224,17 @@ class Usuarios
         return $this;
     }
 
+    public function getRoles(){
+        $roles=['ROLE_USER'];
+        return $roles;
+    }
+
+    public function getSalt(){
+
+    }
+
+    public function eraseCredentials(){
+
+    }
 
 }
