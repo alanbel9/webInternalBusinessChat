@@ -1,10 +1,12 @@
-<div class="container mt-5 text-center">
-  <h1>¿Desea cancelar su suscripción al grupo?</h1>
-  <button type="button" class="btn btn-primary mt-5 btn-lg" data-toggle="modal" data-target="#exampleModal">
-    ok
-  </button>
+<div id="pantallaOpciones" class="container bg-light text-dark shadow"
+  style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
+  <div class="container pt-5 text-center">
+    <h1>¿Desea cancelar su suscripción al grupo?</h1>
+    <button type="button" class="btn btn-primary mt-5 btn-lg" data-toggle="modal" data-target="#exampleModal">
+      ok
+    </button>
+  </div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -24,13 +26,13 @@
 </div>
 
 <script>
-  function borrarGrupo(){
-    
+  function borrarGrupo() {
+
     $.ajax({
-      url:"/grupos/borrarGrupo/" + {{idGrupo}},
-            success:function(data){
-              location.reload();
-            }
+      url: "/grupos/borrarGrupo/" + {{ idGrupo }},
+  success: function(data) {
+    location.reload();
+  }
     })
   }
 </script>
