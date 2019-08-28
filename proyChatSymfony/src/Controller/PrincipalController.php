@@ -25,14 +25,16 @@ class PrincipalController extends AbstractController
     {
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
-
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito();
 
+        $userRepository= $this->getDoctrine()->getRepository(Usuarios::class);
+        $userItem = $userRepository->leerPerfilUsuarioSession();  // ojo ID USUARIO !!!!!!!!
 
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
             'canalesItem' => $canalesItem ,
-            'canalesSuscrito' => $canalesSuscrito 
+            'canalesSuscrito' => $canalesSuscrito ,
+            'param' => $userItem
         ]);
     }
 
