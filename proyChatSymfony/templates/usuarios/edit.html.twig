@@ -15,9 +15,7 @@
                             </div>
                  </div>
  
-                 {# <div class="col-md-2  mt-2">
-                        <button class="btn btn-primary btn-block " type=""> Subir imagen </button>
-                 </div>               #}
+
          </div>
          <div class="row">
                  <hr>
@@ -27,6 +25,17 @@
    
    
    {{ form_start(form, {'action': '/usuarios/' ~ usuario.idUs ~ '/edit'}) }}
+
+   <div class="row">
+        <div class="input-group  col-md-6 offset-md-3 mt-2 mb-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bold" id="basic-addon3">Subir imagen</span>
+                </div>
+                {{ form_widget(form.foto) }}
+        </div>
+
+</div>
+
     <div class="row">
             <div class="input-group  col-md-3 offset-md-3 mt-2">
                     <div class="input-group-prepend">

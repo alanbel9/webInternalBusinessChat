@@ -47,6 +47,12 @@ class UsuariosController extends AbstractController
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }
+
+            $file = $form->get("foto")->getData();
+            $fileName = md5(uniqid()) . "." . $file->guessExtension();
+            $file->move($this->getParameter("upload_directory") , $fileName );
+            $usuario->setFoto($fileName);
+
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('principal');   
         }
