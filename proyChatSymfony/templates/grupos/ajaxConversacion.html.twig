@@ -38,7 +38,11 @@
         });
     }
     $("#botonEnviar").on("click", function () {
+
         $("#botonEnviar").off();
+        $("#barraChat").animate({
+            height: '0px'
+        });
         $.ajax({
             url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
