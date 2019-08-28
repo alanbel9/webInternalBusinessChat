@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Canales;
 use App\Entity\Conversa;
+use App\Entity\Usuarios;
 use App\Repository\CanalesRepository;
 use App\Repository\UsuariosRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,14 +25,16 @@ class PrincipalController extends AbstractController
     {
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
-
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito();
 
+        $userRepository= $this->getDoctrine()->getRepository(Usuarios::class);
+        $userItem = $userRepository->leerPerfilUsuarioSession();  // ojo ID USUARIO !!!!!!!!
 
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
             'canalesItem' => $canalesItem ,
-            'canalesSuscrito' => $canalesSuscrito 
+            'canalesSuscrito' => $canalesSuscrito ,
+            'param' => $userItem
         ]);
     }
 
