@@ -5,6 +5,7 @@ namespace App\Controller;
 use DateTime;
 use App\Entity\Canales;
 use App\Entity\Conversa;
+use App\Entity\Usuarios;
 use App\Repository\CanalesRepository;
 use App\Repository\UsuariosRepository;
 use Doctrine\ORM\EntityManagerInterface;

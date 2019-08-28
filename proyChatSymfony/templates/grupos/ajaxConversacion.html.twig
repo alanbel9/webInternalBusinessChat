@@ -22,7 +22,7 @@
     </div>
 </div>
 <script>
-    var idUsuario = 1;
+    var idUsuario = 4;
     var idGrupo = {{ idGrupo }};
 
     var contador=0;
@@ -61,7 +61,7 @@
         })
     }
 
-    timer = setTimeout("temporizador()", 10000); ///Se refresca cada 10s
+    timer = setTimeout("temporizador()", 30000); ///Se refresca cada 30s
     function temporizador() {
         console.log("Refrescado " + (contador++));
         $.ajax({
@@ -70,7 +70,7 @@
                 $("#pantallaMensajes").html(data);
             }
         });
-        timer = setTimeout("temporizador()", 10000);
+        timer = setTimeout("temporizador()", 30000);
     }
     
 </script>
