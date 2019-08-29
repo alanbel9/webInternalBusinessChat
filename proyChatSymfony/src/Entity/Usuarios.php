@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -94,6 +96,16 @@ class Usuarios implements UserInterface
      * @ORM\Column(name="Fecha_Ult_Con", type="datetime", nullable=true, options={"default"="NULL"})
      */
     private $fechaUltCon;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UC", mappedBy="idUs", orphanRemoval=true)
+     */
+    private $ucs;
+
+    public function __construct()
+    {
+        $this->ucs = new ArrayCollection();
+    }
 
     public function getIdUs(): ?int
     {
@@ -235,6 +247,37 @@ class Usuarios implements UserInterface
 
     public function eraseCredentials(){
 
+    }
+
+    /**
+     * @return Collection|UC[]
+     */
+    public function getUcs(): Collection
+    {
+        return $this->ucs;
+    }
+
+    public function addUc(UC $uc): self
+    {
+        if (!$this->ucs->contains($uc)) {
+            $this->ucs[] = $uc;
+            $uc->setUsuarios($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUc(UC $uc): self
+    {
+        if ($this->ucs->contains($uc)) {
+            $this->ucs->removeElement($uc);
+            // set the owning side to null (unless already changed)
+            if ($uc->getUsuarios() === $this) {
+                $uc->setUsuarios(null);
+            }
+        }
+
+        return $this;
     }
 
 }

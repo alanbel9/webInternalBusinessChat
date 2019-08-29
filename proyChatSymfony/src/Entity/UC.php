@@ -36,13 +36,12 @@ class UC
     /**
      * @var \Usuarios
      *
-     * @ORM\ManyToOne(targetEntity="Usuarios")
+     * @ORM\ManyToOne(targetEntity="Usuarios", inversedBy="ucs")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Us", referencedColumnName="Id_Us")
      * })
      */
     private $idUs;
-
 
 
     public function getIdUc(): ?int
