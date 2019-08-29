@@ -6,12 +6,7 @@ use App\Entity\Canales;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
-/**
- * @method Canales|null find($id, $lockMode = null, $lockVersion = null)
- * @method Canales|null findOneBy(array $criteria, array $orderBy = null)
- * @method Canales[]    findAll()
- * @method Canales[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
- */
+
 class CanalesRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -21,31 +16,32 @@ class CanalesRepository extends ServiceEntityRepository
     
     public function leerCanalesSuscrito(){
         $entityManager = $this->getEntityManager();
+        $idUsuario = 1;   //  $_SESSION['idUsuario']
         $queryMenu = $entityManager->createQuery('
                         SELECT n.nombre , n.idCanal 
                         FROM App\Entity\Canales n 
                         WHERE n.idCanal IN 
                             ( SELECT c2.idCanal 
-                            FROM App\Entity\UC uc 
-                            join uc.canal c2 
-                            WHERE uc.idUs = 1 ) 
-                        ORDER BY n.idCanal DESC
-                    '); //  id usuario !!!!!!!!!!!!
+                                FROM App\Entity\UC uc join uc.canal c2 
+                                WHERE uc.idUs = :idUsuario )    
+                                ORDER BY n.idCanal DESC
+                            ')->setParameter("idUsuario",$idUsuario);
         return $queryMenu->execute();
     }
 
     public function leerCanalesOrdenado(){
         $entityManager = $this->getEntityManager();
+        $idUsuario = 1;   //  $_SESSION['idUsuario']
         $queryMenu = $entityManager->createQuery('
                         SELECT n.nombre, n.idCanal 
                         FROM App\Entity\Canales n
                         WHERE n.idCanal NOT IN 
                             ( SELECT c2.idCanal 
-                            FROM App\Entity\UC uc 
-                            join uc.canal c2 
-                            WHERE uc.idUs = 1 ) 
-                        ORDER BY n.idCanal DESC
-                    ');   // NOT IN  para leer solo los grupos NO suscritos.
+                                FROM App\Entity\UC uc join uc.canal c2 
+                                WHERE uc.idUs = :idUsuario ) 
+                                ORDER BY n.idCanal DESC
+                            ')->setParameter("idUsuario",$idUsuario);   
+                            // NOT IN  para leer solo los grupos NO suscritos.
         return $queryMenu->execute();
     }
 
@@ -70,32 +66,5 @@ class CanalesRepository extends ServiceEntityRepository
         return $queryMenu->getSingleResult();
     }
     
-    // /**
-    //  * @return Canales[] Returns an array of Canales objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Canales
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+   
 }

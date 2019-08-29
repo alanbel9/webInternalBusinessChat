@@ -92,6 +92,9 @@ class GruposController extends AbstractController
         return new Response("Grupo borrado de la lista de suscripciones.");
     }    
 
+
+
+    
     /**
      * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
      */
@@ -108,16 +111,5 @@ class GruposController extends AbstractController
 
 
 
-    /**
-     * @Route("/jsonObtenerConversacion/{idGrupo}", name="jsonObtenerConversacion")
-     */
-    public function jsonObtenerConversacion(int $idGrupo)
-    {
-        //Obtener el repositorio
-        //Ejecutar una funcion hecho por vosotros que internamente lleve DQL, 
-
-        $o="hola";
-        return $this->json($o);
-    }
 
 }
