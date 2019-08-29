@@ -72,6 +72,27 @@ class GruposController extends AbstractController
     }
 
     /**
+     * @Route("/ajaxOpciones/{idGrupo}", name="ajaxOpciones")
+     */
+    public function ajaxOpciones(int $idGrupo)
+    {
+        return $this->render('grupos/ajaxOpciones.html.twig', [
+            'idGrupo' => $idGrupo,
+        ]);
+    }    
+
+    /**
+     * @Route("/borrarGrupo/{idGrupo}", name="borrarGrupo")
+     */
+    public function borrarGrupo(int $idGrupo)
+    {
+        $UCRepository= $this->getDoctrine()->getRepository(UC::class);
+        $UCRepository->borrarGrupo($idGrupo);
+
+        return new Response("Grupo borrado de la lista de suscripciones.");
+    }    
+
+    /**
      * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
      */
     public function ajaxObtenerInformacion(int $idGrupo)

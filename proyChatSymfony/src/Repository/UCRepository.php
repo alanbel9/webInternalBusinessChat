@@ -28,7 +28,19 @@ class UCRepository extends ServiceEntityRepository
         ')->setParameter("id",$id); 
         $obj= $queryUsuarios->execute();
          return $obj;
-}
+    }
+
+    public function borrarGrupo(int $idGrupo){
+        $entityManager = $this->getEntityManager();
+        $queryUsuarios = $entityManager->createQuery('
+            DELETE FROM App\Entity\UC n
+            WHERE n.idUs = :id and n.canal = :grupo
+        ')->setParameters(array(
+            'id' => 2,
+            'grupo' => $idGrupo
+        )); 
+        $queryUsuarios->execute();
+    }
     
     // /**
     //  * @return UC[] Returns an array of UC objects

@@ -22,7 +22,6 @@
     </div>
 </div>
 <script>
-    var idUsuario = 4;
     var idGrupo = {{ idGrupo }};
 
     var contador=0;
@@ -49,7 +48,7 @@
         $.ajax({
             url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
-                //$("#pantallaMensajes").html(data).fadeIn(200);
+                refrescando=false;
                 $("#mensajeEnviar").val("");
                 console.log("Mensaje guardado en la base de datos");
                 cargarPantallaChat();
@@ -62,22 +61,28 @@
             $.ajax({
                 url: '/grupos/ajaxObtenerConversacion/' + idGrupo,
                 success: function (data) {
+                    refrescando=false;
                     $("#contenedorPantallas").html(data).fadeIn(500);
                 }
             });
         })
     }
 
-    timer = setTimeout("temporizador()", 30000); ///Se refresca cada 30s
+    refrescando=true;
+    hilos++;
+    timer = setTimeout("temporizador()", 5000); ///Se refresca cada 5s
     function temporizador() {
-        console.log("Refrescado " + (contador++));
+        console.log("Refrescado " + (contador++) + " grupo " + idGrupo + " hilos " + hilos);       
         $.ajax({
             url: '/grupos/ajaxRefrescarPantallaConversacion/' + idGrupo,
             success: function (data) {
-                $("#pantallaMensajes").html(data);
+                if(hilos==1 && refrescando){
+                    $("#pantallaMensajes").html(data);
+                    timer = setTimeout("temporizador()", 5000);
+                }else{
+                    hilos--;
+                }
             }
         });
-        timer = setTimeout("temporizador()", 30000);
     }
-    
 </script>

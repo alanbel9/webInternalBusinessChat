@@ -28,7 +28,7 @@ class CanalesRepository extends ServiceEntityRepository
                             ( SELECT c2.idCanal 
                             FROM App\Entity\UC uc 
                             join uc.canal c2 
-                            WHERE uc.idUs = 1 ) 
+                            WHERE uc.idUs = 2 ) 
                         ORDER BY n.idCanal DESC
                     '); //  id usuario !!!!!!!!!!!!
         return $queryMenu->execute();
@@ -43,7 +43,7 @@ class CanalesRepository extends ServiceEntityRepository
                             ( SELECT c2.idCanal 
                             FROM App\Entity\UC uc 
                             join uc.canal c2 
-                            WHERE uc.idUs = 1 ) 
+                            WHERE uc.idUs = 2 ) 
                         ORDER BY n.idCanal DESC
                     ');   // NOT IN  para leer solo los grupos NO suscritos.
         return $queryMenu->execute();
