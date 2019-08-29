@@ -26,6 +26,9 @@
 
     <blockquote>
         <strong>Grupos de chat:</strong>
-        <p>Grupo</p>
+        <p>{% for uc in param.ucs %}
+            {{ uc.canal.nombre}}.
+        {% endfor %}</p>
+        
     </blockquote>
 </div>

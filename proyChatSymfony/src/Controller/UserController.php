@@ -37,7 +37,6 @@ class UserController extends AbstractController
     ]);
     }
 
-
     /**
     * @Route("/leerPerfilUsuario/{id}", name="leerPerfilUsuario" )
     */
@@ -50,4 +49,5 @@ class UserController extends AbstractController
     'param' => $usuarioItem
     ]);
     }
+ 
 }

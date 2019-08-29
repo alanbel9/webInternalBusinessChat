@@ -1,21 +1,20 @@
-
 <button id="botonEsconderBarraIzq" class="btn btn-outline-primary  my-2 d-block w-100 d-md-none">
   Mis grupos de Chat
 </button>
 
 <div class="row w-100">
   <div class="col-auto">
-    <div id="barraIzquierda" class="nav flex-column nav-pills" role="tablist"
-      aria-orientation="vertical" style="min-width: 12em; padding-bottom: 100px;">
+    <div id="barraIzquierda" class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical"
+      style="min-width: 12em; padding-bottom: 100px;">
     </div>
   </div>
 
   <!-- CONTENIDO  -->
 
   <div id="contenedorPantallas" class="col">
-  
+
     {% include 'user/ajaxInformacion.html.twig' %}
-           
+
   </div>
 </div>
 
@@ -29,10 +28,11 @@
     var ids = [{% include '_consultarIdGruposSuscritos.html.twig' %} ];
 
     grupos.forEach(function (item, index) {
-      $("#barraIzquierda").append('<a idGrupo='+ ids[index] +' class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' + item + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Información</a><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary opciones" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="funcionOpciones()">Opciones</a></div>');
+      $("#barraIzquierda").append('<a idGrupo='+ ids[index] +' class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' + item + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="infogrupo()">Información</a><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary opciones" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="funcionOpciones()">Opciones</a></div>');
     });
     eventosBarraLateral();
   });
+
 
   function eventosBarraLateral() {
     $("#barraIzquierda").children("a").off().on("click", function (evt) {
@@ -49,27 +49,15 @@
           }
         });
       })
-    })
+    });
 
     $("#botonEsconderBarraIzq").off().on("click",function(){
       $("#barraIzquierda").slideToggle();
     });
-
-    $("#barraIzquierda .infoGrupo").off().on("click", function (event) {
-      var idgrupo=$(this).attr('idGrupo');
-      $("#contenedorPantallas").fadeOut(200, function () {
-        $.ajax({
-          url: '/grupos/ajaxObtenerConversacion/' + idgrupo,
-          success: function (data) {
-            refrescando=false;
-            $("#contenedorPantallas").html(data).fadeIn(200);
-          }
-        });
-      });
-    });
-
-    
+ 
   }
+
+
 function funcionOpciones() {
       var idgrupo=$(this).attr('idGrupo');
       $("#contenedorPantallas").fadeOut(200, function () {
@@ -82,4 +70,19 @@ function funcionOpciones() {
         });
       });
     }
+
+
+     function infogrupo() {
+      var idgrupo=$(this).attr('idGrupo');
+      $("#contenedorPantallas").fadeOut(200, function () {
+        $.ajax({
+          url: '/grupos/ajaxObtenerInformacion/' + idgrupo,
+          success: function (data) {
+            refrescando=false;
+            $("#contenedorPantallas").html(data).fadeIn(200);
+          }
+        });
+      });
+     }
+
 </script>

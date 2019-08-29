@@ -92,28 +92,24 @@ class GruposController extends AbstractController
         return new Response("Grupo borrado de la lista de suscripciones.");
     }    
 
+
+
+    
     /**
      * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
      */
     public function ajaxObtenerInformacion(int $idGrupo)
     {
+
+        $canalesRepository= $this->getDoctrine()->getRepository(Canales::class);
+        $canalesItem = $canalesRepository->leerInfoCanales($idGrupo);
+    
         return $this->render('grupos/ajaxInformacion.html.twig', [
-            'controller_name' => 'GruposController',
+        'param' => $canalesItem,
         ]);
     }    
 
 
 
-    /**
-     * @Route("/jsonObtenerConversacion/{idGrupo}", name="jsonObtenerConversacion")
-     */
-    public function jsonObtenerConversacion(int $idGrupo)
-    {
-        //Obtener el repositorio
-        //Ejecutar una funcion hecho por vosotros que internamente lleve DQL, 
-
-        $o="hola";
-        return $this->json($o);
-    }
 
 }
