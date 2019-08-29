@@ -25,7 +25,7 @@ class UsuariosController extends AbstractController
      */
     public function mostrarImagen(Usuarios $usuario)
     {
-        return new Response(stream_get_contents($usuario->getFoto()), 200, ["Content-type"=>"image/jpeg"] );
+        return new Response(stream_get_contents($usuario->getFotoArchivo()), 200, ["Content-type"=>"image/jpeg"] );
     }
 
 
@@ -59,9 +59,9 @@ class UsuariosController extends AbstractController
             }
 
 
-            $file= $form->get("foto")->getData();
+            $file= $form->get("fotoArchivo")->getData();
             $contenido = file_get_contents($file);
-            $usuario->setFoto($contenido);
+            $usuario->setFotoArchivo($contenido);
 
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('principal');   

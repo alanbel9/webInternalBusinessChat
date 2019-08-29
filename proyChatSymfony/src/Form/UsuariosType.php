@@ -20,11 +20,12 @@ class UsuariosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('foto' , FileType::class , array(
+        ->add('fotoArchivo' , FileType::class , array(
+            'mapped' => false, 
             'attr' => [
                 'widget' => 'single_text',
                 'class' => 'form-control'
-            ]
+            ] 
         ))
         ->add('correo' , TextType::class , array(
             'attr' => [

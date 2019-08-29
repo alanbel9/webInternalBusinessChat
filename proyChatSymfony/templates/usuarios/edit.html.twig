@@ -2,21 +2,12 @@
    <div class="container mt-2">  
         <div class="row">
                 <div class=" rounded mx-auto d-block">
-                        <img id="imgSalida" height="200" src="../resources/foto-carnet.jpg" class="rounded" alt="foto perfil">
+                        <img id="imgSalida" height="200" src="/usuarios/mostrarImagen/{{usuario.idUs}}" class="rounded" alt="foto perfil">
                         <!--  URL de las fotos asi:   ../resources/foto-carnet.jpg   -->
                 </div>
         </div>
     
-        <div class="row">
-                 <div class="col-md-4 offset-md-4 mt-2 ">
-                            <div class="custom-file">
-                                    <input id="fotoUsuario" name="foto" type="file" class="custom-file-input w-auto" aria-describedby="inputGroupFileAddon03" required>
-                                    <label class="custom-file-label font-weight-bold" for="inputGroupFile03">Buscar archivo</label>
-                            </div>
-                 </div>
- 
 
-         </div>
          <div class="row">
                  <hr>
          </div>
@@ -31,7 +22,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold" id="basic-addon3">Subir imagen</span>
                 </div>
-                {{ form_widget(form.foto) }}
+                {{ form_widget(form.fotoArchivo) }}
         </div>
 
 </div>

@@ -95,6 +95,11 @@ class Usuarios implements UserInterface
      */
     private $fechaUltCon;
 
+    /**
+     * @ORM\Column(name="foto_archivo", type="blob")
+     */
+    private $fotoArchivo;
+
     public function getIdUs(): ?int
     {
         return $this->idUs;
@@ -235,6 +240,18 @@ class Usuarios implements UserInterface
 
     public function eraseCredentials(){
 
+    }
+
+    public function getFotoArchivo()
+    {
+        return $this->fotoArchivo;
+    }
+
+    public function setFotoArchivo($fotoArchivo): self
+    {
+        $this->fotoArchivo = $fotoArchivo;
+
+        return $this;
     }
 
 }
