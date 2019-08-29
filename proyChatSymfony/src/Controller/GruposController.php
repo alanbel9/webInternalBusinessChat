@@ -97,8 +97,12 @@ class GruposController extends AbstractController
      */
     public function ajaxObtenerInformacion(int $idGrupo)
     {
+
+        $canalesRepository= $this->getDoctrine()->getRepository(Canales::class);
+        $canalesItem = $canalesRepository->leerInfoCanales($idGrupo);
+    
         return $this->render('grupos/ajaxInformacion.html.twig', [
-            'controller_name' => 'GruposController',
+        'param' => $canalesItem,
         ]);
     }    
 

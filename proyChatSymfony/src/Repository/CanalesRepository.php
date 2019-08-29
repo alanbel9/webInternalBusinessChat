@@ -59,13 +59,15 @@ class CanalesRepository extends ServiceEntityRepository
         return $queryMenu->execute();
     }
 */
-    public function leerInfoCanales(){
+    public function leerInfoCanales(int $idGrupo){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n FROM App\Entity\Canales n
+                        SELECT n 
+                        FROM App\Entity\Canales n
+                        WHERE n.idCanal = :idGrupo
                         ORDER BY n.idCanal DESC
-                    ');
-        return $queryMenu->execute();
+                        ')->setParameter("idGrupo",$idGrupo); 
+        return $queryMenu->getSingleResult();
     }
     
     // /**
