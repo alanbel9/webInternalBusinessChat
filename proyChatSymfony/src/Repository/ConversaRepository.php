@@ -23,7 +23,7 @@ class ConversaRepository extends ServiceEntityRepository
     public function leerMensajesGrupo( int $idgrupo){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.mensaje , u.nombre , n.fecha 
+                        SELECT n.mensaje , u.nombre , n.fecha , n.usuario
                         FROM App\Entity\Conversa n JOIN n.usuario u  
                         WHERE n.idCanal = :idgrupo
                         ORDER BY n.id DESC
