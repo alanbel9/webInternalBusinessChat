@@ -12,8 +12,7 @@
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-      </div>
+      <div class="modal-header"></div>
       <div class="modal-body text-center">
         <h1>¿Estás seguro?<h1>
       </div>
@@ -30,9 +29,9 @@
 
     $.ajax({
       url: "/grupos/borrarGrupo/" + {{ idGrupo }},
-  success: function(data) {
-    location.reload();
-  }
+      success: function (data) {
+        location.reload();
+      }
     })
   }
 </script>
