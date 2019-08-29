@@ -259,9 +259,10 @@ class Usuarios implements UserInterface
         return $this->fotoArchivo;
     }
 
-    public function setFotoArchivo($fotoArchivo): self
+    public function setFotoArchivo($fotoArchivo): self   // !!!!!!!!!!!!!!!!
     {
         $this->fotoArchivo = $fotoArchivo;
+        return $this;
     }
     
     /**
