@@ -19,6 +19,16 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UsuariosController extends AbstractController
 {
 
+
+    /**
+     * @Route("/mostrarImagen/{id}", name="mostrarImagen" , methods={"GET","POST"} )
+     */
+    public function mostrarImagen(Usuarios $usuario)
+    {
+        return new Response(stream_get_contents($usuario->getFoto()), 200, ["Content-type"=>"image/jpeg"] );
+    }
+
+
       /**
      * @Route("/{idUs}/edit", name="usuarios_edit", methods={"GET","POST"})
      */
@@ -35,7 +45,7 @@ class UsuariosController extends AbstractController
                 $usuario->setPassword($password);
             }else{
                 $usuario->setPassword(
-                    $passwordEncoder->encodePassword(    //  UserInterface  !!!!!!!!!!!!!!!!
+                    $passwordEncoder->encodePassword(  // UserInterface  
                         $usuario,
                         $password
                     )
@@ -48,10 +58,10 @@ class UsuariosController extends AbstractController
                 $usuario->setPassword($password);
             }
 
-            $file = $form->get("foto")->getData();
-            $fileName = md5(uniqid()) . "." . $file->guessExtension();
-            $file->move($this->getParameter("upload_directory") , $fileName );
-            $usuario->setFoto($fileName);
+
+            $file= $form->get("foto")->getData();
+            $contenido = file_get_contents($file);
+            $usuario->setFoto($contenido);
 
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('principal');   
