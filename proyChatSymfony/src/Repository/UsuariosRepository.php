@@ -42,7 +42,7 @@ class UsuariosRepository extends ServiceEntityRepository
     }
 
     public function leerPerfilUsuarioSession(){
-        $id = 2;   //leer de sesión !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        $id = 1;   //leer de sesión !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         $entityManager = $this->getEntityManager();
         $queryUsuarios = $entityManager->createQuery('
         SELECT n FROM App\Entity\Usuarios n
