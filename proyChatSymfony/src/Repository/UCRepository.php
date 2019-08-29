@@ -36,7 +36,7 @@ class UCRepository extends ServiceEntityRepository
             DELETE FROM App\Entity\UC n
             WHERE n.idUs = :id and n.canal = :grupo
         ')->setParameters(array(
-            'id' => 2,
+            'id' => 1,
             'grupo' => $idGrupo
         )); 
         $queryUsuarios->execute();
