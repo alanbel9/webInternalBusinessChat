@@ -44,6 +44,14 @@ class UC
     private $idUs;
 
 
+       /**
+     * @var \DateTime|null
+     *
+     * @ORM\Column(name="Fecha_Inscripcion", type="datetime", nullable=true, options={"default"="NULL"})
+     */
+    private $fechaInscripcion;
+
+
     public function getIdUc(): ?int
     {
         return $this->idUc;
@@ -74,4 +82,28 @@ class UC
     }
 
 
+
+    /**
+     * Get the value of fechaInscripcion
+     *
+     * @return  \DateTime|null
+     */ 
+    public function getFechaInscripcion()
+    {
+        return $this->fechaInscripcion;
+    }
+
+    /**
+     * Set the value of fechaInscripcion
+     *
+     * @param  \DateTime|null  $fechaInscripcion
+     *
+     * @return  self
+     */ 
+    public function setFechaInscripcion($fechaInscripcion)
+    {
+        $this->fechaInscripcion = $fechaInscripcion;
+
+        return $this;
+    }
 }

@@ -35,6 +35,12 @@ class Canales
      */
     private $descripcion = 'NULL';
 
+
+     /**
+     * @ORM\Column(name="Imagen", type="blob")
+     */
+    private $imagen;
+
     public function getIdCanal(): ?int
     {
         return $this->idCanal;
@@ -65,4 +71,23 @@ class Canales
     }
 
 
+
+    /**
+     * Get the value of imagen
+     */ 
+    public function getImagen()
+    {
+        return $this->imagen;
+    }
+
+    /**
+     * Set the value of imagen
+     *
+     * @return  self
+     */ 
+    public function setImagen($imagen)
+    {
+        $this->imagen = $imagen;
+        return $this;
+    }
 }
