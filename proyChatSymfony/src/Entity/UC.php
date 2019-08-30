@@ -25,7 +25,7 @@ class UC
     /**
      * @var \Canales
      *
-     * @ORM\ManyToOne(targetEntity="Canales")
+     * @ORM\ManyToOne(targetEntity="Canales", inversedBy="cus")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="Id_Canal", referencedColumnName="Id_Canal")
      * })
@@ -50,6 +50,8 @@ class UC
      * @ORM\Column(name="Fecha_Inscripcion", type="datetime", nullable=true, options={"default"="NULL"})
      */
     private $fechaInscripcion;
+
+ 
 
 
     public function getIdUc(): ?int
@@ -106,4 +108,5 @@ class UC
 
         return $this;
     }
+
 }

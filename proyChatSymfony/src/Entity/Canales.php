@@ -2,7 +2,11 @@
 
 namespace App\Entity;
 
+use App\Entity\UC;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
 
 /**
  * Canales
@@ -26,20 +30,30 @@ class Canales
      *
      * @ORM\Column(name="Nombre", type="string", length=100, nullable=true, options={"default"="NULL"})
      */
-    private $nombre = 'NULL';
+    private $nombre ;
 
     /**
      * @var string|null
      *
      * @ORM\Column(name="Descripcion", type="text", length=0, nullable=true, options={"default"="NULL"})
      */
-    private $descripcion = 'NULL';
+    private $descripcion ;
 
 
      /**
      * @ORM\Column(name="Imagen", type="blob")
      */
     private $imagen;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\UC", mappedBy="canal" , orphanRemoval=true)
+     */
+    private $cus;
+
+    public function __construct()
+    {
+        $this->cus = new ArrayCollection();
+    }
 
     public function getIdCanal(): ?int
     {
@@ -88,6 +102,37 @@ class Canales
     public function setImagen($imagen)
     {
         $this->imagen = $imagen;
+        return $this;
+    }
+
+    /**
+     * @return Collection|UC[]
+     */
+    public function getCus(): Collection
+    {
+        return $this->cus;
+    }
+
+    public function addCus(UC $cus): self
+    {
+        if (!$this->cus->contains($cus)) {
+            $this->cus[] = $cus;
+            $cus->setCanal($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCus(UC $cus): self
+    {
+        if ($this->cus->contains($cus)) {
+            $this->cus->removeElement($cus);
+            // set the owning side to null (unless already changed)
+            if ($cus->getCanal() === $this) {
+                $cus->setCanal(null);
+            }
+        }
+
         return $this;
     }
 }

@@ -61,7 +61,6 @@ class CanalesRepository extends ServiceEntityRepository
                         SELECT n 
                         FROM App\Entity\Canales n
                         WHERE n.idCanal = :idGrupo
-                        ORDER BY n.idCanal DESC
                         ')->setParameter("idGrupo",$idGrupo); 
         return $queryMenu->getSingleResult();
     }
