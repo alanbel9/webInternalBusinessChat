@@ -15,10 +15,11 @@ class ConversaRepository extends ServiceEntityRepository
     }
 
 
-    public function leerMensajesGrupo( int $idgrupo){
+    //   PRUEBAS SACAR ID USUARIO  !!!!!!!!!!!!!!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  /*  public function leerMensajesGrupo( int $idgrupo){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.mensaje , u.nombre , n.fecha , n.usuario
+                        SELECT n.mensaje , u.nombre , n.fecha 
                         FROM App\Entity\Conversa n JOIN n.usuario u  
                         WHERE n.idCanal = :idgrupo
                         ORDER BY n.id DESC
@@ -26,6 +27,17 @@ class ConversaRepository extends ServiceEntityRepository
         
         return $queryMenu->execute();
     }
-
+    */
+    public function leerMensajesGrupo( int $idgrupo){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.mensaje , u.nombre , n.fecha , u.idUs
+                        FROM App\Entity\Conversa n JOIN n.usuario u  
+                        WHERE n.idCanal = :idgrupo
+                        ORDER BY n.id DESC
+                    ') ->setParameter('idgrupo' , $idgrupo);   
+        
+        return $queryMenu->execute();
+    }
 
 }
