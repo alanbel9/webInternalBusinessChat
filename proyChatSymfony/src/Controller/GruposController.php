@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\UC;
 use App\Entity\Canales;
 use App\Entity\Conversa;
@@ -30,6 +31,7 @@ class GruposController extends AbstractController
 
         $UCregistro->setIdUs( $usuarioItem );
         $UCregistro->setCanal( $grupoItem );
+        $UCregistro->setFechaInscripcion(new DateTime());
        
         $em = $this->getDoctrine()->getEntityManager();
         $em->persist($UCregistro);
