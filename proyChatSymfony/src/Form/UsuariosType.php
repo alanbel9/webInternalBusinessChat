@@ -22,6 +22,7 @@ class UsuariosType extends AbstractType
         $builder
         ->add('fotoArchivo' , FileType::class , array(
             'mapped' => false, 
+            'required' => false,
             'attr' => [
                 'widget' => 'single_text',
                 'class' => 'form-control'
