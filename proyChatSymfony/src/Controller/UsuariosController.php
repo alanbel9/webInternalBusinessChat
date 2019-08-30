@@ -39,30 +39,33 @@ class UsuariosController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Si password la dejamos vacia ...
             $password=$form->get('plainPassword')->getData();
             if ($password==null){
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }else{
                 $usuario->setPassword(
-                    $passwordEncoder->encodePassword(  // UserInterface  
-                        $usuario,
-                        $password
-                    )
+                    $passwordEncoder->encodePassword($usuario,$password)
                 );
-
             }
-
+            
             if ($usuario->getPassword()==null){
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }
 
 
+            // Si foto la dejamos vacía, que mantenga la que hay en BBDD
             $file= $form->get("fotoArchivo")->getData();
-            $contenido = file_get_contents($file);
-            $usuario->setFotoArchivo($contenido);
-
+            if ($file==null){
+                $file=$repo->find($usuario->getIdUs())->getFotoArchivo();
+                $usuario->setFotoArchivo($file);
+            } else{
+                $contenido = file_get_contents($file);
+                $usuario->setFotoArchivo($contenido);
+            }
+            
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('principal');   
         }

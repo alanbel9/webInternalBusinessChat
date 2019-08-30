@@ -14,16 +14,6 @@ class UserController extends AbstractController
 {
 
     /**
-     * @Route("/ajaxLeerInformacion/{idUsuario}", name="ajaxLeerInformacion")
-     */
-    public function ajaxLeerInformacion()
-    {
-        return $this->render('user/ajaxInformacion.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
-    /**
     * @Route("/ajaxBuscarUsuario/{busqueda}", name="ajaxBuscarUsuario" )
     */
     public function ajaxBuscarUsuario(string $busqueda)
