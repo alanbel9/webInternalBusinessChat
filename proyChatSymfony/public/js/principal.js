@@ -1,6 +1,8 @@
 var chat = {
     //idGrupo: 0,
-    idGrupoActivo : 0,  
+    idGrupoActivo : 0, 
+    
+    idUltimoMensaje: 0,
 
     reemplazar: function(texto, buscar, nuevaCadena) {
         texto=texto.split(buscar).join(nuevaCadena);
@@ -124,8 +126,30 @@ var chat = {
                 $("#divModal").html(data);
             }
         });
-    }
+    },
 
+    temporizador: function() { 
+        if($("#pantallaMensajes").attr('idGrupo')){  
+            $.ajax({
+                type: "POST",
+                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
+                success: function (data) {
+                    if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
+                        $.each(data['texto'], function(key, value){
+                            var plantilla =$('#planMensaje').html();
+                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
+                            plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
+                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
+                            plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
+                            $("#mensajes").prepend(plantilla);
+                            chat.idUltimoMensaje=value['id'];
+                        });
+                    }
+                }
+            });
+        }  
+        setTimeout("chat.temporizador()", 3000);
+    }
 } 
 
 $(document).ready(function(){
@@ -138,6 +162,6 @@ $(document).ready(function(){
     $("#botonEsconderBarraIzq").on("click",function(){
         $("#barraIzquierda").slideToggle();
     });
-
-
+//Siempre al final
+    chat.temporizador();
 });

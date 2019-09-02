@@ -11,6 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+use Symfony\Component\Serializer\Serializer;
+
 /**
  * @Route("/grupos")
  */
@@ -56,28 +59,25 @@ class GruposController extends AbstractController
      */
     public function ajaxObtenerConversacion(int $idGrupo)
     {
-        $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
+/*         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
         $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
-
+ */
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
-            'mensajesItem' => $mensajesItem,
-            'idGrupo' => $idGrupo
+/*             'mensajesItem' => $mensajesItem,*/
+            'idGrupo' => $idGrupo 
         ]);
     }
 
     /**
-     * @Route("/ajaxRefrescarPantallaConversacion/{idGrupo}", name="ajaxRefrescarPantallaConversacion")
+     * @Route("/ajaxRefrescarPantallaConversacion/{idGrupo}/{idUltimoMensaje}", name="ajaxRefrescarPantallaConversacion")
      */
-    public function ajaxRefrescarPantallaConversacion(int $idGrupo)
+    public function ajaxRefrescarPantallaConversacion(int $idGrupo, int $idUltimoMensaje)
     {
         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
-        $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
+        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($idGrupo, $idUltimoMensaje);
 
-        return $this->render('grupos/_consultarConversacionGrupo.html.twig', [
-            'controller_name' => 'GruposController',
-            'mensajesItem' => $mensajesItem
-        ]);
+        return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $idGrupo]);
     }
 
     /**
