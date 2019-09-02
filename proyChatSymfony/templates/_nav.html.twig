@@ -24,17 +24,18 @@
 <script>
  
   $(function () {
-    var grupos = [{% include '_consultarGruposSuscritos.html.twig' %} ];
-    var ids = [{% include '_consultarIdGruposSuscritos.html.twig' %} ];
+      var grupos = [{% include '_consultarGruposSuscritos.html.twig' %} ];
+      var ids = [{% include '_consultarIdGruposSuscritos.html.twig' %} ];
 
-    grupos.forEach(function (item, index) {
-      $("#barraIzquierda").append('<a idGrupo='+ ids[index] +' class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> ' + item + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="infogrupo(this)">Información</a><a idGrupo='+ ids[index] + ' id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary opciones" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="funcionOpciones(this)">Opciones</a></div>');
-    });
-    eventosBarraLateral();
+      grupos.forEach(function (item, index) {
+        chat.menuCargarGrupo(ids[index], item);
+      });
+      eventosBarraLateral();
   });
 
 
   function eventosBarraLateral() {
+    /*
     $("#barraIzquierda").children("a").off().on("click", function (evt) {
       $("#barraIzquierda").children("a").next().slideUp();
       $(this).next().slideDown();
@@ -54,25 +55,27 @@
     $("#botonEsconderBarraIzq").off().on("click",function(){
       $("#barraIzquierda").slideToggle();
     });
- 
+ */
   }
 
 
-function funcionOpciones(obj) {
-      var idgrupo=obj.getAttribute('idGrupo');
-      $("#contenedorPantallas").fadeOut(200, function () {
-        $.ajax({
-          url: '/grupos/ajaxOpciones/' + idgrupo,
-          success: function (data) {
-            refrescando=false;
-            $("#contenedorPantallas").html(data).fadeIn(200);
-          }
-        });
-      });
-    }
 
 
-     function infogrupo(obj) {
+   /* function funcionOpciones(obj) {
+          var idgrupo=obj.getAttribute('idGrupo');
+          $("#contenedorPantallas").fadeOut(200, function () {
+            $.ajax({
+              url: '/grupos/ajaxOpciones/' + idgrupo,
+              success: function (data) {
+                refrescando=false;
+                $("#contenedorPantallas").html(data).fadeIn(200);
+              }
+            });
+          });
+        }
+*/
+
+  /*   function infogrupo(obj) {
       var idgrupo=obj.getAttribute('idGrupo');
       $("#contenedorPantallas").fadeOut(200, function () {
         $.ajax({
@@ -84,5 +87,5 @@ function funcionOpciones(obj) {
         });
       });
      }
-
+*/
 </script>

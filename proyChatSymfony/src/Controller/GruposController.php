@@ -18,14 +18,21 @@ class GruposController extends AbstractController
 {
 
     /**
-     * @Route("/insertarUsuario/{idGrupo}-{idUsuario}", name="insertarUsuario")
+     * @Route("/insertarUsuario/{idGrupo}", name="insertarUsuario")
      */
-    public function insertarUsuario(int $idUsuario,int $idGrupo)
+    public function insertarUsuario(int $idGrupo)
     {
         //$UCRepository= $this->getDoctrine()->getRepository(UC::class);
         //$UCItem = $UCRepository->insertarUsuarioEnGrupo();
 
+        $idUsuario=1;
+        $user=$this->getUser();
+        if ($user){
+            $idUsuario=$user->getIdUs();
+        }
+
         $UCregistro= new UC();
+
         $usuarioItem= $this->getDoctrine()->getRepository(Usuarios::class)->find($idUsuario);
         $grupoItem= $this->getDoctrine()->getRepository(Canales::class)->find($idGrupo);
 

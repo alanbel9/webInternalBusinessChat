@@ -5,6 +5,7 @@
 
 </div>
 
+<!--
 <div id="barraChat" class='fixed-bottom bg-primary p-3' style="height:0px">
     <div class='row align-items-center'>
         <div class='col-md-1'></div>
@@ -21,6 +22,8 @@
         <div class='col-md-1'></div>
     </div>
 </div>
+-->
+
 <script>
     var idGrupo = {{ idGrupo }};
 
@@ -46,7 +49,7 @@
         $("#pantallaMensajes").html("<h1>Mensaje enviado...</h1>");
 
         $.ajax({
-            url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
+            url: '/principal/escribirMensaje/'+ idGrupo + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
                 refrescando=false;
                 $("#mensajeEnviar").val("");
@@ -56,6 +59,7 @@
         });
     });
     
+    /*
     function cargarPantallaChat() {
         $("#contenedorPantallas").fadeOut(200, function () {
             $.ajax({
@@ -67,7 +71,7 @@
             });
         })
     }
-
+*/
     refrescando=true;
     hilos++;
     timer = setTimeout("temporizador()", 5000); ///Se refresca cada 5s

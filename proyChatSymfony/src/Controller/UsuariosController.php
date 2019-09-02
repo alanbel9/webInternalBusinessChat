@@ -30,10 +30,16 @@ class UsuariosController extends AbstractController
 
 
       /**
-     * @Route("/{idUs}/edit", name="usuarios_edit", methods={"GET","POST"})
+     * @Route("/edit", name="usuarios_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Usuarios $usuario, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
     {
+
+        $usuario=$this->getUser();
+        if (!$usuario){
+            //return $this->redirectToRoute('login')
+            $usuario=$repo->find(1);
+        }
 
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
