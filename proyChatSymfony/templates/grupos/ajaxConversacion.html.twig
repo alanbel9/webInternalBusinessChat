@@ -47,10 +47,8 @@
         $.ajax({
             url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
-                refrescando=false;
                 $("#mensajeEnviar").val("");
                 console.log("Mensaje guardado en la base de datos");
-                cargarPantallaChat();
             }
         });
     });
