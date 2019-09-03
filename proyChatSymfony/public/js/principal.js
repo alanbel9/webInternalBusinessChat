@@ -104,10 +104,12 @@ var chat = {
                 url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
                 success: function (data) {
                         $.each(data['texto'], function(key, value){
+                            var d = new Date(value['fecha']);
+                            var fecha = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
                             var plantilla =$('#planMensaje').html();
                             plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
                             plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
-                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
+                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', fecha);
                             plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
                             $("#mensajesGrupo" + data['idGrupoRecibido']).prepend(plantilla);
                             chat.idUltimoMensaje=value['id'];
