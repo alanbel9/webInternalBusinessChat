@@ -8,7 +8,34 @@
 {% block javascripts %}
 <script>
         var idUsuario = {{idUsuario}};  // Esto se sacará de variable sesión.   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        var hilos=0;
-        var refrescando=false;
+        var idGrupo=0;
+        var idGrupoUlt=0;
+        var contador=0;
+        var sem=0;
+        setTimeout("temporizador()", 1000); ///Se refresca cada 20s
+        
+        function temporizador() {
+                console.log(idGrupo);
+                if($("#pantallaMensajes").length>0 && sem==0){
+                        console.log("Refrescado " + (contador++) + " grupo " + idGrupo);
+                        //alert(idGrupo);  
+                        idGrupoUlt=idGrupo;     
+                        sem++;
+                        $.ajax({
+                                url: '/grupos/ajaxRefrescarPantallaConversacion/' + idGrupo,
+                                //async: false, 
+                                success: function (data) {
+                                   if (idGrupoUlt==idGrupo){
+                                        $("#pantallaMensajes").html(data);
+                                   }
+                                   sem--;
+                                },
+                                error: function(){
+                                   sem--;
+                                }
+                        });
+                };
+                setTimeout("temporizador()", 1000);
+        }
 </script>
 {% endblock %}

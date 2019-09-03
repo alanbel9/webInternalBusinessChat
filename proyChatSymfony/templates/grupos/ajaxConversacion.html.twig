@@ -1,7 +1,7 @@
 <div id="pantallaMensajes" class="container bg-light text-dark shadow"
     style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
 
-    {% include 'grupos/_consultarConversacionGrupo.html.twig' %}
+    {# {% include 'grupos/_consultarConversacionGrupo.html.twig' %} #}
 
 </div>
 
@@ -22,9 +22,7 @@
     </div>
 </div>
 <script>
-    var idGrupo = {{ idGrupo }};
-
-    var contador=0;
+    idGrupo = {{ idGrupo }};
 
     var alturaPantalla = window.screen.width;
     if (alturaPantalla < 768) {
@@ -66,23 +64,5 @@
                 }
             });
         })
-    }
-
-    refrescando=true;
-    hilos++;
-    timer = setTimeout("temporizador()", 5000); ///Se refresca cada 5s
-    function temporizador() {
-        console.log("Refrescado " + (contador++) + " grupo " + idGrupo + " hilos " + hilos);       
-        $.ajax({
-            url: '/grupos/ajaxRefrescarPantallaConversacion/' + idGrupo,
-            success: function (data) {
-                if(hilos==1 && refrescando){
-                    $("#pantallaMensajes").html(data);
-                    timer = setTimeout("temporizador()", 5000);
-                }else{
-                    hilos--;
-                }
-            }
-        });
     }
 </script>

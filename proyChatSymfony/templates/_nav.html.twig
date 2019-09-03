@@ -38,18 +38,18 @@
     $("#barraIzquierda").children("a").off().on("click", function (evt) {
       $("#barraIzquierda").children("a").next().slideUp();
       $(this).next().slideDown();
-      var idgrupo=$(this).attr('idGrupo');
-      $("#contenedorPantallas").fadeOut(200, function () {
+      idGrupo=$(this).attr('idGrupo');
+      //$("#contenedorPantallas").fadeOut(200);
+      
+      if ($('pantallaMensajes').lengt==0)
         $.ajax({
-          url: '/grupos/ajaxObtenerConversacion/' + idgrupo,
+          url: '/grupos/ajaxObtenerConversacion/' + idGrupo,
           success: function (data) {
-            refrescando=false;
             $("#contenedorPantallas").html(data).fadeIn(500);
-            $('#ns-idGrupo').val(idgrupo);
+            $('#ns-idGrupo').val(idGrupo);
           }
         });
-      })
-    });
+      });
 
     $("#botonEsconderBarraIzq").off().on("click",function(){
       $("#barraIzquierda").slideToggle();
@@ -59,6 +59,7 @@
 
 
 function funcionOpciones(obj) {
+  idGrupoRefrescar=0;
       var idgrupo=obj.getAttribute('idGrupo');
       $("#contenedorPantallas").fadeOut(200, function () {
         $.ajax({
@@ -73,6 +74,7 @@ function funcionOpciones(obj) {
 
 
      function infogrupo(obj) {
+       idGrupoRefrescar=0;
       var idgrupo=obj.getAttribute('idGrupo');
       $("#contenedorPantallas").fadeOut(200, function () {
         $.ajax({
