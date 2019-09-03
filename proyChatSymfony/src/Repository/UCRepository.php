@@ -27,7 +27,18 @@ class UCRepository extends ServiceEntityRepository
         $queryUsuarios->execute();
     }
     
-  
+    public function obtenerFechaSuscripcionGrupo(int $idGrupo){
+        $entityManager = $this->getEntityManager();
+        $queryUsuarios = $entityManager->createQuery('
+            SELECT n.fechaInscripcion FROM App\Entity\UC n 
+            WHERE n.idUs=:id AND n.canal=:grupo
+        ')->setParameters(array(
+            'id' => 1,   //  $_SESSION['idUsuario']
+            'grupo' => $idGrupo
+        )); 
+        $obj= $queryUsuarios->execute();
+        return $obj;
+    }
 
 
 

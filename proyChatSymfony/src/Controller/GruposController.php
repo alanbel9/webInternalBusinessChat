@@ -19,7 +19,7 @@ use Symfony\Component\Serializer\Serializer;
  */
 class GruposController extends AbstractController
 {
-
+    //public $fechaSuscripcion;
     /**
      * @Route("/insertarUsuario/{idGrupo}", name="insertarUsuario")
      */
@@ -59,12 +59,20 @@ class GruposController extends AbstractController
      */
     public function ajaxObtenerConversacion(int $idGrupo)
     {
-/*         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
+/*      $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
         $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
- */
+*/
+        // $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                    !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //     'idUs' => $this->getUser()->getIdUs(),
+        //     'canal' => $idGrupo
+        // ]);
+        // $this->fechaSuscripcion=$suscripcion->getFechaInscripcion();
+        // //return new Response($this->fechaSuscripcion->format('Y-m-d H:i:s'));
+        // if(!$this->fechaSuscripcion){
+        //     throw $this->createNotFounfException("No estás suscrito al grupo " + $idGrupo);           !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        // }
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
-/*             'mensajesItem' => $mensajesItem,*/
             'idGrupo' => $idGrupo 
         ]);
     }
@@ -74,8 +82,17 @@ class GruposController extends AbstractController
      */
     public function ajaxRefrescarPantallaConversacion(int $idGrupo, int $idUltimoMensaje)
     {
+        $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([
+            'idUs' => $this->getUser()->getIdUs(),
+            'canal' => $idGrupo
+        ]);
+        $fechaSuscripcion=$suscripcion->getFechaInscripcion();//////////////////////Atrubuto!!!!!!!!!!!!!!!!!!!
+        if(!$fechaSuscripcion){
+            throw $this->createNotFoundException("No estás suscrito al grupo " + $idGrupo);
+        }
+        //return new Response($fechaSuscripcion->format('Y-m-d H:i:s'));
         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
-        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($idGrupo, $idUltimoMensaje);
+        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($idGrupo, $idUltimoMensaje, $fechaSuscripcion);
 
         return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $idGrupo]);
     }
