@@ -107,7 +107,8 @@ var chat = {
                             var d = new Date(value['fecha']);
                             var fecha = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
                             var plantilla =$('#planMensaje').html();
-                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
+                            console.log(value);
+                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['idUs']);
                             plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
                             plantilla =chat.reemplazar(plantilla ,'##FECHA##', fecha);
                             plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
@@ -123,7 +124,17 @@ var chat = {
     },
 
     chatEnviarMensaje: function(){
-
+        var mensaje=$.trim($("#mensajeEnviar").val());
+        if(mensaje!=""){
+            $("#mensajeEnviar").val("");
+            $.ajax({
+                url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + mensaje,
+                success: function (data) {
+                    console.log("Mensaje guardado en la base de datos");
+                }
+            });
+        }
+        
     },
 
     perfilBuscar: function(){

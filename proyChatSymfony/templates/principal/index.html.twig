@@ -29,7 +29,7 @@
         <blockquote class="blockquote pt-3">
                 <div class="row">
                         <div class="col-4"><i class="fa fa-envelope-open" aria-hidden="true"></i>
-                                <a id="##IDUS##" onclick='modalbusqueda(this)' class="font-italic text-primary"
+                                <a onclick='chat.perfilModal(##IDUS##)' class="font-italic text-primary"
                                         data-toggle="modal" data-target="#modalInfoUsuario" href="#">
                                         ##NOMBRE##
                                 </a>
@@ -46,23 +46,6 @@
         </blockquote>
 </div>
 
-
-<div id="barraChat" class='fixed-bottom bg-primary p-3 ' style="height:0px; display:none; ">
-        <div class='row align-items-center'>
-                <div class='col-md-1'></div>
-                <div class='col-md-9'>
-                        <textarea id="mensajeEnviar" type="textarea" spellcheck="true"
-                                class="form-control w-100 py-auto mb-1" id="mensaje" placeholder="Mensaje" rows="1"
-                                style="font-family: 'Righteous', sans-serif; font-size: 25px;"></textarea>
-                </div>
-                <div class='col-md-1 text-center'>
-                        <button id="botonEnviar" class="btn btn-primary">
-                                <h6 class="m-2"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar</h6>
-                        </button>
-                </div>
-                <div class='col-md-1'></div>
-        </div>
-</div>
 
 {% endblock %}
 

@@ -14,7 +14,7 @@
                 style="font-family: 'Righteous', sans-serif; font-size: 25px;"></textarea>
         </div>
         <div class='col-md-1 text-center'>
-            <button id="botonEnviar" class="btn btn-primary">
+            <button id="botonEnviar" class="btn btn-primary" onclick="chat.chatEnviarMensaje()">
                 <h6 class="m-2"><i class="fa fa-envelope" aria-hidden="true"></i> Enviar</h6>
             </button>
         </div>
@@ -34,7 +34,7 @@
             height: '100px'
         });
     }
-    $("#botonEnviar").on("click", function () {
+/*     $("#botonEnviar").on("click", function () {
         
         $("#botonEnviar").off();
         $("#barraChat").animate({
@@ -50,7 +50,7 @@
                 console.log("Mensaje guardado en la base de datos");
             }
         });
-    });
+    }); */
     
     /*
     function cargarPantallaChat() {
