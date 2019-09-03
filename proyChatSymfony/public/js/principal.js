@@ -91,7 +91,7 @@ var chat = {
     chatCargarMensajes: function(){
         $.ajax({
             type: "POST",
-            //async: false,//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            async: false,//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
             success: function (data) {
                 if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
