@@ -10,7 +10,7 @@
         
     <div class="row">
         <div class="input-group  col-md-6 offset-md-3 mt-5 justify-content-center">
-            <img src="/grupos/mostrarImagengrupo/{{param.idCanal}}" height="200px" onerror="this.setAttribute('src', 'https://fc-abogados.com/es/wp-content/uploads/2015/04/sin...png')" />
+            <img src="/grupos/mostrarImagengrupo/{{param.idCanal}}" height="200px" class="rounded shadow" onerror="this.setAttribute('src', 'https://fc-abogados.com/es/wp-content/uploads/2015/04/sin...png')" />
         </div>
     </div>
 
@@ -46,7 +46,7 @@
                 <tbody>
                     {% for u in param.cus %}
                     <tr id="{{u.idUs.idUs}}" onclick='chat.perfilModal({{u.idUs.idUs}})' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" style="cursor:pointer">
-                        <th scope="row"><img src="/usuarios/mostrarImagen/{{u.idUs.idUs}}" height="40px" onerror="this.setAttribute('src', 'http://www.eboca.com/ebocame/wp-content/uploads/2015/06/bigstock-silhouette-with-a-question-mar-59367497.jpg')"/></th>
+                        <th scope="row"><img class="rounded shadow" src="/usuarios/mostrarImagen/{{u.idUs.idUs}}" height="40px" onerror="this.setAttribute('src', 'http://www.eboca.com/ebocame/wp-content/uploads/2015/06/bigstock-silhouette-with-a-question-mar-59367497.jpg')"/></th>
                         <td>{{u.idUs.nombre}}</td>
                         <td>{{u.idUs.apellidos}}</td>
                     </tr>
