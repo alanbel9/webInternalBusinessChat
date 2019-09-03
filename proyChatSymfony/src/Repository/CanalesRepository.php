@@ -14,9 +14,8 @@ class CanalesRepository extends ServiceEntityRepository
         parent::__construct($registry, Canales::class);
     }
     
-    public function leerCanalesSuscrito(){
+    public function leerCanalesSuscrito(int $idUsuario){
         $entityManager = $this->getEntityManager();
-        $idUsuario = 1;   //  $_SESSION['idUsuario']
         $queryMenu = $entityManager->createQuery('
                         SELECT n.nombre , n.idCanal 
                         FROM App\Entity\Canales n 
@@ -29,9 +28,8 @@ class CanalesRepository extends ServiceEntityRepository
         return $queryMenu->execute();
     }
 
-    public function leerCanalesOrdenado(){
+    public function leerCanalesOrdenado( int $idUsuario){
         $entityManager = $this->getEntityManager();
-        $idUsuario = 1;   //  $_SESSION['idUsuario']
         $queryMenu = $entityManager->createQuery('
                         SELECT n.nombre, n.idCanal 
                         FROM App\Entity\Canales n
