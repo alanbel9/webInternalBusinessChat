@@ -23,7 +23,7 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
-                        <th scope="col">Nº</th>
+                        <th scope="col">Foto</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellidos</th>
                     </tr>
@@ -41,7 +41,7 @@
              -->
                 <tbody>
                     {% for u in param.cus %}
-                    <tr id="{{u.idUs.idUs}}" onclick='modalbusqueda(this)' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" href="">
+                    <tr id="{{u.idUs.idUs}}" onclick='chat.perfilModal({{u.idUs.idUs}})' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" style="cursor:pointer">
                         <th scope="row"><img src="/usuarios/mostrarImagen/{{u.idUs.idUs}}" width="50px"/></th>
                         <td>{{u.idUs.nombre}}</td>
                         <td>{{u.idUs.apellidos}}</td>
