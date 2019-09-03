@@ -12,23 +12,24 @@
     </h1>
 
     <h3 class="pt-4">Mis datos personales:</h3>
+    <div class="container pt-2">
+        <blockquote><strong>Fecha de nacimiento:</strong> {{ param.fechaNac|date("d/m/Y")}}</blockquote>
+        <blockquote><strong>Correo:</strong> {{ param.correo }}</blockquote>
+        <blockquote><strong>Puesto de trabajo:</strong> {{ param.puesto }}</blockquote>
+        <blockquote><strong>Conocimientos:</strong>
+            <p>{{ param.conocimientos }}</p>
+        </blockquote>
+        <blockquote>
+            <strong>Aficiones:</strong>
+            <p>{{ param.aficiones }}</p>
+        </blockquote>
 
-    <blockquote><strong>Fecha de nacimiento:</strong> {{ param.fechaNac|date("d/m/Y")}}</blockquote>
-    <blockquote><strong>Correo:</strong> {{ param.correo }}</blockquote>
-    <blockquote><strong>Puesto de trabajo:</strong> {{ param.puesto }}</blockquote>
-    <blockquote><strong>Conocimientos:</strong>
-        <p>{{ param.conocimientos }}</p>
-    </blockquote>
-    <blockquote>
-        <strong>Aficiones:</strong>
-        <p>{{ param.aficiones }}</p>
-    </blockquote>
-
-    <blockquote>
-        <strong>Grupos de chat:</strong>
-        <p>{% for uc in param.ucs %}
-            {{ uc.canal.nombre}}.
-        {% endfor %}</p>
-        
-    </blockquote>
+        <blockquote>
+            <strong>Grupos de chat:</strong>
+            <p>{% for uc in param.ucs %}
+                {{ uc.canal.nombre}}.
+            {% endfor %}</p>
+            
+        </blockquote>
+    </div>
 </div>
