@@ -27,7 +27,6 @@
 
     <div class="container mx-auto w-50 border mt-5">
         <div class='jumbotron text-center pt-5'>
-
             <div id="bg">
                 <div id="search-container">
                     <div id="search-bg"></div>
@@ -64,7 +63,7 @@
         </div>
 
     </div>
-    </div>
+</div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
         integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>

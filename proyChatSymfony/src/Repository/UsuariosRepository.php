@@ -36,16 +36,6 @@ class UsuariosRepository extends ServiceEntityRepository
              return $obj;
     }
 
-    public function leerPerfilUsuarioSession(){
-        $id = 1;   // $_SESSION['idUsuario'];  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        $entityManager = $this->getEntityManager();
-        $queryUsuarios = $entityManager->createQuery('
-        SELECT n FROM App\Entity\Usuarios n
-        WHERE n.idUs = :id
-        ')->setParameter("id",$id); 
-        $obj= $queryUsuarios->getSingleResult();
-         return $obj;
-    }
 
 
 

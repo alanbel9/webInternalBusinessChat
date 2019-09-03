@@ -6,7 +6,7 @@
 {% block body %}
 
 <div id='planMenuOpcionVertical' style="display:none">
-        <a onclick='chat.menuPulsarGrupo(##IDGRUPO##)' class="nav-link" id="v-pills-profile-tab" data-toggle="pill"
+        <a onclick='chat.menuPulsarGrupo(##IDGRUPO##)' class="nav-link nombreGrupo" id="v-pills-profile-tab" data-toggle="pill"
                 href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
                 <h4><i class="fa fa-hashtag" aria-hidden="true"></i> ##TEXTO##</h4>
         </a>
@@ -68,10 +68,4 @@
 
 {% block javascripts %}
 <script src='/js/principal.js'></script>
-
-<script>
-        var idUsuario = {{ idUsuario }};  // Esto se sacará de variable sesión.!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        var hilos = 0;
-        var refrescando = false;
-</script>
 {% endblock %}

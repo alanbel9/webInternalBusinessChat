@@ -11,6 +11,7 @@
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
+                        <th scope="col">Foto</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellidos</th>
                     </tr>
@@ -19,6 +20,7 @@
 
                     {% for persona in param %}
                         <tr id="{{persona.idUs}}" onclick='chat.perfilModal({{persona.idUs}})' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" style="cursor:pointer">
+                            <th scope="row"><img src="/usuarios/mostrarImagen/{{persona.idUs}}" width="50px"/></th>
                             <td >{{persona.nombre}}</td>
                             <td>{{persona.apellidos}}</td>
                         </tr>

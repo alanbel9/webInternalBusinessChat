@@ -25,13 +25,13 @@ class GruposController extends AbstractController
      */
     public function insertarUsuario(int $idGrupo)
     {
-        //$UCRepository= $this->getDoctrine()->getRepository(UC::class);
-        //$UCItem = $UCRepository->insertarUsuarioEnGrupo();
-
-        $idUsuario=1;
+        
         $user=$this->getUser();
         if ($user){
             $idUsuario=$user->getIdUs();
+        }else {
+            echo "Ningún usuario logeado";
+            // return $this->redirectToRoute('app_login');
         }
 
         $UCregistro= new UC();
@@ -117,6 +117,14 @@ class GruposController extends AbstractController
         ]);
     }    
 
+
+    /**
+     * @Route("/mostrarImagengrupo/{id}", name="mostrarImagengrupo" , methods={"GET","POST"} )
+     */
+    public function mostrarImagengrupo(Canales $canal)
+    {
+        return new Response(stream_get_contents($canal->getImagen()), 200, ["Content-type"=>"image/jpeg"] );
+    }
 
 
 
