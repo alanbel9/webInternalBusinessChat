@@ -15,29 +15,16 @@ class UCRepository extends ServiceEntityRepository
     }
 
 
-    public function borrarGrupo(int $idGrupo){
+    public function borrarGrupo(int $idGrupo, int $idUsuario){
         $entityManager = $this->getEntityManager();
         $queryUsuarios = $entityManager->createQuery('
             DELETE FROM App\Entity\UC n
             WHERE n.idUs = :id and n.canal = :grupo
         ')->setParameters(array(
-            'id' => 1,   //  $_SESSION['idUsuario']
+            'id' => $idUsuario,   //  $_SESSION['idUsuario']
             'grupo' => $idGrupo
         )); 
         $queryUsuarios->execute();
-    }
-    
-    public function obtenerFechaSuscripcionGrupo(int $idGrupo){
-        $entityManager = $this->getEntityManager();
-        $queryUsuarios = $entityManager->createQuery('
-            SELECT n.fechaInscripcion FROM App\Entity\UC n 
-            WHERE n.idUs=:id AND n.canal=:grupo
-        ')->setParameters(array(
-            'id' => 1,   //  $_SESSION['idUsuario']
-            'grupo' => $idGrupo
-        )); 
-        $obj= $queryUsuarios->execute();
-        return $obj;
     }
 
 

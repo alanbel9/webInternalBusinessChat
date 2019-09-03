@@ -113,7 +113,7 @@ class GruposController extends AbstractController
     public function borrarGrupo(int $idGrupo)
     {
         $UCRepository= $this->getDoctrine()->getRepository(UC::class);
-        $UCRepository->borrarGrupo($idGrupo);
+        $UCRepository->borrarGrupo($idGrupo, $this->getUser()->getIdUs());
 
         return new Response("Grupo borrado de la lista de suscripciones.");
     }    
