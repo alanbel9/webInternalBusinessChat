@@ -118,6 +118,14 @@ class GruposController extends AbstractController
     }    
 
 
+    /**
+     * @Route("/mostrarImagengrupo/{id}", name="mostrarImagengrupo" , methods={"GET","POST"} )
+     */
+    public function mostrarImagengrupo(Canales $canal)
+    {
+        return new Response(stream_get_contents($canal->getImagen()), 200, ["Content-type"=>"image/jpeg"] );
+    }
+
 
 
 }
