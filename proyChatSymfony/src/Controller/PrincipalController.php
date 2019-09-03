@@ -11,6 +11,7 @@ use App\Repository\UsuariosRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
     /**
@@ -20,6 +21,7 @@ class PrincipalController extends AbstractController
 {
     /**
      * @Route("/", name="principal")
+     * @Cache(expires="tomorrow", public=true)
      */
     public function index()
     {
@@ -30,15 +32,12 @@ class PrincipalController extends AbstractController
         }
         //$iduser=1;
         $iduser = $this->getUser()->getIdUs();  
-
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito($iduser);
 
         $userRepository= $this->getDoctrine()->getRepository(Usuarios::class);
         $userItem = $userRepository->leerPerfilUsuario($iduser); 
-
-        
 
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
