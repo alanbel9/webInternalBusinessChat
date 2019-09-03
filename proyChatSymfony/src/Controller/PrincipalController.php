@@ -52,19 +52,6 @@ class PrincipalController extends AbstractController
     }    
 
 
-
-    /**
-     * @Route("/pantallaModificarPerfil", name="pantallaModificarPerfil")
-     */
-    public function pantallaModificarPerfil()
-    {
-        return $this->render('principal/_pantallaModificarPerfil.html.twig', [
-            'controller_name' => 'PrincipalController',
-        ]);    //  NO SE USA.     SE USA DENTRO DE USUARIOSCONTROLLER !!!!
-    }   
-
-
-
      /**
      * @Route("/login", name="login")
      */
@@ -76,19 +63,23 @@ class PrincipalController extends AbstractController
     } 
 
     /**
-     * @Route("/escribirMensaje/{idUsuario}/{idCanal}/{mensaje}", name="escribirMensaje")
+     * @Route("/escribirMensaje/{idCanal}/{mensaje}", name="escribirMensaje")
      */
     public function escribirMensaje(EntityManagerInterface $em, UsuariosRepository $repUso, 
-                        CanalesRepository $repCan , int $idUsuario, int $idCanal, String $mensaje)
+                        CanalesRepository $repCan , int $idCanal, String $mensaje)
     {
-        //$usuarioItem= $this->getDoctrine()->getRepository(Usuarios::class)->find($idUsuario);
-        $usu = $repUso->find($idUsuario);
+        $usuario=$this->getUser();
+        if (!$usuario){
+            //return $this->redirectToRoute('login')
+            $usuario=$repo->find(1);
+        }
+
         $can = $repCan->find($idCanal);
 
         $obj = new Conversa();
         $obj->setMensaje($mensaje);
         $obj->setIdCanal($can);
-        $obj->setUsuario($usu);
+        $obj->setUsuario($usuario);
         $obj->setFecha(new DateTime());
 
         $em->persist($obj);

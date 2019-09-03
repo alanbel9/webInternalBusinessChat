@@ -44,12 +44,13 @@
 
 <script>
     $(function () {
-        $("#menuGrupos").children().click(function (event) {
+        /*$("#menuGrupos").children().click(function (event) {
             $(this).addClass("disabled");
             $("#barraIzquierda").append('<a class="nav-link" idGrupo="' + $(this).attr('idGrupo') + '" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false"><h4><i class="fa fa-hashtag" aria-hidden="true"></i> '
                 + $(this).text() + '</h4></a><div class="nav flex-column nav-pills emergente" id="v-pills-tab" role="tablist" aria-orientation="vertical" style="display: none;"><a idGrupo="' + $(this).attr('idGrupo') + ' id="v-pills-profile-tab" class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">Información</a><a idGrupo="' + $(this).attr('idGrupo') + ' id="v-pills-profile-tab" class="ml-5 mr-5 text-secondary" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false" onclick="funcionOpciones()">Opciones</a></div>');
             eventosBarraLateral();
-        });
+        });*/
+        /*
         $("#modificarPerfil").off().on("click", function () {
             $("#contenedorPantallas").fadeOut(200, function () {
                 $.ajax({
@@ -61,9 +62,10 @@
                 });
             })
         });
+        */
     });
 
-    $("#botonBuscar").click(function (event) {
+    /*$("#botonBuscar").click(function (event) {
         var palabraBuscar = $.trim($("#idBusqueda").val());
         if (palabraBuscar != "") {
             $("#contenedorPantallas").fadeOut(200, function () {
@@ -76,9 +78,9 @@
                 });
             });
         }
-    });
+    });*/
 
-    function insertarUser(objeto) {
+    /*function insertarUser(objeto) {
         var idGrupo = objeto.getAttribute('idGrupo');
         $.ajax({
             // LLAMADA A CONTROLADOR GRUPOS.
@@ -87,5 +89,5 @@
                 console.log("Grupo agregado al usuario.");
             }
         });
-    }
+    }*/
 </script>

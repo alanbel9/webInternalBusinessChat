@@ -1,7 +1,7 @@
-<div id="pantallaMensajes" class="container bg-light text-dark shadow"
+<div idGrupo="{{ idGrupo }}" id="pantallaMensajes" class="container bg-light text-dark shadow"
     style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
 
-    {# {% include 'grupos/_consultarConversacionGrupo.html.twig' %} #}
+    <span id="mensajes"></span>
 
 </div>
 
@@ -21,9 +21,9 @@
         <div class='col-md-1'></div>
     </div>
 </div>
-<script>
-    idGrupo = {{ idGrupo }};
 
+<script>
+    chat.idUltimoMensaje=0;///////////// Se modificará con la fecha de suscripción
     var alturaPantalla = window.screen.width;
     if (alturaPantalla < 768) {
         $("#barraChat").animate({
@@ -44,16 +44,15 @@
         $("#pantallaMensajes").html("<h1>Mensaje enviado...</h1>");
 
         $.ajax({
-            url: '/principal/escribirMensaje/' + idUsuario + "/" + idGrupo + "/" + $("#mensajeEnviar").val(),
+            url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + $("#mensajeEnviar").val(),
             success: function (data) {
-                refrescando=false;
                 $("#mensajeEnviar").val("");
                 console.log("Mensaje guardado en la base de datos");
-                cargarPantallaChat();
             }
         });
     });
     
+    /*
     function cargarPantallaChat() {
         $("#contenedorPantallas").fadeOut(200, function () {
             $.ajax({
@@ -65,4 +64,34 @@
             });
         })
     }
+
+    var idUltimoMensaje=0;
+    hilos++;
+    timer = setTimeout("temporizador()", 3000); ///Se refresca cada 5s
+    function temporizador() {
+        console.log("Refrescado grupo " + $("#pantallaMensajes").attr('idGrupo') + " hilos " + hilos);       
+        $.ajax({
+            type: "POST",
+            url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + idUltimoMensaje,
+            success: function (data) {
+                if(hilos==1){
+                    if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
+                        $.each(data['texto'], function(key, value){
+                            var plantilla =$('#planMensaje').html();
+                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
+                            plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
+                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
+                            plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
+                            $("#mensajes").prepend(plantilla);
+                            idUltimoMensaje=value['id'];
+                        });
+                    }
+                    timer = setTimeout("temporizador()", 3000);
+                }else{
+                    hilos--;
+                }
+            }
+        });
+    }
+    */
 </script>

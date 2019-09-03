@@ -31,11 +31,23 @@ class ConversaRepository extends ServiceEntityRepository
     public function leerMensajesGrupo( int $idgrupo){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
-                        SELECT n.mensaje , u.nombre , n.fecha , u.idUs
+                        SELECT n.id, n.mensaje , u.nombre , n.fecha , u.idUs
                         FROM App\Entity\Conversa n JOIN n.usuario u  
                         WHERE n.idCanal = :idgrupo
                         ORDER BY n.id DESC
                     ') ->setParameter('idgrupo' , $idgrupo);   
+        
+        return $queryMenu->execute();
+    }
+
+    public function refrescarMensajesGrupo( int $idgrupo, int $idUltimoMensaje){
+        $entityManager = $this->getEntityManager();
+        $queryMenu = $entityManager->createQuery('
+                        SELECT n.id, n.mensaje , u.nombre , n.fecha , u.idUs
+                        FROM App\Entity\Conversa n JOIN n.usuario u  
+                        WHERE n.idCanal = :idgrupo AND n.id > :idUltimoMensaje
+                        ORDER BY n.id
+                    ') ->setParameters(['idgrupo'=> $idgrupo, 'idUltimoMensaje'=>$idUltimoMensaje]);   
         
         return $queryMenu->execute();
     }
