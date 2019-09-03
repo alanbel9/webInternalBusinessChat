@@ -88,32 +88,32 @@ var chat = {
 
     },
 
+    chatSemaforo: 0,
     chatCargarMensajes: function(){
-        $.ajax({
-            type: "POST",
-            //async: false,//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
-            success: function (data) {
-                if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
-                    $.each(data['texto'], function(key, value){
-                        var plantilla =$('#planMensaje').html();
-                        plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
-                        plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
-                        plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
-                        plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
-                        $("#mensajes").prepend(plantilla);
-                        chat.idUltimoMensaje=value['id'];
-                    });
+        if (chat.chatSemaforo==0){
+            chat.chatSemaforo=1;
+            $.ajax({
+                type: "POST",
+                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
+                success: function (data) {
+                    
+                    if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
+                        $.each(data['texto'], function(key, value){
+                            var plantilla =$('#planMensaje').html();
+                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
+                            plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
+                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
+                            plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
+                            $("#mensajes").prepend(plantilla);
+                            chat.idUltimoMensaje=value['id'];
+                        });
+                    }
+                },
+                complete: function(){
+                    chat.chatSemaforo=0;
                 }
-            },
-            beforeSend:function(){
-                chat.peticion++;
-                console.log("Peticion " + chat.peticion + " iniciada")
-            },
-            complete: function(){
-                console.log("Peticion " + chat.peticion + " finalizada");
-            }
-        });
+            });
+        }
     },
 
     chatEnviarMensaje: function(){
@@ -161,7 +161,7 @@ var chat = {
         if($("#pantallaMensajes").attr('idGrupo')){  
             chat.chatCargarMensajes();
         }  
-        setTimeout("chat.temporizador()", 3000);
+        setTimeout("chat.temporizador()", 10000);
     }
 } 
 
