@@ -90,6 +90,10 @@ var chat = {
         });
     },
 
+    cargaImagenPorDefecto: function(imagen){
+        $(this).attr("src", "public/resources/foto-carnet.jpg");
+    },
+
     chatSemaforo: 0,
     chatCargarMensajes: function(){
         if (chat.chatSemaforo==0){
