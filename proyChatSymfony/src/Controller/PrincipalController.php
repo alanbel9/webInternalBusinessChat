@@ -23,14 +23,22 @@ class PrincipalController extends AbstractController
      */
     public function index()
     {
+        //  si no está logeado que lleve al login.   LO COMENTO PARA Q NO DE POR CULO EN CASA
+        $user= $this->getUser();
+        if(!$user){    
+             // return $this->redirectToRoute('app_login');
+        }
+        //$iduser=1;
+        $iduser = $this->getUser()->getIdUs();  
+
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado();
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito();
 
         $userRepository= $this->getDoctrine()->getRepository(Usuarios::class);
-        $userItem = $userRepository->leerPerfilUsuarioSession(); 
+        $userItem = $userRepository->leerPerfilUsuario($iduser); 
 
-        $iduser = 1;   // $_SESSION['isUsuario'];
+        
 
         return $this->render('principal/index.html.twig', [
             'controller_name' => 'PrincipalController',
