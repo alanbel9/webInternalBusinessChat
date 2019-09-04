@@ -76,11 +76,6 @@ class UsuariosType extends AbstractType
                 'class' => 'form-control'
             ]
         ))
-        /*->add('foto', TextType::class , array(
-            'attr' => [
-                'class' => 'form-control'
-            ]
-        ))*/
         ->add('fechaNac', DateType::class , array(
             'widget' => 'single_text',
             'attr' => [
