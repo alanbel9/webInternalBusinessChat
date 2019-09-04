@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -57,17 +58,17 @@ class PrincipalController extends AbstractController
     }    
 
     /**
-     * @Route("/escribirMensaje/{idCanal}/{mensaje}", name="escribirMensaje")
+     * @Route("/escribirMensaje/{mensaje}", name="escribirMensaje")
      */
     public function escribirMensaje(EntityManagerInterface $em, UsuariosRepository $repUso, 
-                        CanalesRepository $repCan , int $idCanal, String $mensaje)
+                        CanalesRepository $repCan, String $mensaje, SessionInterface $session )
     {
         $usuario=$this->getUser();
         if (!$usuario){
             return $this->redirectToRoute('app_login');
         }
 
-        $can = $repCan->find($idCanal);
+        $can = $repCan->find($session->get("grupoActivo"));
 
         $obj = new Conversa();
         $obj->setMensaje($mensaje);

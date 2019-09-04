@@ -103,12 +103,12 @@ class GruposController extends AbstractController
     }    
 
     /**
-     * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
+     * @Route("/ajaxObtenerInformacion/", name="ajaxObtenerInformacion")
      */
-    public function ajaxObtenerInformacion(int $idGrupo)
+    public function ajaxObtenerInformacion(SessionInterface $session)
     {
         $canalesRepository= $this->getDoctrine()->getRepository(Canales::class);
-        $canalesItem = $canalesRepository->leerInfoCanales($idGrupo);
+        $canalesItem = $canalesRepository->leerInfoCanales($session->get("grupoActivo"));
     
         return $this->render('grupos/ajaxInformacion.html.twig', [
             'param' => $canalesItem,

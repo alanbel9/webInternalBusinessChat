@@ -20,11 +20,11 @@ var chat = {
 
     menuAddGrupo: function(idGrupo, texto){
         $('#menuOpcion' + idGrupo).addClass("disabled");
-        chat.menuCargarGrupo(idGrupo, texto);
         $.ajax({
             url: '/grupos/insertarUsuario/' + idGrupo, 
             success: function (data) {
                 console.log("Grupo agregado al usuario.");
+                chat.menuCargarGrupo(idGrupo, texto);
             }
         });
     },
@@ -45,10 +45,10 @@ var chat = {
         chat.menuClickConversacion(idGrupo);
     },
 
-    menuPulsaInformacion: function(idGrupo){
+    menuPulsaInformacion: function(){
         $("#contenedorPantallas").fadeOut(200, function () {
           $.ajax({
-            url: '/grupos/ajaxObtenerInformacion/' + idGrupo,
+            url: '/grupos/ajaxObtenerInformacion/',
             success: function (data) {
               $("#contenedorPantallas").html(data).fadeIn(200);
             }
@@ -117,7 +117,7 @@ var chat = {
         if(mensaje!=""){
             $("#mensajeEnviar").val("");
             $.ajax({
-                url: '/principal/escribirMensaje/'+ $(".pantallaMensajes").attr('idGrupo') + "/" + mensaje,
+                url: '/principal/escribirMensaje/'+ mensaje,
                 success: function (data) {
                     console.log("Mensaje guardado en la base de datos");
                 }
@@ -141,18 +141,6 @@ var chat = {
         }        
     },
 
-    /*perfilModificar: function(){
-        $("#contenedorPantallas").fadeOut(200, function () {
-            $.ajax({
-                url: '/usuarios/edit',
-                success: function (data) {
-                   // $("#contenedorPantallas").html(data).fadeIn(200);
-                   
-                }
-            });
-        })
-    },*/
-
     perfilModal: function(idUsuarioBusqueda){
         $("#divModal").html("Cargando");
         $.ajax({
@@ -164,10 +152,10 @@ var chat = {
     },
 
     temporizador: function() { 
-        if($(".pantallaMensajes").attr('idGrupo')){  
+        if($("#mensajesGrupo" + chat.idGrupoActivo).length>0){  
             chat.chatCargarMensajes();
         }  
-        setTimeout("chat.temporizador()", 5000);
+        setTimeout("chat.temporizador()", 3000);
     }
 } 
 
