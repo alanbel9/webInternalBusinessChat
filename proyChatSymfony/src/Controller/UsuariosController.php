@@ -1,7 +1,5 @@
 <?php
 //   CRUD PARA MODIFICAR E INSERTAR USUARIOS
-
-
 namespace App\Controller;
 
 use App\Entity\Usuarios;
@@ -19,18 +17,21 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  */
 class UsuariosController extends AbstractController
 {
-
-
     /**
      * @Route("/mostrarImagen/{id}", name="mostrarImagen" , methods={"GET","POST"} )
      */
     public function mostrarImagen(Usuarios $usuario)
     {
-        return new Response(stream_get_contents($usuario->getFotoArchivo()), 200, ["Content-type"=>"image/jpeg"] );
+        $fotoArchivo=$usuario->getFotoArchivo();
+        if ($fotoArchivo){
+            return new Response(stream_get_contents($fotoArchivo), 200, ["Content-type"=>"image/jpeg"] );
+        }else{
+            $ruta = __DIR__ . '/../../public/resources/usuario-sin-foto1.jpg';
+            return $this->file($ruta);
+        }
     }
 
-
-      /**
+    /**
      * @Route("/edit", name="usuarios_edit", methods={"GET","POST"})
      */
     public function edit( Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
@@ -62,8 +63,6 @@ class UsuariosController extends AbstractController
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }
-
-
             // Si foto la dejamos vacía, que mantenga la que hay en BBDD
             $file= $form->get("fotoArchivo")->getData();
             if ($file==null){
@@ -77,15 +76,11 @@ class UsuariosController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('principal');   
         }
-
         return $this->render('usuarios/edit.html.twig', [
             'usuario' => $usuario,
             'form' => $form->createView(),
         ]);
     }
-
-
-
 
     /**
      * @Route("/", name="usuarios_index", methods={"GET"})
@@ -113,7 +108,6 @@ class UsuariosController extends AbstractController
 
             return $this->redirectToRoute('usuarios_index');
         }
-
         return $this->render('usuarios/new.html.twig', [
             'usuario' => $usuario,
             'form' => $form->createView(),
@@ -130,7 +124,6 @@ class UsuariosController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/{idUs}", name="usuarios_delete", methods={"DELETE"})
      */
@@ -141,7 +134,6 @@ class UsuariosController extends AbstractController
             $entityManager->remove($usuario);
             $entityManager->flush();
         }
-
         return $this->redirectToRoute('usuarios_index');
     }
 }
