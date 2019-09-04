@@ -25,7 +25,13 @@ class UsuariosController extends AbstractController
      */
     public function mostrarImagen(Usuarios $usuario)
     {
-        return new Response(stream_get_contents($usuario->getFotoArchivo()), 200, ["Content-type"=>"image/jpeg"] );
+        $fotoArchivo=$usuario->getFotoArchivo();
+        if ($fotoArchivo){
+            return new Response(stream_get_contents($fotoArchivo), 200, ["Content-type"=>"image/jpeg"] );
+        }else{
+            $ruta = __DIR__ . '/../../public/resources/usuario-sin-foto1.jpg';
+            return $this->file($ruta);
+        }
     }
 
 
