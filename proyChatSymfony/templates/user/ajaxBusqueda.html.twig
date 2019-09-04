@@ -1,13 +1,7 @@
-
-
 <div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif; text-align: center; min-height:90vh;">
-
     <h1 class="pt-5">Perfiles encontrados:</h1>
-
     <div class="row mt-5">
-
         <div class="input-group  col-md-6 offset-md-3 mt-5 ">
-
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -17,36 +11,15 @@
                     </tr>
                 </thead>
                 <tbody>
-
                     {% for persona in param %}
                         <tr id="{{persona.idUs}}" onclick='chat.perfilModal({{persona.idUs}})' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" style="cursor:pointer">
                             <th scope="row"><img class="rounded shadow" src="/usuarios/mostrarImagen/{{persona.idUs}}" height="40px" onerror="this.setAttribute('src', 'http://www.eboca.com/ebocame/wp-content/uploads/2015/06/bigstock-silhouette-with-a-question-mar-59367497.jpg')"/></th>
                             <td >{{persona.nombre}}</td>
                             <td>{{persona.apellidos}}</td>
                         </tr>
-                        
                     {% endfor %}
-
                 </tbody>
             </table>
-
-
         </div>
-
     </div>
-
 </div>
-
-<script>
-/*
-    function cargarInformacion(idUsuario){
-        $("#divModal").html("Cargando...");
-        $.ajax({
-          url: '/user/ajaxLeerInformacion/' + idUsuario,
-          success: function (data) {
-            $("#divModal").html(data);
-          }
-        });
-    }
-    */
-</script>
