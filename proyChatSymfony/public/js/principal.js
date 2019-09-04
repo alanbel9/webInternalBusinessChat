@@ -149,16 +149,17 @@ var chat = {
         }        
     },
 
-    perfilModificar: function(){
+    /*perfilModificar: function(){
         $("#contenedorPantallas").fadeOut(200, function () {
             $.ajax({
                 url: '/usuarios/edit',
                 success: function (data) {
-                    $("#contenedorPantallas").html(data).fadeIn(200);
+                   // $("#contenedorPantallas").html(data).fadeIn(200);
+                   
                 }
             });
         })
-    },
+    },*/
 
     perfilModal: function(idUsuarioBusqueda){
         $("#divModal").html("Cargando");

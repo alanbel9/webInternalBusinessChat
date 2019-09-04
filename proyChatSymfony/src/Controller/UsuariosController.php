@@ -51,6 +51,7 @@ class UsuariosController extends AbstractController
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }else{
+                // si la password está rellena , cambiar atributo require
                 $usuario->setPassword(
                     $passwordEncoder->encodePassword($usuario,$password)
                 );
