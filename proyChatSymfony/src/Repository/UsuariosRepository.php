@@ -6,7 +6,6 @@ use App\Entity\Usuarios;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
-
 class UsuariosRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -14,29 +13,23 @@ class UsuariosRepository extends ServiceEntityRepository
         parent::__construct($registry, Usuarios::class);
     }
 
-
     public function leerUsuarios(string $param){
         $entityManager = $this->getEntityManager();
         $queryUsuarios = $entityManager->createQuery('
-        SELECT n FROM App\Entity\Usuarios n
-        WHERE n.nombre LIKE :param
+            SELECT n FROM App\Entity\Usuarios n
+            WHERE n.nombre LIKE :param
         ')->setParameter("param", '%' . $param. '%'); 
         $obj= $queryUsuarios->execute();
         return $obj;
-        }
-
-
-    public function leerPerfilUsuario(int $id){
-            $entityManager = $this->getEntityManager();
-            $queryUsuarios = $entityManager->createQuery('
-            SELECT n FROM App\Entity\Usuarios n
-            WHERE n.idUs = :id
-            ')->setParameter("id",$id); 
-            $obj= $queryUsuarios->getSingleResult();
-             return $obj;
     }
 
-
-
-
+    public function leerPerfilUsuario(int $id){
+        $entityManager = $this->getEntityManager();
+        $queryUsuarios = $entityManager->createQuery('
+            SELECT n FROM App\Entity\Usuarios n
+            WHERE n.idUs = :id
+        ')->setParameter("id",$id); 
+        $obj= $queryUsuarios->getSingleResult();
+        return $obj;
+    }
 }

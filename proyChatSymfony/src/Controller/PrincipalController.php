@@ -14,9 +14,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    /**
-     * @Route("/principal")
-     */
+/**
+ * @Route("/principal")
+ */
 class PrincipalController extends AbstractController
 {
     /**
@@ -25,12 +25,10 @@ class PrincipalController extends AbstractController
      */
     public function index()
     {
-        //  si no está logeado que lleve al login.   LO COMENTO PARA Q NO DE POR CULO EN CASA
         $user= $this->getUser();
         if(!$user){    
              return $this->redirectToRoute('app_login');
         }
-        //$iduser=1;
         $iduser = $this->getUser()->getIdUs();  
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
@@ -66,8 +64,7 @@ class PrincipalController extends AbstractController
     {
         $usuario=$this->getUser();
         if (!$usuario){
-            //return $this->redirectToRoute('login')
-            $usuario=$repo->find(1);
+            return $this->redirectToRoute('app_login');
         }
 
         $can = $repCan->find($idCanal);
@@ -82,5 +79,4 @@ class PrincipalController extends AbstractController
         $em->flush();
         return new Response();
     }
-
 }
