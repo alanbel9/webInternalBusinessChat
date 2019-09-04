@@ -5,6 +5,8 @@ var chat = {
 
     chatSemaforo: 0,
 
+    segundosRefresco: 5,
+
     reemplazar: function(texto, buscar, nuevaCadena) {
         texto=texto.split(buscar).join(nuevaCadena);
         return texto;
@@ -61,6 +63,12 @@ var chat = {
             url: '/grupos/ajaxOpciones/',
             success: function (data) {
               $("#contenedorPantallas").html(data).fadeIn(200);
+              $("#segundos").html(chat.segundosRefresco);
+              $("#refrescoSlider").val(chat.segundosRefresco)
+                .on("input change", function (e) {
+                    chat.segundosRefresco = $(this).val();
+                $("#segundos").html(chat.segundosRefresco);
+              });
             }
           });
         });
@@ -155,7 +163,7 @@ var chat = {
         if($("#mensajesGrupo" + chat.idGrupoActivo).length>0){  
             chat.chatCargarMensajes();
         }  
-        setTimeout("chat.temporizador()", 3000);
+        setTimeout("chat.temporizador()", chat.segundosRefresco*1000);
     }
 } 
 
