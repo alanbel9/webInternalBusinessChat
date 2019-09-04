@@ -91,7 +91,7 @@ var chat = {
             $.ajax({
                 type: "POST",
                 //async:false,
-                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
+                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $(".pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
                 success: function (data) {
                         $.each(data['texto'], function(key, value){
                             var d = new Date(value['fecha']);
@@ -117,7 +117,7 @@ var chat = {
         if(mensaje!=""){
             $("#mensajeEnviar").val("");
             $.ajax({
-                url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + mensaje,
+                url: '/principal/escribirMensaje/'+ $(".pantallaMensajes").attr('idGrupo') + "/" + mensaje,
                 success: function (data) {
                     console.log("Mensaje guardado en la base de datos");
                 }
@@ -164,7 +164,7 @@ var chat = {
     },
 
     temporizador: function() { 
-        if($("#pantallaMensajes").attr('idGrupo')){  
+        if($(".pantallaMensajes").attr('idGrupo')){  
             chat.chatCargarMensajes();
         }  
         setTimeout("chat.temporizador()", 5000);
