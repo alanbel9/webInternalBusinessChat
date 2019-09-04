@@ -1,37 +1,32 @@
 var chat = {
-    //idGrupo: 0,
     idGrupoActivo : 0, 
     
     idUltimoMensaje: 0,
 
-    peticion: 0,
+    chatSemaforo: 0,
 
     reemplazar: function(texto, buscar, nuevaCadena) {
         texto=texto.split(buscar).join(nuevaCadena);
         return texto;
     },
 
-    menuCargarGrupo: function(idGrupo, texto){     // carga grupos suscritos al nav.
+    menuCargarGrupo: function(idGrupo, texto){  
         var plantilla=$('#planMenuOpcionVertical').html();
 
         plantilla=chat.reemplazar(plantilla,'##IDGRUPO##', idGrupo);
         plantilla=chat.reemplazar(plantilla,'##TEXTO##', texto);
         $("#barraIzquierda").append(plantilla);
-
     },
 
     menuAddGrupo: function(idGrupo, texto){
         $('#menuOpcion' + idGrupo).addClass("disabled");
         chat.menuCargarGrupo(idGrupo, texto);
-
-        /*eventosBarraLateral();*/
         $.ajax({
             url: '/grupos/insertarUsuario/' + idGrupo, 
             success: function (data) {
                 console.log("Grupo agregado al usuario.");
             }
         });
-
     },
 
     menuDeleteGrupo: function(idGrupo) {
@@ -47,7 +42,7 @@ var chat = {
         $('.emergente').hide(200);
         $('#menuSubgrupo' + idGrupo).show(200);
         chat.idGrupoActivo=idGrupo;
-        chat.menuClickConversacion(idGrupo); //En cuarentena.
+        chat.menuClickConversacion(idGrupo);
     },
 
     menuPulsaInformacion: function(idGrupo){
@@ -90,7 +85,6 @@ var chat = {
         });
     },
 
-    chatSemaforo: 0,
     chatCargarMensajes: function(){
         if (chat.chatSemaforo==0){
             chat.chatSemaforo=1;
@@ -103,7 +97,6 @@ var chat = {
                             var d = new Date(value['fecha']);
                             var fecha = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
                             var plantilla =$('#planMensaje').html();
-                            console.log(value);
                             plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['idUs']);
                             plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
                             plantilla =chat.reemplazar(plantilla ,'##FECHA##', fecha);
@@ -130,7 +123,6 @@ var chat = {
                 }
             });
         }
-        
     },
 
     perfilBuscar: function(){
@@ -189,6 +181,6 @@ $(document).ready(function(){
     $("#botonEsconderBarraIzq").on("click",function(){
         $("#barraIzquierda").slideToggle();
     });
-//Siempre al final
+    //Siempre al final
     chat.temporizador();
 });

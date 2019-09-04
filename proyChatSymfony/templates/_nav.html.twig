@@ -9,8 +9,6 @@
     </div>
   </div>
 
-  <!-- CONTENIDO  -->
-
   <div id="contenedorPantallas" class="col">
 
     {% include 'user/ajaxInformacion.html.twig' %}
@@ -18,74 +16,13 @@
   </div>
 </div>
 
-
-
-
 <script>
- 
   $(function () {
-      var grupos = [{% include '_consultarGruposSuscritos.html.twig' %} ];
-      var ids = [{% include '_consultarIdGruposSuscritos.html.twig' %} ];
+      var grupos = [{% for canal in canalesSuscrito %} '{{ canal.nombre }}' ,  {% endfor %}];
+      var ids = [{% for canal in canalesSuscrito %} {{ canal.idCanal }} ,  {% endfor %}];
 
       grupos.forEach(function (item, index) {
         chat.menuCargarGrupo(ids[index], item);
       });
-      eventosBarraLateral();
   });
-
-
-  function eventosBarraLateral() {
-    /*
-    $("#barraIzquierda").children("a").off().on("click", function (evt) {
-      $("#barraIzquierda").children("a").next().slideUp();
-      $(this).next().slideDown();
-      idGrupo=$(this).attr('idGrupo');
-      //$("#contenedorPantallas").fadeOut(200);
-      
-      if ($('pantallaMensajes').lengt==0)
-        $.ajax({
-          url: '/grupos/ajaxObtenerConversacion/' + idGrupo,
-          success: function (data) {
-            $("#contenedorPantallas").html(data).fadeIn(500);
-            $('#ns-idGrupo').val(idGrupo);
-          }
-        });
-      });
-
-    $("#botonEsconderBarraIzq").off().on("click",function(){
-      $("#barraIzquierda").slideToggle();
-    });
- */
-  }
-
-
-
-
-   /* function funcionOpciones(obj) {
-          var idgrupo=obj.getAttribute('idGrupo');
-          $("#contenedorPantallas").fadeOut(200, function () {
-            $.ajax({
-              url: '/grupos/ajaxOpciones/' + idgrupo,
-              success: function (data) {
-                refrescando=false;
-                $("#contenedorPantallas").html(data).fadeIn(200);
-              }
-            });
-          });
-        }
-*/
-
-  /*   function infogrupo(obj) {
-      var idgrupo=obj.getAttribute('idGrupo');
-      $("#contenedorPantallas").fadeOut(200, function () {
-        $.ajax({
-          url: '/grupos/ajaxObtenerInformacion/' + idgrupo,
-          success: function (data) {
-            refrescando=false;
-            $("#contenedorPantallas").html(data).fadeIn(200);
-          }
-        });
-      });
-     }
-*/
 </script>

@@ -23,7 +23,7 @@
 </div>
 
 <script>
-    chat.idUltimoMensaje=0;///////////// Se modificará con la fecha de suscripción
+    chat.idUltimoMensaje=0;
     var alturaPantalla = window.screen.width;
     if (alturaPantalla < 768) {
         $("#barraChat").animate({
@@ -34,64 +34,4 @@
             height: '100px'
         });
     }
-/*     $("#botonEnviar").on("click", function () {
-        
-        $("#botonEnviar").off();
-        $("#barraChat").animate({
-            height: '0px'
-        });
-
-        $("#pantallaMensajes").html("<h1>Mensaje enviado...</h1>");
-
-        $.ajax({
-            url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + $("#mensajeEnviar").val(),
-            success: function (data) {
-                $("#mensajeEnviar").val("");
-                console.log("Mensaje guardado en la base de datos");
-            }
-        });
-    }); */
-    
-    /*
-    function cargarPantallaChat() {
-        $("#contenedorPantallas").fadeOut(200, function () {
-            $.ajax({
-                url: '/grupos/ajaxObtenerConversacion/' + idGrupo,
-                success: function (data) {
-                    refrescando=false;
-                    $("#contenedorPantallas").html(data).fadeIn(500);
-                }
-            });
-        })
-    }
-
-    var idUltimoMensaje=0;
-    hilos++;
-    timer = setTimeout("temporizador()", 3000); ///Se refresca cada 5s
-    function temporizador() {
-        console.log("Refrescado grupo " + $("#pantallaMensajes").attr('idGrupo') + " hilos " + hilos);       
-        $.ajax({
-            type: "POST",
-            url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + idUltimoMensaje,
-            success: function (data) {
-                if(hilos==1){
-                    if($("#pantallaMensajes").attr('idGrupo')==data['idGrupoRecibido']){
-                        $.each(data['texto'], function(key, value){
-                            var plantilla =$('#planMensaje').html();
-                            plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['id']);
-                            plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
-                            plantilla =chat.reemplazar(plantilla ,'##FECHA##', value['fecha']);
-                            plantilla =chat.reemplazar(plantilla ,'##MENSAJE##', value['mensaje']);
-                            $("#mensajes").prepend(plantilla);
-                            idUltimoMensaje=value['id'];
-                        });
-                    }
-                    timer = setTimeout("temporizador()", 3000);
-                }else{
-                    hilos--;
-                }
-            }
-        });
-    }
-    */
 </script>

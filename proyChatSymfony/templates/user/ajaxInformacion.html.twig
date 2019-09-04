@@ -3,10 +3,8 @@
     <div class="row pt-4">
         <div class="mx-auto">
             <img id="imgSalida" height="200" src='/usuarios/mostrarImagen/{{param.idUs}}' class="rounded shadow" alt="foto perfil" onerror="this.setAttribute('src', 'http://www.eboca.com/ebocame/wp-content/uploads/2015/06/bigstock-silhouette-with-a-question-mar-59367497.jpg')">
-        </div>   <!-- param.fotoArchivo -->
+        </div>
     </div>
-
-    
     <h1 class="pt-4" style="text-align: center">
             {{ param.nombre }} {{ param.apellidos }}
     </h1>
@@ -23,13 +21,13 @@
             <strong>Aficiones:</strong>
             <p>{{ param.aficiones }}</p>
         </blockquote>
-
         <blockquote>
             <strong>Grupos de chat:</strong>
-            <p>{% for uc in param.ucs %}
-                {{ uc.canal.nombre}}.
-            {% endfor %}</p>
-            
+            <ul>
+                {% for uc in param.ucs %}
+                    <li>{{ uc.canal.nombre}}.</li>
+                {% endfor %}
+            </ul>           
         </blockquote>
     </div>
 </div>
