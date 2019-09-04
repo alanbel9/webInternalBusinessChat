@@ -40,9 +40,11 @@ var chat = {
         }) 
     },
 
-    menuPulsarGrupo: function(idGrupo){
-        $('.emergente').hide(200);
-        $('#menuSubgrupo' + idGrupo).show(200);
+    menuPulsarGrupo: function(e, idGrupo){
+        $(e).next().removeClass("emergente");
+        $('.emergente').hide(300);
+        $(e).next().addClass("emergente");
+        $('#menuSubgrupo' + idGrupo).show(300);
         chat.idGrupoActivo=idGrupo;
         chat.menuClickConversacion(idGrupo);
     },
