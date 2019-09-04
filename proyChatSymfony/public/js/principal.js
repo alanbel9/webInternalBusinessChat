@@ -29,9 +29,9 @@ var chat = {
         });
     },
 
-    menuDeleteGrupo: function(idGrupo) {
+    menuDeleteGrupo: function() {
         $.ajax({
-          url: "/grupos/borrarGrupo/" + idGrupo ,
+          url: "/grupos/borrarGrupo/",
           success: function (data) {
             location.reload();
           }
@@ -55,10 +55,10 @@ var chat = {
           });
         });
     },
-    menuPulsaOpciones: function(idGrupo){
+    menuPulsaOpciones: function(){
         $("#contenedorPantallas").fadeOut(200, function () {
           $.ajax({
-            url: '/grupos/ajaxOpciones/' + idGrupo,
+            url: '/grupos/ajaxOpciones/',
             success: function (data) {
               $("#contenedorPantallas").html(data).fadeIn(200);
             }
@@ -91,7 +91,7 @@ var chat = {
             $.ajax({
                 type: "POST",
                 //async:false,
-                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $(".pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
+                url: '/grupos/ajaxRefrescarPantallaConversacion/' + chat.idUltimoMensaje,
                 success: function (data) {
                         $.each(data['texto'], function(key, value){
                             var d = new Date(value['fecha']);
