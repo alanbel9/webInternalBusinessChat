@@ -57,7 +57,7 @@ class GruposController extends AbstractController
             'canal' => $idGrupo
         ]);
         $fechaSuscripcion=$suscripcion->getFechaInscripcion();
-        if(!$fechaSuscripcion){
+        if(!$fechaSuscripcion){                                 /////////////////// Para hacer cosas en ese grupo comprueba que estas inscrito
             return $this->redirectToRoute('app_login');           
         }
         $session->set('fechaSuscripcion', $fechaSuscripcion);
