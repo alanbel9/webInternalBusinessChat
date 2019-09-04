@@ -5,7 +5,7 @@ var chat = {
 
     chatSemaforo: 0,
 
-    segundosRefresco: 5,
+    segundosRefresco: 10,
 
     reemplazar: function(texto, buscar, nuevaCadena) {
         texto=texto.split(buscar).join(nuevaCadena);
@@ -81,7 +81,7 @@ var chat = {
               success: function (data) {
                 $("#contenedorPantallas").html(data).fadeIn(500);
                 $('#ns-idGrupo').val(idGrupo);
-                //chat.chatCargarMensajes();
+                    chat.chatCargarMensajes();
               },
               beforeSend: function(){
                 $("#barraIzquierda .nombreGrupo").attr("style", "pointer-events:none");
