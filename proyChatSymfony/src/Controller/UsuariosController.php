@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Entity\Usuarios;
 use App\Form\UsuariosType;
 use App\Repository\UsuariosRepository;
+use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -38,7 +39,7 @@ class UsuariosController extends AbstractController
       /**
      * @Route("/edit", name="usuarios_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit( Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
         $usuario=$this->getUser();
