@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Usuarios;
 use App\Form\UsuariosType;
 use App\Repository\UsuariosRepository;
+use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,13 +22,19 @@ class UsuariosController extends AbstractController
      */
     public function mostrarImagen(Usuarios $usuario)
     {
-        return new Response(stream_get_contents($usuario->getFotoArchivo()), 200, ["Content-type"=>"image/jpeg"] );
+        $fotoArchivo=$usuario->getFotoArchivo();
+        if ($fotoArchivo){
+            return new Response(stream_get_contents($fotoArchivo), 200, ["Content-type"=>"image/jpeg"] );
+        }else{
+            $ruta = __DIR__ . '/../../public/resources/usuario-sin-foto1.jpg';
+            return $this->file($ruta);
+        }
     }
 
     /**
      * @Route("/edit", name="usuarios_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit( Request $request, UsuariosRepository $repo, UserPasswordEncoderInterface $passwordEncoder): Response
     {
 
         $usuario=$this->getUser();
@@ -46,6 +53,7 @@ class UsuariosController extends AbstractController
                 $password=$repo->find($usuario->getIdUs())->getPassword();
                 $usuario->setPassword($password);
             }else{
+                // si la password está rellena , cambiar atributo require
                 $usuario->setPassword(
                     $passwordEncoder->encodePassword($usuario,$password)
                 );
