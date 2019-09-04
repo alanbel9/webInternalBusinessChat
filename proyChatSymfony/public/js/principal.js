@@ -100,7 +100,7 @@ var chat = {
             chat.chatSemaforo=1;
             $.ajax({
                 type: "POST",
-                //async:false,
+                async:false,
                 url: '/grupos/ajaxRefrescarPantallaConversacion/' + chat.idUltimoMensaje,
                 success: function (data) {
                         $.each(data['texto'], function(key, value){
