@@ -40,8 +40,8 @@ var chat = {
         })
     },
 
-    menuPulsarGrupo: function(e, idGrupo){
-        
+    menuPulsarGrupo: function(e, idGrupo) {
+
         //$(e).next().removeClass("emergente");
         $(".emergente:not('#menuSubgrupo" + idGrupo + "')").hide(300);
         //$(e).next().addClass("emergente");
@@ -111,6 +111,7 @@ var chat = {
                         plantilla = chat.reemplazar(plantilla, '##IDUS##', value['idUs']);
                         plantilla = chat.reemplazar(plantilla, '##NOMBRE##', value['nombre']);
                         plantilla = chat.reemplazar(plantilla, '##FECHA##', fecha);
+                        value['mensaje'] = chat.reemplazar(value['mensaje'], "\n", "<br/>");
                         plantilla = chat.reemplazar(plantilla, '##MENSAJE##', value['mensaje']);
                         $("#mensajesGrupo" + data['idGrupoRecibido']).prepend(plantilla);
                         chat.idUltimoMensaje = value['id'];
@@ -128,7 +129,7 @@ var chat = {
         if (mensaje != "") {
             $("#mensajeEnviar").val("");
             $.ajax({
-                url: '/principal/escribirMensaje/' + mensaje,
+                url: '/principal/escribirMensaje/' + encodeURI(mensaje),
                 success: function(data) {
                     console.log("Mensaje guardado en la base de datos");
                 }
