@@ -51,7 +51,7 @@ class Canales
     private $cus;
 
     /**
-     * @ORM\Column(name="FechaModificacion", type="datetime, nullable=true, options={"default"="NULL"")
+     * @ORM\Column(name="FechaModificacion", type="datetime", nullable=true, options={"default"="NULL"})
      */
     private $FechaModificacion;
 
