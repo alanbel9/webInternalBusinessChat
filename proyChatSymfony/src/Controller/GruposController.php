@@ -7,12 +7,13 @@ use App\Entity\UC;
 use App\Entity\Canales;
 use App\Entity\Conversa;
 use App\Entity\Usuarios;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-
-
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * @Route("/grupos")
@@ -99,6 +100,7 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/ajaxOpciones/{idGrupo}", name="ajaxOpciones")
+     * @Cache(expires="tomorrow", public=true)
      */
     public function ajaxOpciones(int $idGrupo)
     {
@@ -109,6 +111,7 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/borrarGrupo/{idGrupo}", name="borrarGrupo")
+     * @Cache(expires="tomorrow", public=true)
      */
     public function borrarGrupo(int $idGrupo)
     {

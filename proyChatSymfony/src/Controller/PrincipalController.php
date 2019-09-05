@@ -50,6 +50,7 @@ class PrincipalController extends AbstractController
 
     /**
      * @Route("/pantallaBuscar", name="pantallaBuscar")
+     * @Cache(expires="tomorrow", public=true)
      */
     public function pantallaBuscar()
     {
