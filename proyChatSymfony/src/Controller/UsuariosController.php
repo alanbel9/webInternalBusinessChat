@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -20,6 +21,7 @@ class UsuariosController extends AbstractController
 {
     /**
      * @Route("/mostrarImagen/{id}", name="mostrarImagen" , methods={"GET","POST"} )
+     * @Cache(lastModified="canal.getFechamodificacion()")
      */
     public function mostrarImagen(Usuarios $usuario)
     {
