@@ -20,7 +20,7 @@ class UsuariosController extends AbstractController
 {
     /**
      * @Route("/mostrarImagen/{id}", name="mostrarImagen" , methods={"GET","POST"} )
-     * @Cache(lastModified="canal.getFechamodificacion()")
+     * @Cache(lastModified="usuario.getFechamodificacion()")
      */
     public function mostrarImagen(Usuarios $usuario)
     {
