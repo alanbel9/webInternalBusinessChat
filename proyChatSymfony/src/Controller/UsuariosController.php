@@ -29,7 +29,7 @@ class UsuariosController extends AbstractController
         if ($fotoArchivo){
             return new Response(stream_get_contents($fotoArchivo), 200, ["Content-type"=>"image/jpeg"] );
         }else{
-            $ruta = __DIR__ . '/../../public/resources/usuario-sin-foto1.jpg';
+            $ruta = __DIR__ . '/../../public/resources/anonimo.PNG';
             return $this->file($ruta);
         }
     }

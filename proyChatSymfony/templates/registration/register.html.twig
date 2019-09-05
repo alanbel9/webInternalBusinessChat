@@ -17,6 +17,7 @@
     <title>Registro</title>
 </head>
 <body>
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand mr-5" href="/principal">
             <h1><i class="fa fa-users" aria-hidden="true"></i> Chat;)</h1>
@@ -32,38 +33,53 @@
        
     </nav>
 
-    <div class="container bg-light text-dark shadow p-2"  style="font-family: 'Righteous', sans-serif;min-height:90vh;">
+
+
+    <div class="container bg-light text-dark shadow p-2 text-center pt-5"  style="font-family: 'Righteous', sans-serif;min-height:90vh;">
+        <h1> Formulario de Registro </h1>
         {{ form_start(registrationForm) }}
+
+        <div class="row pt-5">
+
+                        <div class="input-group col-md-4 mt-2 offset-md-4 ">
+                                 <div class="input-group-prepend">
+                                     <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
+                                 </div>
+                                 {{ form_widget(registrationForm.correo, {'attr':{'class':'form-control'}}) }}
+                        </div>
+        </div>
+
         <div class="row">
-            <div class="input-group  col-md-4 offset-md-3 mt-2">
-                <div class="input-group-prepend">
-                    <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
-                </div>
-                {{ form_widget(registrationForm.correo) }}
-            </div>
-            <div class="input-group  col-md-4 offset-md-3 mt-2" >
+            <div class="input-group  col-md-4 offset-md-4 mt-2" >
                 <div class="input-group-prepend">
                     <span class="input-group-text font-weight-bold" id="basic-addon3">Password</span>
                 </div>
-                {{ form_widget(registrationForm.plainPassword) }}
-            </div> 
-            <div class="input-group  col-md-4 offset-md-3 mt-2">
-                <div class="form-check">
-                    {{ form_widget(registrationForm.agreeTerms, {'attr' : {'class' : 'form-check-input'}} ) }}
-                    <label class="form-check-label" for="defaultCheck1">
-                        Agree Terms
-                    </label>
-                </div>
-            </div> 
-            <div class="input-group  col-md-3 offset-md-3 mt-2">
-                <div class="input-group-prepend">
-                    <button class="btn">Enviar</button>
-                        {{ form_end(registrationForm) }}
-                </div>
+                {{ form_widget(registrationForm.plainPassword, {'attr':{'class':'form-control'}}) }}
             </div> 
         </div>
 
+        <div class="row">
+            <div class="input-group  col-md-3 offset-md-4 mt-2">
+                <div class="form-check">
+                        {{ form_widget(registrationForm.agreeTerms, {'attr' : {'class' : 'form-check-input'}} ) }}
+                        <label class="form-check-label" for="defaultCheck1">
+                            Acepto los términos.
+                        </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-2"> 
+
+                <div class="col-md-4 offset-md-4 my-2">
+                    <button class="btn btn-primary p-2 btn-block m-auto">Enviar</button>
+                    {{ form_end(registrationForm) }}
+                </div> 
+        </div>
+           
     </div>
+
+
 </body>
 </html>
 
