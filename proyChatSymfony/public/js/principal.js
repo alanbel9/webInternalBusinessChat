@@ -167,7 +167,7 @@ var chat = {
         if($("#pantallaMensajes").attr('idGrupo')){  
             chat.chatCargarMensajes();
         }  
-        setTimeout("chat.temporizador()", 5000);
+        setTimeout("chat.temporizador()", 3000);
     }
 } 
 
