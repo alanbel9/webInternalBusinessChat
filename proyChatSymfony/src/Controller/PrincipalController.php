@@ -22,7 +22,6 @@ class PrincipalController extends AbstractController
 {
     /**
      * @Route("/", name="principal")
-     * @Cache(expires="tomorrow", public=true)
      */
     public function index()
     {

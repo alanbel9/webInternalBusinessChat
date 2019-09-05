@@ -52,7 +52,7 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
-     * @Cache("Etag='Canales' ~ canal.getDescripcion() ~ canal.getNombre())
+     * @Cache(lastModified="canal.getFechaModificacion()")
      */
     public function ajaxObtenerConversacion(Canales $canal, int $idGrupo, SessionInterface $session)
     {

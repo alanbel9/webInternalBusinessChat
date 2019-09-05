@@ -50,6 +50,11 @@ class Canales
      */
     private $cus;
 
+    /**
+     * @ORM\Column(name="FechaModificacion", type="datetime, nullable=true, options={"default"="NULL"")
+     */
+    private $FechaModificacion;
+
     public function __construct()
     {
         $this->cus = new ArrayCollection();
@@ -132,6 +137,18 @@ class Canales
                 $cus->setCanal(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFechaModificacion(): ?\DateTimeInterface
+    {
+        return $this->FechaModificacion;
+    }
+
+    public function setFechaModificacion(\DateTimeInterface $FechaModificacion): self
+    {
+        $this->FechaModificacion = $FechaModificacion;
 
         return $this;
     }
