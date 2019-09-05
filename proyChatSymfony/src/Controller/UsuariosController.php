@@ -52,11 +52,6 @@ class UsuariosController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             // Actualizar campo fechamodificacion del usuario
-            //$em = $this->getDoctrine()->getManager();
-            //$usuarioItem = $repo->find($iduser);
-            //$em->persist($usuarioItem);
-            //$em->flush();
-
             $usuario->setFechamodificacion(new DateTime());
 
             
