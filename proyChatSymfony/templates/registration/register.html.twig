@@ -4,21 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+
+        <!-- <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/simplex/bootstrap.min.css" rel="stylesheet" integrity="sha384-1OYccka9EByiS23wvPFiYHBPRAgU91xYVFb8g8sen6vRiBI5Uko6+B87q8zPGUnA" crossorigin="anonymous">    -->
+        <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/sandstone/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-G3Fme2BM4boCE9tHx9zHvcxaQoAkksPQa/8oyn1Dzqv7gdcXChereUsXGx6LtbqA" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Righteous&display=swap" rel="stylesheet">
+
     <title>Registro</title>
 </head>
 <body>
-    
-    <h1>Registrarme</h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand mr-5" href="/principal">
+            <h1><i class="fa fa-users" aria-hidden="true"></i> Chat;)</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.correo) }}
-        {{ form_row(registrationForm.plainPassword) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        <div class="collapse navbar-collapse ml-md-3 my-2" id="navbarSupportedContent">
+            
+        </div>
+       
+    </nav>
 
-        <button class="btn">Enviar</button>
-    {{ form_end(registrationForm) }}
+    <div class="container bg-light text-dark shadow p-2"  style="font-family: 'Righteous', sans-serif;min-height:90vh;">
+        {{ form_start(registrationForm) }}
+        <div class="row">
+            <div class="input-group  col-md-4 offset-md-3 mt-2">
+                <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bold" id="basic-addon3">Correo</span>
+                </div>
+                {{ form_widget(registrationForm.correo) }}
+            </div>
+            <div class="input-group  col-md-4 offset-md-3 mt-2" >
+                <div class="input-group-prepend">
+                    <span class="input-group-text font-weight-bold" id="basic-addon3">Password</span>
+                </div>
+                {{ form_widget(registrationForm.plainPassword) }}
+            </div> 
+            <div class="input-group  col-md-4 offset-md-3 mt-2">
+                <div class="form-check">
+                    {{ form_widget(registrationForm.agreeTerms, {'attr' : {'class' : 'form-check-input'}} ) }}
+                    <label class="form-check-label" for="defaultCheck1">
+                        Agree Terms
+                    </label>
+                </div>
+            </div> 
+            <div class="input-group  col-md-3 offset-md-3 mt-2">
+                <div class="input-group-prepend">
+                    <button class="btn">Enviar</button>
+                        {{ form_end(registrationForm) }}
+                </div>
+            </div> 
+        </div>
 
-
+    </div>
 </body>
 </html>
 

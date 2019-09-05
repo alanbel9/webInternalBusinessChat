@@ -2,6 +2,7 @@
 //   CRUD PARA MODIFICAR E INSERTAR USUARIOS
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Usuarios;
 use App\Form\UsuariosType;
 use App\Repository\UsuariosRepository;
@@ -40,15 +41,20 @@ class UsuariosController extends AbstractController
     {
 
         $usuario=$this->getUser();
+        $iduser = $usuario->getIdUs();
         if (!$usuario){
-            //return $this->redirectToRoute('login')
-            $usuario=$repo->find(1);
+            return $this->redirectToRoute('login');
+            //$usuario=$repo->find(1);
         }
 
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Actualizar campo fechamodificacion del usuario
+            $usuario->setFechamodificacion(new DateTime());
+
+            
             // Si password la dejamos vacia ...
             $password=$form->get('plainPassword')->getData();
             if ($password==null){
