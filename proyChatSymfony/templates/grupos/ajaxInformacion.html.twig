@@ -1,9 +1,7 @@
-<div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif;min-height:90vh;">
+{# <div class="container bg-light text-dark shadow p-2" style="font-family: 'Righteous', sans-serif;min-height:90vh;"> #}
 
     <div class="text-center pt-5">
         <h1> INFORMACIÓN DEL GRUPO: </h1>
-
-        <!--  Consulta BBDD sobre el grupo y devuelve  nombreGrupo y la descripción   -->
 
         <div id="nombregrupo" class="h2"> {{param.nombre}}</div>
     </div>
@@ -21,9 +19,7 @@
     </div>
 
     <div class="row">
-
         <div class="input-group  col-md-6 offset-md-3 mt-5 ">
-
             <table class="table">
                 <thead class="thead-dark">
                     <tr>
@@ -32,17 +28,6 @@
                         <th scope="col">Apellidos</th>
                     </tr>
                 </thead>
-
-                <!--  Consulta BBDD que devuelve personas suscritas a este grupo. 
-                  Por cada persona añadir :     
-
-                <tr>
-                    <th scope="row"> $contador  </th>
-                    <td>  nombre....    </td>
-                    <td>  apellidos...  </td>
-                </tr>
-
-             -->
                 <tbody>
                     {% for u in param.cus %}
                     <tr id="{{u.idUs.idUs}}" onclick='chat.perfilModal({{u.idUs.idUs}})' class="conModal" data-toggle="modal" data-target="#modalInfoUsuario" style="cursor:pointer">
@@ -51,13 +36,8 @@
                         <td>{{u.idUs.apellidos}}</td>
                     </tr>
                     {% endfor %}
-                    
-
                 </tbody>
             </table>
-
-
         </div>
-
     </div>
-</div>
+{# </div> #}

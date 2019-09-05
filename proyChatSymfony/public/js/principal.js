@@ -1,71 +1,76 @@
 var chat = {
-    //idGrupo: 0,
     idGrupoActivo : 0, 
     
     idUltimoMensaje: 0,
 
-    peticion: 0,
+    chatSemaforo: 0,
+
+    segundosRefresco: 10,
 
     reemplazar: function(texto, buscar, nuevaCadena) {
         texto=texto.split(buscar).join(nuevaCadena);
         return texto;
     },
 
-    menuCargarGrupo: function(idGrupo, texto){     // carga grupos suscritos al nav.
+    menuCargarGrupo: function(idGrupo, texto){  
         var plantilla=$('#planMenuOpcionVertical').html();
 
         plantilla=chat.reemplazar(plantilla,'##IDGRUPO##', idGrupo);
         plantilla=chat.reemplazar(plantilla,'##TEXTO##', texto);
         $("#barraIzquierda").append(plantilla);
-
     },
 
     menuAddGrupo: function(idGrupo, texto){
         $('#menuOpcion' + idGrupo).addClass("disabled");
-        chat.menuCargarGrupo(idGrupo, texto);
-
-        /*eventosBarraLateral();*/
         $.ajax({
             url: '/grupos/insertarUsuario/' + idGrupo, 
             success: function (data) {
                 console.log("Grupo agregado al usuario.");
+                chat.menuCargarGrupo(idGrupo, texto);
             }
         });
-
     },
 
-    menuDeleteGrupo: function(idGrupo) {
+    menuDeleteGrupo: function() {
         $.ajax({
-          url: "/grupos/borrarGrupo/" + idGrupo ,
+          url: "/grupos/borrarGrupo/",
           success: function (data) {
             location.reload();
           }
         }) 
     },
 
-    menuPulsarGrupo: function(idGrupo){
-        $('.emergente').hide(200);
-        $('#menuSubgrupo' + idGrupo).show(200);
+    menuPulsarGrupo: function(e, idGrupo){
+        $(e).next().removeClass("emergente");
+        $('.emergente').hide(300);
+        $(e).next().addClass("emergente");
+        $('#menuSubgrupo' + idGrupo).show(300);
         chat.idGrupoActivo=idGrupo;
-        chat.menuClickConversacion(idGrupo); //En cuarentena.
+        chat.menuClickConversacion(idGrupo);
     },
 
-    menuPulsaInformacion: function(idGrupo){
+    menuPulsaInformacion: function(){
         $("#contenedorPantallas").fadeOut(200, function () {
           $.ajax({
-            url: '/grupos/ajaxObtenerInformacion/' + idGrupo,
+            url: '/grupos/ajaxObtenerInformacion/',
             success: function (data) {
               $("#contenedorPantallas").html(data).fadeIn(200);
             }
           });
         });
     },
-    menuPulsaOpciones: function(idGrupo){
+    menuPulsaOpciones: function(){
         $("#contenedorPantallas").fadeOut(200, function () {
           $.ajax({
-            url: '/grupos/ajaxOpciones/' + idGrupo,
+            url: '/grupos/ajaxOpciones/',
             success: function (data) {
               $("#contenedorPantallas").html(data).fadeIn(200);
+              $("#segundos").html(chat.segundosRefresco);
+              $("#refrescoSlider").val(chat.segundosRefresco)
+                .on("input change", function (e) {
+                    chat.segundosRefresco = $(this).val();
+                $("#segundos").html(chat.segundosRefresco);
+              });
             }
           });
         });
@@ -78,7 +83,7 @@ var chat = {
               success: function (data) {
                 $("#contenedorPantallas").html(data).fadeIn(500);
                 $('#ns-idGrupo').val(idGrupo);
-                //chat.chatCargarMensajes();
+                    chat.chatCargarMensajes();
               },
               beforeSend: function(){
                 $("#barraIzquierda .nombreGrupo").attr("style", "pointer-events:none");
@@ -90,20 +95,18 @@ var chat = {
         });
     },
 
-    chatSemaforo: 0,
     chatCargarMensajes: function(){
         if (chat.chatSemaforo==0){
             chat.chatSemaforo=1;
             $.ajax({
                 type: "POST",
-                //async:false,
-                url: '/grupos/ajaxRefrescarPantallaConversacion/' + $("#pantallaMensajes").attr('idGrupo') + '/' + chat.idUltimoMensaje,
+                async:false,
+                url: '/grupos/ajaxRefrescarPantallaConversacion/' + chat.idUltimoMensaje,
                 success: function (data) {
                         $.each(data['texto'], function(key, value){
                             var d = new Date(value['fecha']);
                             var fecha = d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds() + " (" + d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear() + ")";
                             var plantilla =$('#planMensaje').html();
-                            console.log(value);
                             plantilla =chat.reemplazar(plantilla ,'##IDUS##', value['idUs']);
                             plantilla =chat.reemplazar(plantilla ,'##NOMBRE##', value['nombre']);
                             plantilla =chat.reemplazar(plantilla ,'##FECHA##', fecha);
@@ -124,13 +127,12 @@ var chat = {
         if(mensaje!=""){
             $("#mensajeEnviar").val("");
             $.ajax({
-                url: '/principal/escribirMensaje/'+ $("#pantallaMensajes").attr('idGrupo') + "/" + mensaje,
+                url: '/principal/escribirMensaje/'+ mensaje,
                 success: function (data) {
                     console.log("Mensaje guardado en la base de datos");
                 }
             });
         }
-        
     },
 
     perfilBuscar: function(){
@@ -149,17 +151,6 @@ var chat = {
         }        
     },
 
-    perfilModificar: function(){
-        $("#contenedorPantallas").fadeOut(200, function () {
-            $.ajax({
-                url: '/usuarios/edit',
-                success: function (data) {
-                    $("#contenedorPantallas").html(data).fadeIn(200);
-                }
-            });
-        })
-    },
-
     perfilModal: function(idUsuarioBusqueda){
         $("#divModal").html("Cargando");
         $.ajax({
@@ -171,10 +162,10 @@ var chat = {
     },
 
     temporizador: function() { 
-        if($("#pantallaMensajes").attr('idGrupo')){  
+        if($("#mensajesGrupo" + chat.idGrupoActivo).length>0){  
             chat.chatCargarMensajes();
         }  
-        setTimeout("chat.temporizador()", 5000);
+        setTimeout("chat.temporizador()", chat.segundosRefresco*1000);
     }
 } 
 
@@ -188,6 +179,6 @@ $(document).ready(function(){
     $("#botonEsconderBarraIzq").on("click",function(){
         $("#barraIzquierda").slideToggle();
     });
-//Siempre al final
+    //Siempre al final
     chat.temporizador();
 });

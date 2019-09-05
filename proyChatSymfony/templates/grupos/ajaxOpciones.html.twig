@@ -1,12 +1,16 @@
-<div id="pantallaOpciones" class="container bg-light text-dark shadow"
-  style="font-family: 'Righteous', sans-serif; min-height:90vh; padding-bottom: 100px;overflow-wrap:break-word ">
-  <div class="container pt-5 text-center">
-    <h1>¿Desea cancelar su suscripción al grupo?</h1>
-    <button type="button" class="btn btn-primary mt-5 btn-lg" data-toggle="modal" data-target="#exampleModal">
-      ok
-    </button>
-  </div>
+<div class="container pt-5 text-center">
+  <h1 class="pt-5">¿Desea elegir la velocidad de refresco de los mensajes?</h1>
+  <form class="range-field my-5">
+    <input id="refrescoSlider" class="no-border" type="range" value="5" min="1" max="20" />
+  </form>
+  <h2 class="text-primary pb-5"><span id="segundos"></span> segundos</h2>
+  <hr>
+  <h1 class="pt-5">¿Desea cancelar su suscripción al grupo?</h1>
+  <button type="button" class="btn btn-primary mt-5 btn-lg" data-toggle="modal" data-target="#exampleModal">
+    ok
+  </button>
 </div>
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
@@ -18,22 +22,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
-        <button type="button" class="btn btn-danger" onclick="chat.menuDeleteGrupo( {{idGrupo}} )">Si</button>
+        <button type="button" class="btn btn-danger" onclick="chat.menuDeleteGrupo()">Si</button>
       </div>
     </div>
   </div>
 </div>
-
-<script>
-/*
-  function borrarGrupo() {
-
-    $.ajax({
-      url: "/grupos/borrarGrupo/" + {{ idGrupo }},
-      success: function (data) {
-        location.reload();
-      }
-    })
-  }
-  */
-</script>

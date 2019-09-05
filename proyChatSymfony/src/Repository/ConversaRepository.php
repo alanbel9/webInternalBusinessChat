@@ -7,7 +7,6 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use DateTime;
 
-
 class ConversaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -15,20 +14,6 @@ class ConversaRepository extends ServiceEntityRepository
         parent::__construct($registry, Conversa::class);
     }
 
-
-    //   PRUEBAS SACAR ID USUARIO  !!!!!!!!!!!!!!!  !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  /*  public function leerMensajesGrupo( int $idgrupo){
-        $entityManager = $this->getEntityManager();
-        $queryMenu = $entityManager->createQuery('
-                        SELECT n.mensaje , u.nombre , n.fecha 
-                        FROM App\Entity\Conversa n JOIN n.usuario u  
-                        WHERE n.idCanal = :idgrupo
-                        ORDER BY n.id DESC
-                    ') ->setParameter('idgrupo' , $idgrupo);   
-        
-        return $queryMenu->execute();
-    }
-    */
     public function leerMensajesGrupo( int $idgrupo){
         $entityManager = $this->getEntityManager();
         $queryMenu = $entityManager->createQuery('
@@ -37,7 +22,6 @@ class ConversaRepository extends ServiceEntityRepository
                         WHERE n.idCanal = :idgrupo
                         ORDER BY n.id DESC
                     ') ->setParameter('idgrupo' , $idgrupo);   
-        
         return $queryMenu->execute();
     }
 
@@ -56,5 +40,4 @@ class ConversaRepository extends ServiceEntityRepository
                                         ]);   
         return $queryMenu->execute();
     }
-
 }

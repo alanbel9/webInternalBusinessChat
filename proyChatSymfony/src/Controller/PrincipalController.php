@@ -12,11 +12,12 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
-    /**
-     * @Route("/principal")
-     */
+/**
+ * @Route("/principal")
+ */
 class PrincipalController extends AbstractController
 {
     /**
@@ -25,12 +26,10 @@ class PrincipalController extends AbstractController
      */
     public function index()
     {
-        //  si no está logeado que lleve al login.   LO COMENTO PARA Q NO DE POR CULO EN CASA
         $user= $this->getUser();
         if(!$user){    
              return $this->redirectToRoute('app_login');
         }
-        //$iduser=1;
         $iduser = $this->getUser()->getIdUs();  
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
@@ -60,18 +59,17 @@ class PrincipalController extends AbstractController
     }    
 
     /**
-     * @Route("/escribirMensaje/{idCanal}/{mensaje}", name="escribirMensaje")
+     * @Route("/escribirMensaje/{mensaje}", name="escribirMensaje")
      */
     public function escribirMensaje(EntityManagerInterface $em, UsuariosRepository $repUso, 
-                        CanalesRepository $repCan , int $idCanal, String $mensaje)
+                        CanalesRepository $repCan, String $mensaje, SessionInterface $session )
     {
         $usuario=$this->getUser();
         if (!$usuario){
-            //return $this->redirectToRoute('login')
-            $usuario=$repo->find(1);
+            return $this->redirectToRoute('app_login');
         }
 
-        $can = $repCan->find($idCanal);
+        $can = $repCan->find($session->get("grupoActivo"));
 
         $obj = new Conversa();
         $obj->setMensaje($mensaje);
@@ -83,5 +81,4 @@ class PrincipalController extends AbstractController
         $em->flush();
         return new Response();
     }
-
 }

@@ -10,17 +10,17 @@ use App\Entity\Usuarios;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 /**
  * @Route("/grupos")
  */
 class GruposController extends AbstractController
 {
-    //public $fechaSuscripcion;
     /**
      * @Route("/insertarUsuario/{idGrupo}", name="insertarUsuario")
      */
@@ -31,8 +31,7 @@ class GruposController extends AbstractController
         if ($user){
             $idUsuario=$user->getIdUs();
         }else {
-            echo "Ningún usuario logeado";
-            // return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('app_login');
         }
 
         $UCregistro= new UC();
@@ -49,29 +48,23 @@ class GruposController extends AbstractController
         $em->flush();
 
         return new Response("Insertado usuario a grupo.");
-        // se le llama asi:  /grupos/insertarUsuario/2-1
-        // Esto va unido a una función insertarUser() en _navbar  y a _consultarGrupos donde se usa dicha función.
     }
-
-
 
     /**
      * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
      */
-    public function ajaxObtenerConversacion(int $idGrupo)
+    public function ajaxObtenerConversacion(int $idGrupo, SessionInterface $session)
     {
-/*      $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
-        $mensajesItem = $conversaRepository->leerMensajesGrupo($idGrupo);
-*/
-        // $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                    !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //     'idUs' => $this->getUser()->getIdUs(),
-        //     'canal' => $idGrupo
-        // ]);
-        // $this->fechaSuscripcion=$suscripcion->getFechaInscripcion();
-        // //return new Response($this->fechaSuscripcion->format('Y-m-d H:i:s'));
-        // if(!$this->fechaSuscripcion){
-        //     throw $this->createNotFounfException("No estás suscrito al grupo " + $idGrupo);           !!!!!!!!!!!!!!!!!!!!!!!!!!!
-        // }
+        $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                   
+            'idUs' => $this->getUser()->getIdUs(),
+            'canal' => $idGrupo
+        ]);
+        $fechaSuscripcion=$suscripcion->getFechaInscripcion();
+        if(!$fechaSuscripcion){                                 /////////////////// Para hacer cosas en ese grupo comprueba que estas inscrito
+            return $this->redirectToRoute('app_login');           
+        }
+        $session->set('fechaSuscripcion', $fechaSuscripcion);
+        $session->set('grupoActivo', $idGrupo);
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
             'idGrupo' => $idGrupo 
@@ -79,64 +72,51 @@ class GruposController extends AbstractController
     }
 
     /**
-     * @Route("/ajaxRefrescarPantallaConversacion/{idGrupo}/{idUltimoMensaje}", name="ajaxRefrescarPantallaConversacion")
+     * @Route("/ajaxRefrescarPantallaConversacion/{idUltimoMensaje}", name="ajaxRefrescarPantallaConversacion")
      */
-    public function ajaxRefrescarPantallaConversacion(int $idGrupo, int $idUltimoMensaje)
+    public function ajaxRefrescarPantallaConversacion(int $idUltimoMensaje, SessionInterface $session)
     {
-        $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([
-            'idUs' => $this->getUser()->getIdUs(),
-            'canal' => $idGrupo
-        ]);
-        $fechaSuscripcion=$suscripcion->getFechaInscripcion();//////////////////////Atrubuto!!!!!!!!!!!!!!!!!!!
+        $fechaSuscripcion=$session->get("fechaSuscripcion");
         if(!$fechaSuscripcion){
-            throw $this->createNotFoundException("No estás suscrito al grupo " + $idGrupo);
+            return $this->redirectToRoute('app_login');
         }
-        //return new Response($fechaSuscripcion->format('Y-m-d H:i:s'));
         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
-        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($idGrupo, $idUltimoMensaje, $fechaSuscripcion);
+        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($session->get("grupoActivo"), $idUltimoMensaje, $fechaSuscripcion);
 
-        return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $idGrupo]);
+        return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $session->get("grupoActivo")]);
     }
 
     /**
-     * @Route("/ajaxOpciones/{idGrupo}", name="ajaxOpciones")
-     * @Cache(expires="tomorrow", public=true)
+     * @Route("/ajaxOpciones/", name="ajaxOpciones")
      */
-    public function ajaxOpciones(int $idGrupo)
+    public function ajaxOpciones(SessionInterface $session)
     {
-        return $this->render('grupos/ajaxOpciones.html.twig', [
-            'idGrupo' => $idGrupo,
-        ]);
+        return $this->render('grupos/ajaxOpciones.html.twig');
     }    
 
     /**
-     * @Route("/borrarGrupo/{idGrupo}", name="borrarGrupo")
-     * @Cache(expires="tomorrow", public=true)
+     * @Route("/borrarGrupo/", name="borrarGrupo")
      */
-    public function borrarGrupo(int $idGrupo)
+    public function borrarGrupo(SessionInterface $session)
     {
         $UCRepository= $this->getDoctrine()->getRepository(UC::class);
-        $UCRepository->borrarGrupo($idGrupo, $this->getUser()->getIdUs());
+        $UCRepository->borrarGrupo($session->get("grupoActivo"), $this->getUser()->getIdUs());
 
         return new Response("Grupo borrado de la lista de suscripciones.");
     }    
 
-
-
-    
     /**
-     * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
+     * @Route("/ajaxObtenerInformacion/", name="ajaxObtenerInformacion")
      */
-    public function ajaxObtenerInformacion(int $idGrupo)
+    public function ajaxObtenerInformacion(SessionInterface $session)
     {
         $canalesRepository= $this->getDoctrine()->getRepository(Canales::class);
-        $canalesItem = $canalesRepository->leerInfoCanales($idGrupo);
+        $canalesItem = $canalesRepository->leerInfoCanales($session->get("grupoActivo"));
     
         return $this->render('grupos/ajaxInformacion.html.twig', [
-        'param' => $canalesItem,
+            'param' => $canalesItem,
         ]);
     }    
-
 
     /**
      * @Route("/mostrarImagengrupo/{id}", name="mostrarImagengrupo" , methods={"GET","POST"} )
@@ -145,7 +125,4 @@ class GruposController extends AbstractController
     {
         return new Response(stream_get_contents($canal->getImagen()), 200, ["Content-type"=>"image/jpeg"] );
     }
-
-
-
 }
