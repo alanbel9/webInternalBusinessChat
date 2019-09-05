@@ -24,12 +24,20 @@ class PrincipalController extends AbstractController
      * @Route("/", name="principal")
      */
     public function index()
-    {
+    {       //  EntityManagerInterface $em , UsuariosRepository $repUso
         $user= $this->getUser();
         if(!$user){    
              return $this->redirectToRoute('app_login');
         }
         $iduser = $this->getUser()->getIdUs();  
+        // Al logearse, modificar fecha ultima conexion
+        $em = $this->getDoctrine()->getManager();
+        $usuarioItem = $this->getDoctrine()->getRepository(Usuarios::class)->find($iduser);
+        $usuarioItem->setFechaUltCon(new DateTime());
+        $em->persist($usuarioItem);
+        $em->flush();
+
+
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito($iduser);
