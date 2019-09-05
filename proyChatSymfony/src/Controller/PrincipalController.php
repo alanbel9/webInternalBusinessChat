@@ -37,7 +37,6 @@ class PrincipalController extends AbstractController
         $em->persist($usuarioItem);
         $em->flush();
 
-
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito($iduser);
