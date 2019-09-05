@@ -2,9 +2,10 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\UC;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -106,6 +107,11 @@ class Usuarios implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\UC", mappedBy="idUs", orphanRemoval=true)
      */
     private $ucs;
+
+    /**
+     * @ORM\Column(name="fechamodificacion", type="datetime", nullable=true, options={"default"="NULL"})
+     */
+    private $fechamodificacion;
 
     public function __construct()
     {
@@ -292,6 +298,18 @@ class Usuarios implements UserInterface
                 $uc->setUsuarios(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFechamodificacion(): ?\DateTimeInterface
+    {
+        return $this->fechamodificacion;
+    }
+
+    public function setFechamodificacion(\DateTimeInterface $fechamodificacion): self
+    {
+        $this->fechamodificacion = $fechamodificacion;
 
         return $this;
     }

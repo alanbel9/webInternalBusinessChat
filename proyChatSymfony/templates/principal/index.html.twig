@@ -6,18 +6,18 @@
 {% block body %}
 
 <div id='planMenuOpcionVertical' style="display:none">
-        <a onclick='chat.menuPulsarGrupo(##IDGRUPO##)' class="nav-link nombreGrupo" id="v-pills-profile-tab" data-toggle="pill"
+        <a onclick='chat.menuPulsarGrupo(this, ##IDGRUPO##)' class="nav-link nombreGrupo" id="v-pills-profile-tab" data-toggle="pill"
                 href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
                 <h4><i class="fa fa-hashtag" aria-hidden="true"></i> ##TEXTO##</h4>
         </a>
         <div class="nav flex-column nav-pills emergente" id="menuSubgrupo##IDGRUPO##" role="tablist"
                 aria-orientation="vertical" style="display: none;">
-                <a onclick='chat.menuPulsaInformacion(##IDGRUPO##)' id="v-pills-profile-tab"
+                <a onclick='chat.menuPulsaInformacion()' id="v-pills-profile-tab"
                         class="ml-5 mr-5 infoGrupo text-secondary" data-toggle="pill" href="#" role="tab"
                         aria-controls="v-pills-profile" aria-selected="false">
                         Información
                 </a>
-                <a onclick='chat.menuPulsaOpciones(##IDGRUPO##)' id="v-pills-profile-tab"
+                <a onclick='chat.menuPulsaOpciones()' id="v-pills-profile-tab"
                         class="ml-5 mr-5 text-secondary" data-toggle="pill" href="#" role="tab"
                         aria-controls="v-pills-profile" aria-selected="false">
                         Opciones
@@ -44,6 +44,22 @@
                         ##MENSAJE##
                 </p>
         </blockquote>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header"></div>
+        <div class="modal-body text-center">
+          <h1>¿Estás seguro?<h1>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger" onclick="chat.menuDeleteGrupo()">Si</button>
+        </div>
+      </div>
+    </div>
 </div>
 
 

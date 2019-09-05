@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -21,15 +22,22 @@ class PrincipalController extends AbstractController
 {
     /**
      * @Route("/", name="principal")
-     * @Cache(expires="tomorrow", public=true)
      */
     public function index()
-    {
+    {       //  EntityManagerInterface $em , UsuariosRepository $repUso
         $user= $this->getUser();
         if(!$user){    
              return $this->redirectToRoute('app_login');
         }
         $iduser = $this->getUser()->getIdUs();  
+        // Al logearse, modificar fecha ultima conexion
+        $em = $this->getDoctrine()->getManager();
+        $usuarioItem = $this->getDoctrine()->getRepository(Usuarios::class)->find($iduser);
+        $usuarioItem->setFechaUltCon(new DateTime());
+        $em->persist($usuarioItem);
+        $em->flush();
+
+
         $gruposRepository= $this->getDoctrine()->getRepository(Canales::class);
         $canalesItem = $gruposRepository->leerCanalesOrdenado($iduser);
         $canalesSuscrito= $gruposRepository->leerCanalesSuscrito($iduser);
@@ -48,6 +56,7 @@ class PrincipalController extends AbstractController
 
     /**
      * @Route("/pantallaBuscar", name="pantallaBuscar")
+     * @Cache(expires="tomorrow", public=true)
      */
     public function pantallaBuscar()
     {
@@ -57,17 +66,17 @@ class PrincipalController extends AbstractController
     }    
 
     /**
-     * @Route("/escribirMensaje/{idCanal}/{mensaje}", name="escribirMensaje")
+     * @Route("/escribirMensaje/{mensaje}", name="escribirMensaje")
      */
     public function escribirMensaje(EntityManagerInterface $em, UsuariosRepository $repUso, 
-                        CanalesRepository $repCan , int $idCanal, String $mensaje)
+                        CanalesRepository $repCan, String $mensaje, SessionInterface $session )
     {
         $usuario=$this->getUser();
         if (!$usuario){
             return $this->redirectToRoute('app_login');
         }
 
-        $can = $repCan->find($idCanal);
+        $can = $repCan->find($session->get("grupoActivo"));
 
         $obj = new Conversa();
         $obj->setMensaje($mensaje);

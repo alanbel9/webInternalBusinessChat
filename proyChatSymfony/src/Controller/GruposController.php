@@ -10,8 +10,11 @@ use App\Entity\Usuarios;
 use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+
 
 /**
  * @Route("/grupos")
@@ -49,18 +52,20 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
+     * @Cache(lastModified="canal.getFechaModificacion()")
      */
-    public function ajaxObtenerConversacion(int $idGrupo, SessionInterface $session)
+    public function ajaxObtenerConversacion(Canales $canal, int $idGrupo, SessionInterface $session)
     {
         $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                   
             'idUs' => $this->getUser()->getIdUs(),
             'canal' => $idGrupo
         ]);
         $fechaSuscripcion=$suscripcion->getFechaInscripcion();
-        if(!$fechaSuscripcion){
+        if(!$fechaSuscripcion){                                 /////////////////// Para hacer cosas en ese grupo comprueba que estas inscrito
             return $this->redirectToRoute('app_login');           
         }
         $session->set('fechaSuscripcion', $fechaSuscripcion);
+        $session->set('grupoActivo', $idGrupo);
         return $this->render('grupos/ajaxConversacion.html.twig', [
             'controller_name' => 'GruposController',
             'idGrupo' => $idGrupo 
@@ -68,48 +73,47 @@ class GruposController extends AbstractController
     }
 
     /**
-     * @Route("/ajaxRefrescarPantallaConversacion/{idGrupo}/{idUltimoMensaje}", name="ajaxRefrescarPantallaConversacion")
+     * @Route("/ajaxRefrescarPantallaConversacion/{idUltimoMensaje}", name="ajaxRefrescarPantallaConversacion")
      */
-    public function ajaxRefrescarPantallaConversacion(int $idGrupo, int $idUltimoMensaje, SessionInterface $session)
+    public function ajaxRefrescarPantallaConversacion(int $idUltimoMensaje, SessionInterface $session)
     {
         $fechaSuscripcion=$session->get("fechaSuscripcion");
         if(!$fechaSuscripcion){
             return $this->redirectToRoute('app_login');
         }
         $conversaRepository= $this->getDoctrine()->getRepository(Conversa::class);
-        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($idGrupo, $idUltimoMensaje, $fechaSuscripcion);
+        $mensajesItem = $conversaRepository->refrescarMensajesGrupo($session->get("grupoActivo"), $idUltimoMensaje, $fechaSuscripcion);
 
-        return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $idGrupo]);
+        return $this->json(['texto' => $mensajesItem, 'idGrupoRecibido' => $session->get("grupoActivo")]);
     }
 
     /**
-     * @Route("/ajaxOpciones/{idGrupo}", name="ajaxOpciones")
+     * @Route("/ajaxOpciones/", name="ajaxOpciones")
+     * @Cache(expires="tomorrow")
      */
-    public function ajaxOpciones(int $idGrupo)
+    public function ajaxOpciones()
     {
-        return $this->render('grupos/ajaxOpciones.html.twig', [
-            'idGrupo' => $idGrupo,
-        ]);
+        return $this->render('grupos/ajaxOpciones.html.twig');
     }    
 
     /**
-     * @Route("/borrarGrupo/{idGrupo}", name="borrarGrupo")
+     * @Route("/borrarGrupo/", name="borrarGrupo")
      */
-    public function borrarGrupo(int $idGrupo)
+    public function borrarGrupo(SessionInterface $session)
     {
         $UCRepository= $this->getDoctrine()->getRepository(UC::class);
-        $UCRepository->borrarGrupo($idGrupo, $this->getUser()->getIdUs());
+        $UCRepository->borrarGrupo($session->get("grupoActivo"), $this->getUser()->getIdUs());
 
         return new Response("Grupo borrado de la lista de suscripciones.");
     }    
 
     /**
-     * @Route("/ajaxObtenerInformacion/{idGrupo}", name="ajaxObtenerInformacion")
+     * @Route("/ajaxObtenerInformacion/", name="ajaxObtenerInformacion")
      */
-    public function ajaxObtenerInformacion(int $idGrupo)
+    public function ajaxObtenerInformacion(SessionInterface $session)
     {
         $canalesRepository= $this->getDoctrine()->getRepository(Canales::class);
-        $canalesItem = $canalesRepository->leerInfoCanales($idGrupo);
+        $canalesItem = $canalesRepository->leerInfoCanales($session->get("grupoActivo"));
     
         return $this->render('grupos/ajaxInformacion.html.twig', [
             'param' => $canalesItem,
@@ -118,6 +122,7 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/mostrarImagengrupo/{id}", name="mostrarImagengrupo" , methods={"GET","POST"} )
+     * @Cache(lastModified="canal.getFechaModificacion()")
      */
     public function mostrarImagengrupo(Canales $canal)
     {
