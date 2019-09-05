@@ -51,11 +51,12 @@ class GruposController extends AbstractController
     }
 
     /**
-     * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
-     * @Cache("Etag='Canales' ~ canal.getDescripcion() ~ canal.getNombre())
+     * @Route("/ajaxObtenerConversacion/{id}", name="ajaxObtenerConversacion")
+     * @Cache(lastModified="canal.getFechaModificacion()")
      */
-    public function ajaxObtenerConversacion(Canales $canal, int $idGrupo, SessionInterface $session)
+    public function ajaxObtenerConversacion(Canales $canal, SessionInterface $session)
     {
+        $idGrupo=$canal->getIdCanal();
         $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                   
             'idUs' => $this->getUser()->getIdUs(),
             'canal' => $idGrupo

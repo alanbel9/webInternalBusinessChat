@@ -2,6 +2,7 @@
 //   CRUD PARA MODIFICAR E INSERTAR USUARIOS
 namespace App\Controller;
 
+use DateTime;
 use App\Entity\Usuarios;
 use App\Form\UsuariosType;
 use App\Repository\UsuariosRepository;
@@ -9,6 +10,7 @@ use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -19,6 +21,7 @@ class UsuariosController extends AbstractController
 {
     /**
      * @Route("/mostrarImagen/{id}", name="mostrarImagen" , methods={"GET","POST"} )
+     * @Cache(lastModified="usuario.getFechamodificacion()")
      */
     public function mostrarImagen(Usuarios $usuario)
     {
@@ -38,15 +41,20 @@ class UsuariosController extends AbstractController
     {
 
         $usuario=$this->getUser();
+        $iduser = $usuario->getIdUs();
         if (!$usuario){
-            //return $this->redirectToRoute('login')
-            $usuario=$repo->find(1);
+            return $this->redirectToRoute('login');
+            //$usuario=$repo->find(1);
         }
 
         $form = $this->createForm(UsuariosType::class, $usuario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // Actualizar campo fechamodificacion del usuario
+            $usuario->setFechamodificacion(new DateTime());
+
+            
             // Si password la dejamos vacia ...
             $password=$form->get('plainPassword')->getData();
             if ($password==null){
