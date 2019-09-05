@@ -52,8 +52,9 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/ajaxObtenerConversacion/{idGrupo}", name="ajaxObtenerConversacion")
+     * @Cache("Etag='Canales' ~ canal.getDescripcion() ~ canal.getNombre())
      */
-    public function ajaxObtenerConversacion(int $idGrupo, SessionInterface $session)
+    public function ajaxObtenerConversacion(Canales $canal, int $idGrupo, SessionInterface $session)
     {
         $suscripcion= $this->getDoctrine()->getRepository(UC::class)->findOneBy([                   
             'idUs' => $this->getUser()->getIdUs(),
@@ -88,8 +89,9 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/ajaxOpciones/", name="ajaxOpciones")
+     * @Cache(expires="tomorrow")
      */
-    public function ajaxOpciones(SessionInterface $session)
+    public function ajaxOpciones()
     {
         return $this->render('grupos/ajaxOpciones.html.twig');
     }    
@@ -120,6 +122,7 @@ class GruposController extends AbstractController
 
     /**
      * @Route("/mostrarImagengrupo/{id}", name="mostrarImagengrupo" , methods={"GET","POST"} )
+     * @Cache(lastModified="canal.getFechaModificacion()")
      */
     public function mostrarImagengrupo(Canales $canal)
     {
