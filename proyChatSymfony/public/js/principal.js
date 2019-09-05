@@ -41,9 +41,10 @@ var chat = {
     },
 
     menuPulsarGrupo: function(e, idGrupo){
-        $(e).next().removeClass("emergente");
-        $('.emergente').hide(300);
-        $(e).next().addClass("emergente");
+        
+        //$(e).next().removeClass("emergente");
+        $(".emergente:not('#menuSubgrupo" + idGrupo + "')").hide(300);
+        //$(e).next().addClass("emergente");
         $('#menuSubgrupo' + idGrupo).show(300);
         chat.idGrupoActivo=idGrupo;
         chat.menuClickConversacion(idGrupo);
